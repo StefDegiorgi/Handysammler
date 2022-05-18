@@ -1,5 +1,3 @@
-
-
 package ch.bzz.handy.service;
 
 import javax.ws.rs.GET;
