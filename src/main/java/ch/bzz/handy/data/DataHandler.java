@@ -50,9 +50,9 @@ public class DataHandler {
     }
 
     /**
-     * reads a book by its uuid
+     * reads a handymodell by its id
      * @param handymodellID
-     * @return the Book (null=not found)
+     * @return the Handymodell (null=not found)
      */
     public Handymodell readHandymodellByID(String handymodellID) {
         Handymodell handymodell = null;
@@ -65,8 +65,8 @@ public class DataHandler {
     }
 
     /**
-     * reads all Publishers
-     * @return list of publishers
+     * reads all Handymarke
+     * @return list of handymarkes
      */
     public List<Handymarke> readAllHandymarke() {
 
@@ -74,11 +74,11 @@ public class DataHandler {
     }
 
     /**
-     * reads a publisher by its uuid
+     * reads a handymarke by its id
      * @param handymarkeID
-     * @return the Publisher (null=not found)
+     * @return the Handymarke (null=not found)
      */
-    public Handymarke readPublisherByUUID(String handymarkeID) {
+    public Handymarke readHandymarkeByID(String handymarkeID) {
         Handymarke handymarke = null;
         for (Handymarke entry : getHandymarkeList()) {
             if (entry.getHandymarkeID().equals(handymarkeID)) {
@@ -89,7 +89,7 @@ public class DataHandler {
     }
 
     /**
-     * reads the books from the JSON-file
+     * reads the handymodells from the JSON-file
      */
     private void readHandymodellJSON() {
         try {
@@ -108,7 +108,7 @@ public class DataHandler {
     }
 
     /**
-     * reads the publishers from the JSON-file
+     * reads the handymarke from the JSON-file
      */
     private void readHandymarkeJSON() {
         try {
@@ -127,16 +127,16 @@ public class DataHandler {
         }
     }
     /**
-     * gets bookList
+     * gets handymodellList
      *
-     * @return value of bookList
+     * @return value of handymodellList
      */
     private List<Handymodell> getHandymodellList() {
         return handymodellList;
     }
 
     /**
-     * sets bookList
+     * sets handymodellList
      *
      * @param handymodellList the value to set
      */
@@ -145,16 +145,16 @@ public class DataHandler {
     }
 
     /**
-     * gets publisherList
+     * gets handymarkeList
      *
-     * @return value of publisherList
+     * @return value of handymarkeList
      */
     private List<Handymarke> getHandymarkeList() {
         return handymarkeList;
     }
 
     /**
-     * sets publisherList
+     * sets handymarkeList
      *
      * @param handymarkeList the value to set
      */

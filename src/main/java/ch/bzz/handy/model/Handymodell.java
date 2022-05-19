@@ -14,7 +14,7 @@ public class Handymodell {
         return handymodellID;
     }
 
-    public void setHandymodellUUID(String handymodellID) {
+    public void setHandymodellID(String handymodellID) {
         this.handymodellID = handymodellID;
     }
 

@@ -1,6 +1,6 @@
 package ch.bzz.handy.model;
 
-import java.time.LocalDate;
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -10,7 +10,7 @@ public class Handymarke {
     private String handymarkeID;
     private String handymarkeName;
     private String herkunftsland;
-    private LocalDate gründungsDatum;
+    private Date gründungsDatum;
     private List<Handymodell> handymodellList;
 
     public String getHandymarkeID() {
@@ -37,11 +37,11 @@ public class Handymarke {
         this.herkunftsland = herkunftsland;
     }
 
-    public LocalDate getGründungsDatum() {
+    public Date getGründungsDatum() {
         return gründungsDatum;
     }
 
-    public void setGründungsDatum(LocalDate gründungsDatum) {
+    public void setGründungsDatum(Date gründungsDatum) {
         this.gründungsDatum = gründungsDatum;
     }
 
