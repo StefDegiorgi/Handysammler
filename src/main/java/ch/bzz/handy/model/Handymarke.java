@@ -10,7 +10,7 @@ public class Handymarke {
     private String handymarkeID;
     private String handymarkeName;
     private String herkunftsland;
-    private Date gründungsDatum;
+    private Date gruendungsDatum;
     private List<Handymodell> handymodellList;
 
     public String getHandymarkeID() {
@@ -37,12 +37,12 @@ public class Handymarke {
         this.herkunftsland = herkunftsland;
     }
 
-    public Date getGründungsDatum() {
-        return gründungsDatum;
+    public Date getGruendungsDatum() {
+        return gruendungsDatum;
     }
 
-    public void setGründungsDatum(Date gründungsDatum) {
-        this.gründungsDatum = gründungsDatum;
+    public void setGruendungsDatum(Date gruendungsDatum) {
+        this.gruendungsDatum = gruendungsDatum;
     }
 
     public List<Handymodell> getHandymodellList() {
