@@ -7,18 +7,18 @@ import java.util.List;
  * Marke von mehreren Handys
  */
 public class Handymarke {
-    private String handymarkeUUID;
+    private String handymarkeID;
     private String handymarkeName;
     private String herkunftsland;
     private LocalDate gründungsDatum;
     private List<Handymodell> handymodellList;
 
-    public String getHandymarkeUUID() {
-        return handymarkeUUID;
+    public String getHandymarkeID() {
+        return handymarkeID;
     }
 
-    public void setHandymarkeUUID(String handymarkeUUID) {
-        this.handymarkeUUID = handymarkeUUID;
+    public void setHandymarkeID(String handymarkeID) {
+        this.handymarkeID = handymarkeID;
     }
 
     public String getHandymarkeName() {
