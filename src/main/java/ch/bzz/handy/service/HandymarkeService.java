@@ -13,13 +13,13 @@ import javax.ws.rs.core.Response;
 import java.util.List;
 
 /*
- services for reading, adding, changing and deleting books
+ services for reading, adding, changing and deleting handymarke
  */
 @Path("handymarke")
 public class HandymarkeService {
     /**
-     * read a list of all books
-     * @return books as JSON
+     * read a list of all handymarke
+     * @return handymarke as JSON
      */
     @GET
     @Path("list")

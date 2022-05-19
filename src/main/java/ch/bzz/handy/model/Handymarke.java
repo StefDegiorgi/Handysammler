@@ -4,7 +4,7 @@ import java.util.Date;
 import java.util.List;
 
 /**
- * Marke von mehreren Handys
+ * Brand from Handys
  */
 public class Handymarke {
     private String handymarkeID;
