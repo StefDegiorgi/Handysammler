@@ -5,17 +5,17 @@ package ch.bzz.handy.model;
  */
 
 public class Handymodell {
-    private String handymodellUUID;
+    private String handymodellID;
     private String handymodellName;
     private String erscheinungsjahr;
     private double akkulaufzeit;
 
-    public String getHandymodellUUID() {
-        return handymodellUUID;
+    public String getHandymodellID() {
+        return handymodellID;
     }
 
-    public void setHandymodellUUID(String handymodellUUID) {
-        this.handymodellUUID = handymodellUUID;
+    public void setHandymodellUUID(String handymodellID) {
+        this.handymodellID = handymodellID;
     }
 
     public String getHandymodellName() {
