@@ -32,7 +32,7 @@ public class DataHandler {
 
     /**
      * gets the only instance of this class
-     * @return
+     * @return instance
      */
     public static DataHandler getInstance() {
         if (instance == null)
@@ -52,7 +52,7 @@ public class DataHandler {
     /**
      * reads a handymodell by its id
      * @param handymodellID
-     * @return the Handymodell (null=not found)
+     * @return the handymodell (null=not found)
      */
     public Handymodell readHandymodellByID(String handymodellID) {
         Handymodell handymodell = null;
