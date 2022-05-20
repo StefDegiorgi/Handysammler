@@ -1,0 +1,172 @@
+{
+	"id": "33d8e105-9898-4494-8564-e93c0d64bcec",
+	"name": "Handy",
+	"timestamp": "2022-05-20T11:47:10.553Z",
+	"collection_id": "25220e2f-c992-41bf-bd7c-67a8a980e6a5",
+	"folder_id": 0,
+	"environment_id": "0",
+	"totalPass": 0,
+	"totalFail": 0,
+	"results": [
+		{
+			"id": "67904ffa-d37c-41fa-bba7-34b8373f745f",
+			"name": "0.1 TestService",
+			"url": "http://localhost:8080/Handy-1.0/resource/test/test",
+			"time": 978,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {},
+			"testPassFailCounts": {},
+			"times": [
+				978
+			],
+			"allTests": [
+				{}
+			]
+		},
+		{
+			"id": "27469848-695e-4b59-90e6-2805ab873ceb",
+			"name": "1.0 list all Handymodells",
+			"url": "http://localhost:8080/Handy-1.0/resource/handymodell/list",
+			"time": 2989,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {},
+			"testPassFailCounts": {},
+			"times": [
+				2989
+			],
+			"allTests": [
+				{}
+			]
+		},
+		{
+			"id": "02324cde-366d-419a-b8dd-0c6446e38302",
+			"name": "1.1 read a Handymodell",
+			"url": "http://localhost:8080/Handy-1.0/resource/handymodell/read?id=2",
+			"time": 33,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {},
+			"testPassFailCounts": {},
+			"times": [
+				33
+			],
+			"allTests": [
+				{}
+			]
+		},
+		{
+			"id": "cdf140e7-df96-4405-9e60-10ebdd7d6e99",
+			"name": "1.2 read Handymodell not found",
+			"url": "http://localhost:8080/Handy-1.0/resource/handymodell/read?id=66969",
+			"time": 34,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {},
+			"testPassFailCounts": {},
+			"times": [
+				34
+			],
+			"allTests": [
+				{}
+			]
+		},
+		{
+			"id": "9e5755ec-a052-4749-b212-daa5e6e2b0fd",
+			"name": "2.0 list all Handymarke",
+			"url": "http://localhost:8080/Handy-1.0/resource/handymarke/list",
+			"time": 92,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {},
+			"testPassFailCounts": {},
+			"times": [
+				92
+			],
+			"allTests": [
+				{}
+			]
+		},
+		{
+			"id": "8435c584-1e87-4500-b5fa-5ecc2a3b096d",
+			"name": "2.1 read a Handymarke",
+			"url": "http://localhost:8080/Handy-1.0/resource/handymarke/read?id=3",
+			"time": 27,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {},
+			"testPassFailCounts": {},
+			"times": [
+				27
+			],
+			"allTests": [
+				{}
+			]
+		},
+		{
+			"id": "8c2cf877-94ae-4585-b024-770f60d26acc",
+			"name": "2.2 read a Handymarke not found",
+			"url": "http://localhost:8080/Handy-1.0/resource/handymarke/read?id=6969",
+			"time": 25,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {},
+			"testPassFailCounts": {},
+			"times": [
+				25
+			],
+			"allTests": [
+				{}
+			]
+		}
+	],
+	"count": 1,
+	"totalTime": 4178,
+	"collection": {
+		"requests": [
+			{
+				"id": "67904ffa-d37c-41fa-bba7-34b8373f745f",
+				"method": "GET"
+			},
+			{
+				"id": "27469848-695e-4b59-90e6-2805ab873ceb",
+				"method": "GET"
+			},
+			{
+				"id": "02324cde-366d-419a-b8dd-0c6446e38302",
+				"method": "GET"
+			},
+			{
+				"id": "cdf140e7-df96-4405-9e60-10ebdd7d6e99",
+				"method": "GET"
+			},
+			{
+				"id": "9e5755ec-a052-4749-b212-daa5e6e2b0fd",
+				"method": "GET"
+			},
+			{
+				"id": "8435c584-1e87-4500-b5fa-5ecc2a3b096d",
+				"method": "GET"
+			},
+			{
+				"id": "8c2cf877-94ae-4585-b024-770f60d26acc",
+				"method": "GET"
+			}
+		]
+	}
+}
