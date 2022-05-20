@@ -1,0 +1,20 @@
+[
+    {
+        "handymodellID": "1",
+        "handymodellName": "Iphone 6",
+        "erscheinungsjahr": "11.Januar 2004",
+        "akkulaufzeit": "13.5"
+    },
+    {
+        "handymodellID": "2",
+        "handymodellName": "Iphone 13",
+        "erscheinungsjahr": "16.Juni 2020",
+        "akkulaufzeit": "22"  
+    },
+    {
+        "handymodellID": "3",
+        "handymodellName": "Samsung Galaxy S20",
+        "erscheinungsjahr": "01.September 2019",
+        "akkulaufzeit": "32.7"
+    }
+]

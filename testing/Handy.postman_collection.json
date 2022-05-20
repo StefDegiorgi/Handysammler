@@ -1,0 +1,187 @@
+{
+	"info": {
+		"_postman_id": "25220e2f-c992-41bf-bd7c-67a8a980e6a5",
+		"name": "Handy",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "0.1 TestService",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/Handy-1.0/resource/test/test",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"Handy-1.0",
+						"resource",
+						"test",
+						"test"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "1.0 list all Handymodells",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/Handy-1.0/resource/handymodell/list",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"Handy-1.0",
+						"resource",
+						"handymodell",
+						"list"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "1.1 read a Handymodell",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/Handy-1.0/resource/handymodell/read?id=2",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"Handy-1.0",
+						"resource",
+						"handymodell",
+						"read"
+					],
+					"query": [
+						{
+							"key": "id",
+							"value": "2"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "1.2 read Handymodell not found",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/Handy-1.0/resource/handymodell/read?id=66969",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"Handy-1.0",
+						"resource",
+						"handymodell",
+						"read"
+					],
+					"query": [
+						{
+							"key": "id",
+							"value": "66969"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "2.0 list all Handymarke",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/Handy-1.0/resource/handymarke/list",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"Handy-1.0",
+						"resource",
+						"handymarke",
+						"list"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "2.1 read a Handymarke",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/Handy-1.0/resource/handymarke/read?id=3",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"Handy-1.0",
+						"resource",
+						"handymarke",
+						"read"
+					],
+					"query": [
+						{
+							"key": "id",
+							"value": "3"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "2.2 read a Handymarke not found",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/Handy-1.0/resource/handymarke/read?id=6969",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"Handy-1.0",
+						"resource",
+						"handymarke",
+						"read"
+					],
+					"query": [
+						{
+							"key": "id",
+							"value": "6969"
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
