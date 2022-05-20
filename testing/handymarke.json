@@ -1,0 +1,26 @@
+[
+    {
+        "handymarkeID": "1",
+        "handymarkeName": "Apple",
+        "herkunftsland": "Kanada",
+        "gruendungsDatum": "1999-04-22"
+    },
+    {
+        "handymarkeID": "2",
+        "handymarkeName": "Nokia",
+        "herkunftsland": "Russland",
+        "gruendungsDatum": "1800-12-30" 
+    },
+    {
+        "handymarkeID": "3",
+        "handymarkeName": "Samsung",
+        "herkunftsland": "USA",
+        "gruendungsDatum": "2000-06-17"
+    },
+    {
+        "handymarkeID": "4",
+        "handymarkeName": "Blackbeary",
+        "herkunftsland": "Iran",
+        "gruendungsDatum": "1979-07-06"
+    }
+]
