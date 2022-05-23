@@ -10,6 +10,8 @@ import javax.ws.rs.Produces;
 import javax.ws.rs.QueryParam;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
 
 /*
@@ -19,13 +21,22 @@ import java.util.List;
 public class HandymodellService {
     /**
      * read a list of all handymodells
+     * @param sort
      * @return handymodells as JSON
      */
     @GET
     @Path("list")
     @Produces(MediaType.APPLICATION_JSON)
-    public Response listHandymodell(){
+    public Response listHandymodell(@QueryParam("sort") boolean sort){
         List<Handymodell> handymodellList = DataHandler.getInstance().readAllHandymodells();
+        if (sort) {
+            Collections.sort(handymodellList, new Comparator<Handymodell>() {
+                @Override
+                public int compare(Handymodell handymodell, Handymodell t1) {
+                    return handymodell.getHandymodellName().compareTo(t1.getHandymodellName());
+                }
+            });
+        }
         return Response
                 .status(200)
                 .entity(handymodellList)
