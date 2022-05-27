@@ -4,9 +4,13 @@ import ch.bzz.handy.model.Handymarke;
 import ch.bzz.handy.model.Handymodell;
 import ch.bzz.handy.service.Config;
 
+import com.fasterxml.jackson.core.util.DefaultPrettyPrinter;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.databind.ObjectWriter;
 
-import java.io.IOException;
+
+import java.io.*;
+import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.ArrayList;
@@ -15,37 +19,23 @@ import java.util.List;
 /**
  * reads and writes the data in the JSON-files
  */
-public class DataHandler {
-    private static DataHandler instance = null;
-    private List<Handymodell> handymodellList;
-    private List<Handymarke> handymarkeList;
+public final class DataHandler {
+    private static DataHandler instance;
+    private static List<Handymodell> handymodellList;
+    private static List<Handymarke> handymarkeList;
 
     /**
      * private constructor defeats instantiation
      */
     private DataHandler() {
-        setHandymarkeList(new ArrayList<>());
-        readHandymarkeJSON();
-        setHandymodellList(new ArrayList<>());
-        readHandymodellJSON();
-    }
 
-    /**
-     * gets the only instance of this class
-     * @return instance
-     */
-    public static DataHandler getInstance() {
-        if (instance == null)
-            instance = new DataHandler();
-        return instance;
     }
-
 
     /**
      * reads all handymodells
      * @return list of handymodells
      */
-    public List<Handymodell> readAllHandymodells() {
+    public static List<Handymodell> readAllHandymodells() {
         return getHandymodellList();
     }
 
@@ -54,7 +44,7 @@ public class DataHandler {
      * @param handymodellID
      * @return the handymodell (null=not found)
      */
-    public Handymodell readHandymodellByID(String handymodellID) {
+    public static Handymodell readHandymodellByID(String handymodellID) {
         Handymodell handymodell = null;
         for (Handymodell entry : getHandymodellList()) {
             if (entry.getHandymodellID().equals(handymodellID)) {
@@ -65,11 +55,31 @@ public class DataHandler {
     }
 
     /**
-     * reads all Handymarke
-     * @return list of handymarkes
+     * inserts a new book into the bookList
+     *
+     * @param handymodell the book to be saved
      */
-    public List<Handymarke> readAllHandymarke() {
+    public static void insertHandymodell(Handymodell handymodell) {
+        getHandymodellList().add(handymodell);
+        writeHandymodellJSON();
+    }
 
+    public static void updateHandymodell(){
+        writeHandymodellJSON();
+    }
+    public static boolean deleteHandymodell(String handymodellID){
+        Handymodell handymodell = readHandymodellByID(handymodellID);
+        if (handymodell != null){
+            getHandymodellList().remove(handymodell);
+            writeHandymodellJSON();
+            return true;
+        } else {
+            return false;
+        }
+
+    }
+
+    public static List<Handymarke> readAllHandymarkes() {
         return getHandymarkeList();
     }
 
@@ -78,7 +88,7 @@ public class DataHandler {
      * @param handymarkeID
      * @return the Handymarke (null=not found)
      */
-    public Handymarke readHandymarkeByID(String handymarkeID) {
+    public static Handymarke readHandymarkeByID(String handymarkeID) {
         Handymarke handymarke = null;
         for (Handymarke entry : getHandymarkeList()) {
             if (entry.getHandymarkeID().equals(handymarkeID)) {
@@ -88,10 +98,35 @@ public class DataHandler {
         return handymarke;
     }
 
+    public static void insertHandmarke(Handymarke handymarke){
+        getHandymarkeList().add(handymarke);
+        writeHandymarkeJSON();
+    }
+
+    public static void updateHandymarke(){
+        writeHandymarkeJSON();
+    }
+
+    /**
+     * deletes a publisher identified by the publisherUUID
+     * @param handymarkeID  the key
+     * @return  success=true/false
+     */
+    public static boolean deleteHandymarke(String handymarkeID) {
+        Handymarke handymarke = readHandymarkeByID(handymarkeID);
+        if (handymarke != null) {
+            getHandymarkeList().remove(handymarke);
+            writeHandymarkeJSON();
+            return true;
+        } else {
+            return false;
+        }
+    }
+
     /**
      * reads the handymodells from the JSON-file
      */
-    private void readHandymodellJSON() {
+    private static void readHandymodellJSON() {
         try {
             String path = Config.getProperty("handymodellJSON");
             byte[] jsonData = Files.readAllBytes(
@@ -107,10 +142,26 @@ public class DataHandler {
         }
     }
 
+    private static void writeHandymodellJSON(){
+        ObjectMapper objectMapper = new ObjectMapper();
+        ObjectWriter objectWriter = objectMapper.writer(new DefaultPrettyPrinter());
+        FileOutputStream fileOutputStream = null;
+        Writer fileWriter;
+
+        String bookPath = Config.getProperty("handymodellJSON");
+        try {
+            fileOutputStream = new FileOutputStream(bookPath);
+            fileWriter = new BufferedWriter(new OutputStreamWriter(fileOutputStream, StandardCharsets.UTF_8));
+            objectWriter.writeValue(fileWriter, getHandymodellList());
+        } catch (IOException ex) {
+            ex.printStackTrace();
+        }
+    }
+
     /**
      * reads the handymarke from the JSON-file
      */
-    private void readHandymarkeJSON() {
+    private static void readHandymarkeJSON() {
         try {
             byte[] jsonData = Files.readAllBytes(
                     Paths.get(
@@ -127,11 +178,34 @@ public class DataHandler {
         }
     }
     /**
+     * writes the publisherList to the JSON-file
+     */
+    private static void writeHandymarkeJSON() {
+        ObjectMapper objectMapper = new ObjectMapper();
+        ObjectWriter objectWriter = objectMapper.writer(new DefaultPrettyPrinter());
+        FileOutputStream fileOutputStream = null;
+        Writer fileWriter;
+
+        String bookPath = Config.getProperty("handymarkeJSON");
+        try {
+            fileOutputStream = new FileOutputStream(bookPath);
+            fileWriter = new BufferedWriter(new OutputStreamWriter(fileOutputStream, StandardCharsets.UTF_8));
+            objectWriter.writeValue(fileWriter, getHandymodellList());
+        } catch (IOException ex) {
+            ex.printStackTrace();
+        }
+    }
+
+    /**
      * gets handymodellList
      *
      * @return value of handymodellList
      */
-    private List<Handymodell> getHandymodellList() {
+    private static List<Handymodell> getHandymodellList() {
+        if (handymodellList == null){
+            setHandymodellList(new ArrayList<>());
+            readHandymodellJSON();
+        }
         return handymodellList;
     }
 
@@ -140,8 +214,8 @@ public class DataHandler {
      *
      * @param handymodellList the value to set
      */
-    private void setHandymodellList(List<Handymodell> handymodellList) {
-        this.handymodellList = handymodellList;
+    private static void setHandymodellList(List<Handymodell> handymodellList) {
+        DataHandler.handymodellList = handymodellList;
     }
 
     /**
@@ -149,7 +223,11 @@ public class DataHandler {
      *
      * @return value of handymarkeList
      */
-    private List<Handymarke> getHandymarkeList() {
+    private static List<Handymarke> getHandymarkeList() {
+        if (handymarkeList == null){
+            setHandymarkeList(new ArrayList<>());
+            readHandymarkeJSON();
+        }
         return handymarkeList;
     }
 
@@ -158,8 +236,8 @@ public class DataHandler {
      *
      * @param handymarkeList the value to set
      */
-    private void setHandymarkeList(List<Handymarke> handymarkeList) {
-        this.handymarkeList = handymarkeList;
+    private static void setHandymarkeList(List<Handymarke> handymarkeList) {
+        DataHandler.handymarkeList = handymarkeList;
     }
 
 

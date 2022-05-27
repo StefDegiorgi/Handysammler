@@ -28,7 +28,7 @@ public class HandymarkeService {
     @Path("list")
     @Produces(MediaType.APPLICATION_JSON)
     public Response listHandymarke(@QueryParam("sort")boolean sort){
-        List<Handymarke> handymarkeList = DataHandler.getInstance().readAllHandymarke();
+        List<Handymarke> handymarkeList = DataHandler.readAllHandymarkes();
         if (sort){
             Collections.sort(handymarkeList, new Comparator<Handymarke>() {
                 @Override
@@ -48,7 +48,7 @@ public class HandymarkeService {
     public Response readHandymarke(
             @QueryParam("id") String handymarkeID
     ){
-        Handymarke handymarke = DataHandler.getInstance().readHandymarkeByID(handymarkeID);
+        Handymarke handymarke = DataHandler.readHandymarkeByID(handymarkeID);
         return Response
                 .status(200)
                 .entity(handymarke)

@@ -28,7 +28,7 @@ public class HandymodellService {
     @Path("list")
     @Produces(MediaType.APPLICATION_JSON)
     public Response listHandymodell(@QueryParam("sort") boolean sort){
-        List<Handymodell> handymodellList = DataHandler.getInstance().readAllHandymodells();
+        List<Handymodell> handymodellList = DataHandler.readAllHandymodells();
         if (sort) {
             Collections.sort(handymodellList, new Comparator<Handymodell>() {
                 @Override
@@ -48,7 +48,7 @@ public class HandymodellService {
     public Response readHandymodell(
             @QueryParam("id") String handymodellID
     ){
-        Handymodell handymodell = DataHandler.getInstance().readHandymodellByID(handymodellID);
+        Handymodell handymodell = DataHandler.readHandymodellByID(handymodellID);
         return Response
                 .status(200)
                 .entity(handymodell)
