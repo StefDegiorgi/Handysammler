@@ -67,6 +67,8 @@ public final class DataHandler {
     public static void updateHandymodell(){
         writeHandymodellJSON();
     }
+
+
     public static boolean deleteHandymodell(String handymodellID){
         Handymodell handymodell = readHandymodellByID(handymodellID);
         if (handymodell != null){
@@ -79,9 +81,11 @@ public final class DataHandler {
 
     }
 
+
     public static List<Handymarke> readAllHandymarkes() {
         return getHandymarkeList();
     }
+
 
     /**
      * reads a handymarke by its id
@@ -178,7 +182,7 @@ public final class DataHandler {
         }
     }
     /**
-     * writes the publisherList to the JSON-file
+     * writes the handymarkeList to the JSON-file
      */
     private static void writeHandymarkeJSON() {
         ObjectMapper objectMapper = new ObjectMapper();
