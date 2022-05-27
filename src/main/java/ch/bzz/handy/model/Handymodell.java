@@ -12,20 +12,20 @@ public class Handymodell {
     @JsonIgnore
     private Handymarke handymarke;
 
-    private String handymodellID;
+    private String handymodellUUID;
     private String handymodellName;
     private String erscheinungsjahr;
     private double akkulaufzeit;
 
-    public String getHandymarkeID() {
+    public String getHandymarkeUUID() {
         if (getHandymarke()== null) return null;
-        return getHandymarke().getHandymarkeID();
+        return getHandymarke().getHandymarkeUUID();
     }
 
-    public void setHandymarkeID(String handymarkeID) {
+    public void setHandymarkeUUID(String handymarkeUUID) {
         setHandymarke(new Handymarke());
-        Handymarke handymarke = DataHandler.readHandymarkeByID(handymarkeID);
-        getHandymarke().setHandymarkeID(handymarkeID);
+        Handymarke handymarke = DataHandler.readHandymarkeByUUID(handymarkeUUID);
+        getHandymarke().setHandymarkeUUID(handymarkeUUID);
         getHandymarke().setHandymarkeName(handymarke.getHandymarkeName());
         getHandymarke().setHerkunftsland((handymarke.getHerkunftsland()));
         getHandymarke().setGruendungsDatum(handymarke.getGruendungsDatum());
@@ -37,12 +37,12 @@ public class Handymodell {
         this.handymarke = handymarke;
     }
 
-    public String getHandymodellID() {
-        return handymodellID;
+    public String getHandymodellUUID() {
+        return handymodellUUID;
     }
 
-    public void setHandymodellID(String handymodellID) {
-        this.handymodellID = handymodellID;
+    public void setHandymodellUUID(String handymodellUUID) {
+        this.handymodellUUID = handymodellUUID;
     }
 
     public String getHandymodellName() {
