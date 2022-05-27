@@ -46,9 +46,9 @@ public class HandymarkeService {
     @Path("read")
     @Produces(MediaType.APPLICATION_JSON)
     public Response readHandymarke(
-            @QueryParam("id") String handymarkeID
+            @QueryParam("uuid") String handymarkeUUID
     ){
-        Handymarke handymarke = DataHandler.readHandymarkeByID(handymarkeID);
+        Handymarke handymarke = DataHandler.readHandymarkeByUUID(handymarkeUUID);
         return Response
                 .status(200)
                 .entity(handymarke)

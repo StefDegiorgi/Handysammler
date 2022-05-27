@@ -1,24 +1,23 @@
 package ch.bzz.handy.model;
 
 import java.util.Date;
-import java.util.List;
 
 /**
  * Brand from Handys
  */
 public class Handymarke {
-    private String handymarkeID;
+    private String handymarkeUUID;
     private String handymarkeName;
     private String herkunftsland;
     private Date gruendungsDatum;
     //private List<Handymodell> handymodellList;
 
-    public String getHandymarkeID() {
-        return handymarkeID;
+    public String getHandymarkeUUID() {
+        return handymarkeUUID;
     }
 
-    public void setHandymarkeID(String handymarkeID) {
-        this.handymarkeID = handymarkeID;
+    public void setHandymarkeUUID(String handymarkeUUID) {
+        this.handymarkeUUID = handymarkeUUID;
     }
 
     public String getHandymarkeName() {

@@ -41,13 +41,13 @@ public final class DataHandler {
 
     /**
      * reads a handymodell by its id
-     * @param handymodellID
+     * @param handymodellUUID
      * @return the handymodell (null=not found)
      */
-    public static Handymodell readHandymodellByID(String handymodellID) {
+    public static Handymodell readHandymodellByUUID(String handymodellUUID) {
         Handymodell handymodell = null;
         for (Handymodell entry : getHandymodellList()) {
-            if (entry.getHandymodellID().equals(handymodellID)) {
+            if (entry.getHandymodellUUID().equals(handymodellUUID)) {
                 handymodell = entry;
             }
         }
@@ -69,8 +69,8 @@ public final class DataHandler {
     }
 
 
-    public static boolean deleteHandymodell(String handymodellID){
-        Handymodell handymodell = readHandymodellByID(handymodellID);
+    public static boolean deleteHandymodell(String handymodellUUID){
+        Handymodell handymodell = readHandymodellByUUID(handymodellUUID);
         if (handymodell != null){
             getHandymodellList().remove(handymodell);
             writeHandymodellJSON();
@@ -89,13 +89,13 @@ public final class DataHandler {
 
     /**
      * reads a handymarke by its id
-     * @param handymarkeID
+     * @param handymarkeUUID
      * @return the Handymarke (null=not found)
      */
-    public static Handymarke readHandymarkeByID(String handymarkeID) {
+    public static Handymarke readHandymarkeByUUID(String handymarkeUUID) {
         Handymarke handymarke = null;
         for (Handymarke entry : getHandymarkeList()) {
-            if (entry.getHandymarkeID().equals(handymarkeID)) {
+            if (entry.getHandymarkeUUID().equals(handymarkeUUID)) {
                 handymarke = entry;
             }
         }
@@ -113,11 +113,11 @@ public final class DataHandler {
 
     /**
      * deletes a publisher identified by the publisherUUID
-     * @param handymarkeID  the key
+     * @param handymarkeUUID  the key
      * @return  success=true/false
      */
-    public static boolean deleteHandymarke(String handymarkeID) {
-        Handymarke handymarke = readHandymarkeByID(handymarkeID);
+    public static boolean deleteHandymarke(String handymarkeUUID) {
+        Handymarke handymarke = readHandymarkeByUUID(handymarkeUUID);
         if (handymarke != null) {
             getHandymarkeList().remove(handymarke);
             writeHandymarkeJSON();

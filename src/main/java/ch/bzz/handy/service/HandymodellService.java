@@ -2,15 +2,14 @@ package ch.bzz.handy.service;
 
 import ch.bzz.handy.data.DataHandler;
 import ch.bzz.handy.model.Handymodell;
-import jdk.nashorn.internal.objects.annotations.Getter;
 
 import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
-import java.math.BigDecimal;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
+import java.util.UUID;
 
 /*
  services for reading, adding, changing and deleting handymodells
@@ -44,9 +43,9 @@ public class HandymodellService {
     @Path("read")
     @Produces(MediaType.APPLICATION_JSON)
     public Response readHandymodell(
-            @QueryParam("id") String handymodellID
+            @QueryParam("uuid") String handymodellUUID
     ){
-        Handymodell handymodell = DataHandler.readHandymodellByID(handymodellID);
+        Handymodell handymodell = DataHandler.readHandymodellByUUID(handymodellUUID);
         return Response
                 .status(200)
                 .entity(handymodell)
@@ -59,14 +58,14 @@ public class HandymodellService {
             @FormParam("name") String name,
             @FormParam("erscheinungsjahr") String erscheinungsjahr,
             @FormParam("akkulaufzeit") double akkulaufzeit,
-            @FormParam("handymarkeID") String handymarkeID
+            @FormParam("handymarkeUUID") String handymarkeUUID
     ){
         Handymodell handymodell = new Handymodell();
         handymodell.setHandymodellName(name);
-        //handymodell.setHandymodellID(.toString());
+        handymodell.setHandymodellUUID(UUID.randomUUID().toString());
         handymodell.setErscheinungsjahr(erscheinungsjahr);
         handymodell.setAkkulaufzeit(akkulaufzeit);
-        handymodell.setHandymarkeID(handymarkeID);
+        handymodell.setHandymarkeUUID(handymarkeUUID);
 
         DataHandler.insertHandymodell(handymodell);
         return Response
@@ -79,19 +78,19 @@ public class HandymodellService {
     @Path("update")
     @Produces(MediaType.TEXT_PLAIN)
     public Response updateHandymodell(
-            @FormParam("handymodellID") String handymodellID,
+            @FormParam("handymodellUUID") String handymodellUUID,
             @FormParam("handymodellName") String handymodellName,
             @FormParam("erscheinungsjahr") String erscheinungsjahr,
-            @FormParam("handymarkeID") String handymarkeID,
+            @FormParam("handymarkeUUID") String handymarkeUUID,
             @FormParam("akkulaufzeit") double akkulaufzeit
 
     ){
         int httpStatus = 200;
-        Handymodell handymodell = DataHandler.readHandymodellByID(handymodellID);
+        Handymodell handymodell = DataHandler.readHandymodellByUUID(handymodellUUID);
         if (handymodell != null){
             handymodell.setHandymodellName(handymodellName);
             handymodell.setErscheinungsjahr(erscheinungsjahr);
-            handymodell.setHandymarkeID(handymarkeID);
+            handymodell.setHandymarkeUUID(handymarkeUUID);
             handymodell.setAkkulaufzeit(akkulaufzeit);
 
 
@@ -105,17 +104,17 @@ public class HandymodellService {
     }
     /**
      * deletes handymodell
-     * @param handymodellID
+     * @param handymodellUUID
      * @return
      */
     @DELETE
     @Path("delete")
     @Produces(MediaType.TEXT_PLAIN)
     public Response deleteHandymodell(
-            @QueryParam("id") String handymodellID
+            @QueryParam("uuid") String handymodellUUID
     ){
         int httpStatus = 200;
-        if (!DataHandler.deleteHandymodell(handymodellID)){
+        if (!DataHandler.deleteHandymodell(handymodellUUID)){
             httpStatus = 410;
         }
         return Response
