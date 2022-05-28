@@ -102,7 +102,7 @@ public final class DataHandler {
         return handymarke;
     }
 
-    public static void insertHandmarke(Handymarke handymarke){
+    public static void insertHandymarke(Handymarke handymarke){
         getHandymarkeList().add(handymarke);
         writeHandymarkeJSON();
     }
@@ -152,9 +152,9 @@ public final class DataHandler {
         FileOutputStream fileOutputStream = null;
         Writer fileWriter;
 
-        String bookPath = Config.getProperty("handymodellJSON");
+        String handypath = Config.getProperty("handymodellJSON");
         try {
-            fileOutputStream = new FileOutputStream(bookPath);
+            fileOutputStream = new FileOutputStream(handypath);
             fileWriter = new BufferedWriter(new OutputStreamWriter(fileOutputStream, StandardCharsets.UTF_8));
             objectWriter.writeValue(fileWriter, getHandymodellList());
         } catch (IOException ex) {
@@ -190,9 +190,9 @@ public final class DataHandler {
         FileOutputStream fileOutputStream = null;
         Writer fileWriter;
 
-        String bookPath = Config.getProperty("handymarkeJSON");
+        String handypath = Config.getProperty("handymarkeJSON");
         try {
-            fileOutputStream = new FileOutputStream(bookPath);
+            fileOutputStream = new FileOutputStream(handypath);
             fileWriter = new BufferedWriter(new OutputStreamWriter(fileOutputStream, StandardCharsets.UTF_8));
             objectWriter.writeValue(fileWriter, getHandymodellList());
         } catch (IOException ex) {
