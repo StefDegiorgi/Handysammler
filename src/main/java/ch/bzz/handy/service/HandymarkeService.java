@@ -2,17 +2,12 @@ package ch.bzz.handy.service;
 
 import ch.bzz.handy.data.DataHandler;
 import ch.bzz.handy.model.Handymarke;
-import jdk.nashorn.internal.objects.annotations.Getter;
 
-import javax.ws.rs.GET;
-import javax.ws.rs.Path;
-import javax.ws.rs.Produces;
-import javax.ws.rs.QueryParam;
+import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
-import java.util.Collections;
-import java.util.Comparator;
-import java.util.List;
+import java.time.LocalDate;
+import java.util.*;
 
 /*
  services for reading, adding, changing and deleting handymarke
@@ -54,5 +49,73 @@ public class HandymarkeService {
                 .entity(handymarke)
                 .build();
     }
+    @POST
+    @Path("create")
+    @Produces(MediaType.TEXT_PLAIN)
+    public Response insertHandymarke(
+            @FormParam("name") String name,
+            @FormParam("herkunftsland") String herkunftsland,
+            @FormParam("gruendungsDatum") Date gruendungsDatum
+    ){
+        Handymarke handymarke = new Handymarke();
+        handymarke.setHandymarkeName(name);
+        handymarke.setHandymarkeUUID(UUID.randomUUID().toString());
+        handymarke.setHerkunftsland(herkunftsland);
+        handymarke.setGruendungsDatum(gruendungsDatum);
 
+        DataHandler.insertHandymarke(handymarke);
+        return Response
+                .status(200)
+                .entity("")
+                .build();
+    }
+
+
+    @PUT
+    @Path("update")
+    @Produces(MediaType.TEXT_PLAIN)
+    public Response updateHandymarke(
+            @FormParam("handymarkeUUID") String handymarkeUUID,
+            @FormParam("handymarkeName") String handymarkeName,
+            @FormParam("herkunftsland") String herkunftsland,
+            @FormParam("gruendungsDatum") Date gruendungsDatum
+
+    ){
+        int httpStatus = 200;
+        Handymarke handymarke = DataHandler.readHandymarkeByUUID(handymarkeUUID);
+        if (handymarke != null){
+            handymarke.setHandymarkeName(handymarkeName);
+            handymarke.setHerkunftsland(herkunftsland);
+            handymarke.setGruendungsDatum(gruendungsDatum);
+
+
+            DataHandler.updateHandymarke();
+        } else {
+            httpStatus = 410;
+        } return Response
+                .status(httpStatus)
+                .entity("")
+                .build();
+    }
+
+    /**
+     * deletes handymarke
+     * @param handymarkeUUID
+     * @return
+     */
+    @DELETE
+    @Path("delete")
+    @Produces(MediaType.TEXT_PLAIN)
+    public Response deleteHandymarke(
+            @QueryParam("uuid") String handymarkeUUID
+    ){
+        int httpStatus = 200;
+        if (!DataHandler.deleteHandymarke(handymarkeUUID)){
+            httpStatus = 410;
+        }
+        return Response
+                .status(httpStatus)
+                .entity("")
+                .build();
+    }
 }
