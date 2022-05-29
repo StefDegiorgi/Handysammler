@@ -45,9 +45,13 @@ public class HandymodellService {
     public Response readHandymodell(
             @QueryParam("uuid") String handymodellUUID
     ){
+        int httpStatus = 200;
         Handymodell handymodell = DataHandler.readHandymodellByUUID(handymodellUUID);
+        if (handymodell == null){
+            httpStatus = 410;
+        }
         return Response
-                .status(200)
+                .status(httpStatus)
                 .entity(handymodell)
                 .build();
     }
@@ -81,17 +85,19 @@ public class HandymodellService {
             @FormParam("handymodellUUID") String handymodellUUID,
             @FormParam("handymodellName") String handymodellName,
             @FormParam("erscheinungsjahr") String erscheinungsjahr,
-            @FormParam("handymarkeUUID") String handymarkeUUID,
-            @FormParam("akkulaufzeit") double akkulaufzeit
+            @FormParam("akkulaufzeit") double akkulaufzeit,
+            @FormParam("handymarkeUUID") String handymarkeUUID
 
-    ){
+
+            ){
         int httpStatus = 200;
         Handymodell handymodell = DataHandler.readHandymodellByUUID(handymodellUUID);
         if (handymodell != null){
             handymodell.setHandymodellName(handymodellName);
             handymodell.setErscheinungsjahr(erscheinungsjahr);
-            handymodell.setHandymarkeUUID(handymarkeUUID);
             handymodell.setAkkulaufzeit(akkulaufzeit);
+            handymodell.setHandymarkeUUID(handymarkeUUID);
+
 
 
             DataHandler.updateHandymodell();
