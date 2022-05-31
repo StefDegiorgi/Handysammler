@@ -10,8 +10,10 @@ public class Handymarke {
     private String handymarkeName;
     private String herkunftsland;
     private Date gruendungsDatum;
-    //private List<Handymodell> handymodellList;
 
+    public Handymarke(){
+
+    }
     public String getHandymarkeUUID() {
         return handymarkeUUID;
     }
@@ -44,13 +46,6 @@ public class Handymarke {
         this.gruendungsDatum = gruendungsDatum;
     }
 
-    /**public List<Handymodell> getHandymodellList() {
-        return handymodellList;
-    }
 
-    public void setHandymodellList(List<Handymodell> handymodellList) {
-        this.handymodellList = handymodellList;
-    }
-     */
 }
 

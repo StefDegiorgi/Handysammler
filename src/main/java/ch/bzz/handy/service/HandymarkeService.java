@@ -37,18 +37,25 @@ public class HandymarkeService {
                 .entity(handymarkeList)
                 .build();
     }
+
     @GET
     @Path("read")
     @Produces(MediaType.APPLICATION_JSON)
     public Response readHandymarke(
             @QueryParam("uuid") String handymarkeUUID
     ){
+        int httpStatus = 200;
         Handymarke handymarke = DataHandler.readHandymarkeByUUID(handymarkeUUID);
+        if (handymarke == null){
+            httpStatus = 410;
+        }
         return Response
-                .status(200)
+                .status(httpStatus)
                 .entity(handymarke)
                 .build();
+
     }
+    /**
     @POST
     @Path("create")
     @Produces(MediaType.TEXT_PLAIN)
@@ -97,12 +104,7 @@ public class HandymarkeService {
                 .entity("")
                 .build();
     }
-
-    /**
-     * deletes handymarke
-     * @param handymarkeUUID
-     * @return
-     */
+   **/
     @DELETE
     @Path("delete")
     @Produces(MediaType.TEXT_PLAIN)

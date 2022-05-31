@@ -8,7 +8,6 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
  */
 
 public class Handymodell {
-
     @JsonIgnore
     private Handymarke handymarke;
 

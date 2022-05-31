@@ -194,7 +194,7 @@ public final class DataHandler {
         try {
             fileOutputStream = new FileOutputStream(handypath);
             fileWriter = new BufferedWriter(new OutputStreamWriter(fileOutputStream, StandardCharsets.UTF_8));
-            objectWriter.writeValue(fileWriter, getHandymodellList());
+            objectWriter.writeValue(fileWriter, getHandymarkeList());
         } catch (IOException ex) {
             ex.printStackTrace();
         }
