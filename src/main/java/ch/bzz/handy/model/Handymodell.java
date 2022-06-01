@@ -13,7 +13,6 @@ public class Handymodell {
 
     private String handymodellUUID;
     private String handymodellName;
-    private String erscheinungsjahr;
     private double akkulaufzeit;
 
     public String getHandymarkeUUID() {
@@ -52,13 +51,6 @@ public class Handymodell {
         this.handymodellName = handymodellName;
     }
 
-    public String getErscheinungsjahr() {
-        return erscheinungsjahr;
-    }
-
-    public void setErscheinungsjahr(String erscheinungsjahr) {
-        this.erscheinungsjahr = erscheinungsjahr;
-    }
 
     public double getAkkulaufzeit() {
         return akkulaufzeit;

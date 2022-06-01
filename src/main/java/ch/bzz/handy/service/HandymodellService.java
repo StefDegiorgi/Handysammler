@@ -60,14 +60,12 @@ public class HandymodellService {
     @Produces(MediaType.TEXT_PLAIN)
     public Response insertHandymodell(
             @FormParam("name") String name,
-            @FormParam("erscheinungsjahr") String erscheinungsjahr,
             @FormParam("akkulaufzeit") double akkulaufzeit,
             @FormParam("handymarkeUUID") String handymarkeUUID
     ){
         Handymodell handymodell = new Handymodell();
         handymodell.setHandymodellName(name);
         handymodell.setHandymodellUUID(UUID.randomUUID().toString());
-        handymodell.setErscheinungsjahr(erscheinungsjahr);
         handymodell.setAkkulaufzeit(akkulaufzeit);
         handymodell.setHandymarkeUUID(handymarkeUUID);
 
@@ -84,7 +82,6 @@ public class HandymodellService {
     public Response updateHandymodell(
             @FormParam("handymodellUUID") String handymodellUUID,
             @FormParam("handymodellName") String handymodellName,
-            @FormParam("erscheinungsjahr") String erscheinungsjahr,
             @FormParam("akkulaufzeit") double akkulaufzeit,
             @FormParam("handymarkeUUID") String handymarkeUUID
 
@@ -94,7 +91,6 @@ public class HandymodellService {
         Handymodell handymodell = DataHandler.readHandymodellByUUID(handymodellUUID);
         if (handymodell != null){
             handymodell.setHandymodellName(handymodellName);
-            handymodell.setErscheinungsjahr(erscheinungsjahr);
             handymodell.setAkkulaufzeit(akkulaufzeit);
             handymodell.setHandymarkeUUID(handymarkeUUID);
 
