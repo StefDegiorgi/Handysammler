@@ -4,8 +4,6 @@ import ch.bzz.handy.util.LocalDateDeserializer;
 import ch.bzz.handy.util.LocalDateSerializer;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
-import com.fasterxml.jackson.databind.deser.std.DateDeserializers;
-import com.fasterxml.jackson.databind.ser.std.DateSerializer;
 
 import java.time.LocalDate;
 
