@@ -1,15 +1,26 @@
 package ch.bzz.handy.model;
 
-import java.util.Date;
+import ch.bzz.handy.util.LocalDateDeserializer;
+import ch.bzz.handy.util.LocalDateSerializer;
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
+import com.fasterxml.jackson.databind.annotation.JsonSerialize;
+import com.fasterxml.jackson.databind.deser.std.DateDeserializers;
+import com.fasterxml.jackson.databind.ser.std.DateSerializer;
+
+import java.time.LocalDate;
 
 /**
  * Brand from Handys
  */
 public class Handymarke {
+
     private String handymarkeUUID;
     private String handymarkeName;
     private String herkunftsland;
-    private Date gruendungsDatum;
+
+    @JsonDeserialize(using = LocalDateDeserializer.class)
+    @JsonSerialize(using = LocalDateSerializer.class)
+    private LocalDate gruendungsDatum;
 
     public Handymarke(){
 
@@ -38,11 +49,11 @@ public class Handymarke {
         this.herkunftsland = herkunftsland;
     }
 
-    public Date getGruendungsDatum() {
+    public LocalDate getGruendungsDatum() {
         return gruendungsDatum;
     }
 
-    public void setGruendungsDatum(Date gruendungsDatum) {
+    public void setGruendungsDatum(LocalDate gruendungsDatum) {
         this.gruendungsDatum = gruendungsDatum;
     }
 

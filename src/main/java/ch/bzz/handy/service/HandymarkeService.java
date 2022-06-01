@@ -55,20 +55,20 @@ public class HandymarkeService {
                 .build();
 
     }
-    /**
+
     @POST
     @Path("create")
     @Produces(MediaType.TEXT_PLAIN)
     public Response insertHandymarke(
             @FormParam("name") String name,
             @FormParam("herkunftsland") String herkunftsland,
-            @FormParam("gruendungsDatum") Date gruendungsDatum
+            @FormParam("gruendungsDatum") String gruendungsDatum
     ){
         Handymarke handymarke = new Handymarke();
         handymarke.setHandymarkeName(name);
         handymarke.setHandymarkeUUID(UUID.randomUUID().toString());
         handymarke.setHerkunftsland(herkunftsland);
-        handymarke.setGruendungsDatum(gruendungsDatum);
+        handymarke.setGruendungsDatum(LocalDate.parse(gruendungsDatum));
 
         DataHandler.insertHandymarke(handymarke);
         return Response
@@ -85,7 +85,7 @@ public class HandymarkeService {
             @FormParam("handymarkeUUID") String handymarkeUUID,
             @FormParam("handymarkeName") String handymarkeName,
             @FormParam("herkunftsland") String herkunftsland,
-            @FormParam("gruendungsDatum") Date gruendungsDatum
+            @FormParam("gruendungsDatum") String gruendungsDatum
 
     ){
         int httpStatus = 200;
@@ -93,7 +93,7 @@ public class HandymarkeService {
         if (handymarke != null){
             handymarke.setHandymarkeName(handymarkeName);
             handymarke.setHerkunftsland(herkunftsland);
-            handymarke.setGruendungsDatum(gruendungsDatum);
+            handymarke.setGruendungsDatum(LocalDate.parse(gruendungsDatum));
 
 
             DataHandler.updateHandymarke();
@@ -104,7 +104,7 @@ public class HandymarkeService {
                 .entity("")
                 .build();
     }
-   **/
+
     @DELETE
     @Path("delete")
     @Produces(MediaType.TEXT_PLAIN)
