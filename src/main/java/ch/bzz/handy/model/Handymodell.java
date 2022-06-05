@@ -3,6 +3,11 @@ package ch.bzz.handy.model;
 import ch.bzz.handy.data.DataHandler;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
+import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.Pattern;
+import javax.validation.constraints.Size;
+import javax.ws.rs.FormParam;
+
 /**
  * Ein Handymodell der Handymarke
  */
@@ -11,9 +16,18 @@ public class Handymodell {
     @JsonIgnore
     private Handymarke handymarke;
 
+    @FormParam("uuid")
+    @Pattern(regexp = "[0-9a-fA-F]{8}-([0-9a-fA-F]{4}-){3}[0-9a-fA-F]{12}")
     private String handymodellUUID;
+
+    @FormParam("name")
+    @NotEmpty
+    @Size(min=4, max=40)
     private String handymodellName;
+
+
     private double akkulaufzeit;
+    private String seriennummer;
 
     public String getHandymarkeUUID() {
         if (getHandymarke()== null) return null;
@@ -58,5 +72,13 @@ public class Handymodell {
 
     public void setAkkulaufzeit(double akkulaufzeit) {
         this.akkulaufzeit = akkulaufzeit;
+    }
+
+    public String getSeriennummer() {
+        return seriennummer;
+    }
+
+    public void setSeriennummer(String seriennummer) {
+        this.seriennummer = seriennummer;
     }
 }
