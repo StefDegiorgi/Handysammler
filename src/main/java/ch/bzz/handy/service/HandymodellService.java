@@ -3,6 +3,9 @@ package ch.bzz.handy.service;
 import ch.bzz.handy.data.DataHandler;
 import ch.bzz.handy.model.Handymodell;
 
+import javax.validation.Valid;
+import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.Pattern;
 import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
@@ -43,6 +46,8 @@ public class HandymodellService {
     @Path("read")
     @Produces(MediaType.APPLICATION_JSON)
     public Response readHandymodell(
+            @NotEmpty
+            @Pattern(regexp = "[0-9a-fA-F]{8}-([0-9a-fA-F]{4}-){3}[0-9a-fA-F]{12}")
             @QueryParam("uuid") String handymodellUUID
     ){
         int httpStatus = 200;
@@ -59,14 +64,10 @@ public class HandymodellService {
     @Path("create")
     @Produces(MediaType.TEXT_PLAIN)
     public Response insertHandymodell(
-            @FormParam("name") String name,
-            @FormParam("akkulaufzeit") double akkulaufzeit,
+            @Valid @BeanParam Handymodell handymodell,
             @FormParam("handymarkeUUID") String handymarkeUUID
     ){
-        Handymodell handymodell = new Handymodell();
-        handymodell.setHandymodellName(name);
         handymodell.setHandymodellUUID(UUID.randomUUID().toString());
-        handymodell.setAkkulaufzeit(akkulaufzeit);
         handymodell.setHandymarkeUUID(handymarkeUUID);
 
         DataHandler.insertHandymodell(handymodell);
@@ -83,6 +84,7 @@ public class HandymodellService {
             @FormParam("handymodellUUID") String handymodellUUID,
             @FormParam("handymodellName") String handymodellName,
             @FormParam("akkulaufzeit") double akkulaufzeit,
+            @FormParam("seriennummer") String seriennummer,
             @FormParam("handymarkeUUID") String handymarkeUUID
 
 
@@ -92,6 +94,7 @@ public class HandymodellService {
         if (handymodell != null){
             handymodell.setHandymodellName(handymodellName);
             handymodell.setAkkulaufzeit(akkulaufzeit);
+            handymodell.setSeriennummer(seriennummer);
             handymodell.setHandymarkeUUID(handymarkeUUID);
 
 
@@ -113,6 +116,8 @@ public class HandymodellService {
     @Path("delete")
     @Produces(MediaType.TEXT_PLAIN)
     public Response deleteHandymodell(
+            @NotEmpty
+            @Pattern(regexp = "[0-9a-fA-F]{8}-([0-9a-fA-F]{4}-){3}[0-9a-fA-F]{12}")
             @QueryParam("uuid") String handymodellUUID
     ){
         int httpStatus = 200;

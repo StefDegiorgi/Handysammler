@@ -3,6 +3,8 @@ package ch.bzz.handy.service;
 import ch.bzz.handy.data.DataHandler;
 import ch.bzz.handy.model.Handymarke;
 
+import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.Pattern;
 import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
@@ -42,6 +44,8 @@ public class HandymarkeService {
     @Path("read")
     @Produces(MediaType.APPLICATION_JSON)
     public Response readHandymarke(
+            @NotEmpty
+            @Pattern(regexp = "[0-9a-fA-F]{8}-([0-9a-fA-F]{4}-){3}[0-9a-fA-F]{12}")
             @QueryParam("uuid") String handymarkeUUID
     ){
         int httpStatus = 200;
@@ -109,6 +113,8 @@ public class HandymarkeService {
     @Path("delete")
     @Produces(MediaType.TEXT_PLAIN)
     public Response deleteHandymarke(
+            @NotEmpty
+            @Pattern(regexp = "[0-9a-fA-F]{8}-([0-9a-fA-F]{4}-){3}[0-9a-fA-F]{12}")
             @QueryParam("uuid") String handymarkeUUID
     ){
         int httpStatus = 200;
