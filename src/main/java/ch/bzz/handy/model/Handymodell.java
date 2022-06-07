@@ -3,9 +3,7 @@ package ch.bzz.handy.model;
 import ch.bzz.handy.data.DataHandler;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
-import javax.validation.constraints.NotEmpty;
-import javax.validation.constraints.Pattern;
-import javax.validation.constraints.Size;
+import javax.validation.constraints.*;
 import javax.ws.rs.FormParam;
 
 /**
@@ -25,8 +23,14 @@ public class Handymodell {
     @Size(min=4, max=40)
     private String handymodellName;
 
-
+    @FormParam("akkulaufzeit")
+    @DecimalMin(value = "5.5")
+    @DecimalMax(value = "25.75")
     private double akkulaufzeit;
+
+    @FormParam("seriennummer")
+    @NotEmpty
+    @Size(min=5, max=10)
     private String seriennummer;
 
     public String getHandymarkeUUID() {

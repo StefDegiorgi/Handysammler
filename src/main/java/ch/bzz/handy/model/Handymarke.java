@@ -5,6 +5,10 @@ import ch.bzz.handy.util.LocalDateSerializer;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 
+import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.Pattern;
+import javax.validation.constraints.Size;
+import javax.ws.rs.FormParam;
 import java.time.LocalDate;
 
 /**
@@ -12,8 +16,17 @@ import java.time.LocalDate;
  */
 public class Handymarke {
 
+    @FormParam("uuid")
+    @Pattern(regexp = "[0-9a-fA-F]{8}-([0-9a-fA-F]{4}-){3}[0-9a-fA-F]{12}")
     private String handymarkeUUID;
+
+    @FormParam("name")
+    @NotEmpty
+    @Size(min=3, max=20)
     private String handymarkeName;
+
+    @FormParam("herkunftsland")
+    @NotEmpty
     private String herkunftsland;
 
     @JsonDeserialize(using = LocalDateDeserializer.class)
