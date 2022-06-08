@@ -65,6 +65,8 @@ public class HandymodellService {
     @Produces(MediaType.TEXT_PLAIN)
     public Response insertHandymodell(
             @Valid @BeanParam Handymodell handymodell,
+            @NotEmpty
+            @Pattern(regexp = "[0-9a-fA-F]{8}-([0-9a-fA-F]{4}-){3}[0-9a-fA-F]{12}")
             @FormParam("handymarkeUUID") String handymarkeUUID
     ){
         handymodell.setHandymodellUUID(UUID.randomUUID().toString());
@@ -82,11 +84,11 @@ public class HandymodellService {
     @Produces(MediaType.TEXT_PLAIN)
     public Response updateHandymodell(
             @Valid @BeanParam Handymodell handymodell,
+            @NotEmpty
+            @Pattern(regexp = "[0-9a-fA-F]{8}-([0-9a-fA-F]{4}-){3}[0-9a-fA-F]{12}")
             @FormParam("handymarkeUUID") String handymarkeUUID
 
-
-
-            ){
+    ){
         int httpStatus = 200;
         Handymodell oldhandymodell = DataHandler.readHandymodellByUUID(handymodell.getHandymodellUUID());
         if (oldhandymodell != null){

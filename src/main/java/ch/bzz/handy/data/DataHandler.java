@@ -30,7 +30,10 @@ public final class DataHandler {
     private DataHandler() {
 
     }
-
+    public static void initLists() {
+        DataHandler.setHandymarkeList(null);
+        DataHandler.setHandymodellList(null);
+    }
     /**
      * reads all handymodells
      * @return list of handymodells

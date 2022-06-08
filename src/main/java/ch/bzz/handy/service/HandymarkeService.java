@@ -45,8 +45,8 @@ public class HandymarkeService {
     @Path("read")
     @Produces(MediaType.APPLICATION_JSON)
     public Response readHandymarke(
-            @NotEmpty
             @Pattern(regexp = "[0-9a-fA-F]{8}-([0-9a-fA-F]{4}-){3}[0-9a-fA-F]{12}")
+            @NotEmpty
             @QueryParam("uuid") String handymarkeUUID
     ){
         int httpStatus = 200;
@@ -66,6 +66,7 @@ public class HandymarkeService {
     @Produces(MediaType.TEXT_PLAIN)
     public Response insertHandymarke(
             @Valid @BeanParam Handymarke handymarke
+
     ){
         handymarke.setHandymarkeUUID(UUID.randomUUID().toString());
 

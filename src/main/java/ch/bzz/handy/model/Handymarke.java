@@ -16,7 +16,7 @@ import java.time.LocalDate;
  */
 public class Handymarke {
 
-    @FormParam("uuid")
+    @FormParam("handymarkeUUID")
     @Pattern(regexp = "[0-9a-fA-F]{8}-([0-9a-fA-F]{4}-){3}[0-9a-fA-F]{12}")
     private String handymarkeUUID;
 
@@ -27,6 +27,7 @@ public class Handymarke {
 
     @FormParam("herkunftsland")
     @NotEmpty
+    @Size(min = 4, max = 56)
     private String herkunftsland;
 
     @JsonDeserialize(using = LocalDateDeserializer.class)
@@ -68,6 +69,11 @@ public class Handymarke {
         this.gruendungsDatum = gruendungsDatum;
     }
 
+    /**
+    public void setGruendungsDatum(String gruendungsDatum){
+        this.gruendungsDatum = LocalDate.parse(gruendungsDatum);
+    }
+     **/
 
 }
 
