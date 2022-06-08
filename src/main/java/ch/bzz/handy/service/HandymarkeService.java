@@ -3,6 +3,7 @@ package ch.bzz.handy.service;
 import ch.bzz.handy.data.DataHandler;
 import ch.bzz.handy.model.Handymarke;
 
+import javax.validation.Valid;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.Pattern;
 import javax.ws.rs.*;
@@ -64,15 +65,9 @@ public class HandymarkeService {
     @Path("create")
     @Produces(MediaType.TEXT_PLAIN)
     public Response insertHandymarke(
-            @FormParam("name") String name,
-            @FormParam("herkunftsland") String herkunftsland,
-            @FormParam("gruendungsDatum") String gruendungsDatum
+            @Valid @BeanParam Handymarke handymarke
     ){
-        Handymarke handymarke = new Handymarke();
-        handymarke.setHandymarkeName(name);
         handymarke.setHandymarkeUUID(UUID.randomUUID().toString());
-        handymarke.setHerkunftsland(herkunftsland);
-        handymarke.setGruendungsDatum(LocalDate.parse(gruendungsDatum));
 
         DataHandler.insertHandymarke(handymarke);
         return Response
@@ -86,18 +81,16 @@ public class HandymarkeService {
     @Path("update")
     @Produces(MediaType.TEXT_PLAIN)
     public Response updateHandymarke(
-            @FormParam("handymarkeUUID") String handymarkeUUID,
-            @FormParam("handymarkeName") String handymarkeName,
-            @FormParam("herkunftsland") String herkunftsland,
-            @FormParam("gruendungsDatum") String gruendungsDatum
+            @Valid @BeanParam Handymarke handymarke
+
 
     ){
         int httpStatus = 200;
-        Handymarke handymarke = DataHandler.readHandymarkeByUUID(handymarkeUUID);
-        if (handymarke != null){
-            handymarke.setHandymarkeName(handymarkeName);
-            handymarke.setHerkunftsland(herkunftsland);
-            handymarke.setGruendungsDatum(LocalDate.parse(gruendungsDatum));
+        Handymarke oldhandymarke = DataHandler.readHandymarkeByUUID(handymarke.getHandymarkeUUID());
+        if (oldhandymarke != null){
+            oldhandymarke.setHandymarkeName(handymarke.getHandymarkeName());
+            oldhandymarke.setHerkunftsland(handymarke.getHerkunftsland());
+            oldhandymarke.setGruendungsDatum(handymarke.getGruendungsDatum());
 
 
             DataHandler.updateHandymarke();

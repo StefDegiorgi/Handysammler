@@ -81,21 +81,19 @@ public class HandymodellService {
     @Path("update")
     @Produces(MediaType.TEXT_PLAIN)
     public Response updateHandymodell(
-            @FormParam("handymodellUUID") String handymodellUUID,
-            @FormParam("handymodellName") String handymodellName,
-            @FormParam("akkulaufzeit") double akkulaufzeit,
-            @FormParam("seriennummer") String seriennummer,
+            @Valid @BeanParam Handymodell handymodell,
             @FormParam("handymarkeUUID") String handymarkeUUID
+
 
 
             ){
         int httpStatus = 200;
-        Handymodell handymodell = DataHandler.readHandymodellByUUID(handymodellUUID);
-        if (handymodell != null){
-            handymodell.setHandymodellName(handymodellName);
-            handymodell.setAkkulaufzeit(akkulaufzeit);
-            handymodell.setSeriennummer(seriennummer);
-            handymodell.setHandymarkeUUID(handymarkeUUID);
+        Handymodell oldhandymodell = DataHandler.readHandymodellByUUID(handymodell.getHandymodellUUID());
+        if (oldhandymodell != null){
+            oldhandymodell.setHandymodellName(handymodell.getHandymodellName());
+            oldhandymodell.setAkkulaufzeit(handymodell.getAkkulaufzeit());
+            oldhandymodell.setSeriennummer(handymodell.getSeriennummer());
+            oldhandymodell.setHandymarkeUUID(handymarkeUUID);
 
 
 
