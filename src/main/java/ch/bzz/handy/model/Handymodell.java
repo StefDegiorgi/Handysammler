@@ -14,7 +14,7 @@ public class Handymodell {
     @JsonIgnore
     private Handymarke handymarke;
 
-    @FormParam("uuid")
+    @FormParam("handymodellUUID")
     @Pattern(regexp = "[0-9a-fA-F]{8}-([0-9a-fA-F]{4}-){3}[0-9a-fA-F]{12}")
     private String handymodellUUID;
 
@@ -30,7 +30,7 @@ public class Handymodell {
 
     @FormParam("seriennummer")
     @NotEmpty
-    @Size(min=5, max=10)
+    @Pattern(regexp = "[0-9a-fA-F]{2}-[0-9]{5}-[0-9]{5}")
     private String seriennummer;
 
     public String getHandymarkeUUID() {
