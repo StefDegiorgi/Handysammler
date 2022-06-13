@@ -2,6 +2,7 @@ package ch.bzz.handy.model;
 
 import ch.bzz.handy.util.LocalDateDeserializer;
 import ch.bzz.handy.util.LocalDateSerializer;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 
@@ -29,6 +30,7 @@ public class Handymarke {
     @NotEmpty
     @Size(min = 4, max = 56)
     private String herkunftsland;
+
 
     @JsonDeserialize(using = LocalDateDeserializer.class)
     @JsonSerialize(using = LocalDateSerializer.class)
@@ -69,11 +71,10 @@ public class Handymarke {
         this.gruendungsDatum = gruendungsDatum;
     }
 
-    /**
+    @JsonIgnore
     public void setGruendungsDatum(String gruendungsDatum){
         this.gruendungsDatum = LocalDate.parse(gruendungsDatum);
     }
-     **/
 
 }
 
