@@ -1,20 +1,19 @@
-[
-    {
-        "handymodellID": "1",
-        "handymodellName": "Iphone 6",
-        "erscheinungsjahr": "11.Januar 2004",
-        "akkulaufzeit": "13.5"
-    },
-    {
-        "handymodellID": "2",
-        "handymodellName": "Iphone 13",
-        "erscheinungsjahr": "16.Juni 2020",
-        "akkulaufzeit": "22"  
-    },
-    {
-        "handymodellID": "3",
-        "handymodellName": "Samsung Galaxy S20",
-        "erscheinungsjahr": "01.September 2019",
-        "akkulaufzeit": "32.7"
-    }
-]
+[ {
+  "handymodellUUID" : "3247c340-c712-402e-b400-0a23a9368c97",
+  "handymodellName" : "Iphone 6",
+  "akkulaufzeit" : "13.5",
+  "seriennummer" : "50-99627-03604",
+  "handymarkeUUID" : "ecd86148-5341-43c6-81ed-f3f4595965dc"
+}, {
+  "handymodellUUID" : "73bd4187-a5b7-4864-be79-327bb8ed43bf",
+  "handymodellName" : "Samsung A50",
+  "akkulaufzeit" : "22.0",
+  "seriennummer" : "A0-99627-03604",
+  "handymarkeUUID" : "06fc334d-7b02-434f-9222-6544d30d8832"
+}, {
+  "handymodellUUID" : "89b83719-9acb-412b-a7b5-038c9f4603d3",
+  "handymodellName" : "OnePlus",
+  "akkulaufzeit" : "9.0",
+  "seriennummer" : "BB-99627-03604",
+  "handymarkeUUID" : "606cc4a5-8bfd-4e24-85c1-ecf6b9814712"
+} ]
