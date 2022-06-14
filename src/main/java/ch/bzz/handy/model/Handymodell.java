@@ -33,6 +33,10 @@ public class Handymodell {
     @Pattern(regexp = "[0-9a-fA-F]{2}-[0-9]{5}-[0-9]{5}")
     private String seriennummer;
 
+    /**
+     * hole die HandymarkeUUID über Handymarke-objekt
+     * @return
+     */
     public String getHandymarkeUUID() {
         if (getHandymarke()== null) return null;
         return getHandymarke().getHandymarkeUUID();

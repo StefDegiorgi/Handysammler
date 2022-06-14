@@ -15,14 +15,14 @@ import java.util.List;
 import java.util.UUID;
 
 /*
- services for reading, adding, changing and deleting handymodells
+ services für lesen, ändern, hinzufügen und löschen von Handymodells
  */
 @Path("handymodell")
 public class HandymodellService {
     /**
-     * read a list of all handymodells
+     * liest eine Liste von allen Handymodells
      * @param sort
-     * @return handymodells as JSON
+     * @return handymodells als JSON
      */
     @GET
     @Path("list")
@@ -42,6 +42,11 @@ public class HandymodellService {
                 .entity(handymodellList)
                 .build();
     }
+    /**
+     * liest ein Handymodell über der UUID
+     * @param handymodellUUID den Schlüssel
+     * @return handymodell
+     */
     @GET
     @Path("read")
     @Produces(MediaType.APPLICATION_JSON)
@@ -60,6 +65,11 @@ public class HandymodellService {
                 .entity(handymodell)
                 .build();
     }
+    /**
+     * fügt ein neues Handymodell hinzu
+     * @param handymarkeUUID die uuid von der Handymarke
+     * @return Nachricht
+     */
     @POST
     @Path("create")
     @Produces(MediaType.TEXT_PLAIN)
@@ -78,7 +88,11 @@ public class HandymodellService {
                 .entity("")
                 .build();
     }
-
+    /**
+     * ändert ein Handymodell
+     * @param handymarkeUUID die uuid von der Handymarke
+     * @return Nachricht
+     */
     @PUT
     @Path("update")
     @Produces(MediaType.TEXT_PLAIN)
@@ -108,9 +122,9 @@ public class HandymodellService {
                 .build();
     }
     /**
-     * deletes handymodell
-     * @param handymodellUUID
-     * @return
+     * löscht ein Handymodell
+     * @param handymodellUUID der Schlüssel
+     * @return Nachricht
      */
     @DELETE
     @Path("delete")

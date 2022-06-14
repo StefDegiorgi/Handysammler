@@ -13,7 +13,7 @@ import javax.ws.rs.FormParam;
 import java.time.LocalDate;
 
 /**
- * Brand from Handys
+ * Marke von Handys
  */
 public class Handymarke {
 
@@ -36,6 +36,9 @@ public class Handymarke {
     @JsonSerialize(using = LocalDateSerializer.class)
     private LocalDate gruendungsDatum;
 
+    /**
+     * standart Konstruktor
+     */
     public Handymarke(){
 
     }
