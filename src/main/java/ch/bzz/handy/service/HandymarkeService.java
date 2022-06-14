@@ -13,14 +13,14 @@ import java.time.LocalDate;
 import java.util.*;
 
 /*
- services for reading, adding, changing and deleting handymarke
+ services für lesen, ändern, hinzufügen und löschen von Handymarken
  */
 @Path("handymarke")
 public class HandymarkeService {
     /**
-     * read a list of all handymarke
+     * liest eine Liste von allen Handymarken
      * @param sort
-     * @return handymarke as JSON
+     * @return handymarke als JSON
      */
     @GET
     @Path("list")
@@ -40,7 +40,11 @@ public class HandymarkeService {
                 .entity(handymarkeList)
                 .build();
     }
-
+    /**
+     * liest eine Handymarke über der UUID
+     * @param handymarkeUUID den Schlüssel
+     * @return handymarke
+     */
     @GET
     @Path("read")
     @Produces(MediaType.APPLICATION_JSON)
@@ -60,7 +64,11 @@ public class HandymarkeService {
                 .build();
 
     }
-
+    /**
+     * fügt ein neues Handymodell hinzu
+     * @param handymarke
+     * @return Nachricht
+     */
     @POST
     @Path("create")
     @Produces(MediaType.TEXT_PLAIN)
@@ -81,7 +89,11 @@ public class HandymarkeService {
                 .build();
     }
 
-
+    /**
+     * ändert eine Handymarke
+     * @param handymarke die uuid von der Handymarke
+     * @return Nachricht
+     */
     @PUT
     @Path("update")
     @Produces(MediaType.TEXT_PLAIN)
@@ -107,7 +119,11 @@ public class HandymarkeService {
                 .entity("")
                 .build();
     }
-
+    /**
+     * löscht eine Handymarke
+     * @param handymarkeUUID der Schlüssel
+     * @return Nachricht
+     */
     @DELETE
     @Path("delete")
     @Produces(MediaType.TEXT_PLAIN)

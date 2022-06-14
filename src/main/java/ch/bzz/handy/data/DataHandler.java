@@ -17,7 +17,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * reads and writes the data in the JSON-files
+ * schreibt und liest die Daten in die JSON-Files
  */
 public final class DataHandler {
     private static DataHandler instance;
@@ -25,27 +25,31 @@ public final class DataHandler {
     private static List<Handymarke> handymarkeList;
 
     /**
-     * private constructor defeats instantiation
+     * privater konstruktor
      */
     private DataHandler() {
 
     }
+
+    /**
+     * inizialisiert die Listen mit Daten
+     */
     public static void initLists() {
         DataHandler.setHandymarkeList(null);
         DataHandler.setHandymodellList(null);
     }
     /**
-     * reads all handymodells
-     * @return list of handymodells
+     * liest alle handymodells
+     * @return Liste von handymodells
      */
     public static List<Handymodell> readAllHandymodells() {
         return getHandymodellList();
     }
 
     /**
-     * reads a handymodell by its id
+     * liest ein handymodell über der ID
      * @param handymodellUUID
-     * @return the handymodell (null=not found)
+     * @return das handymodell (null=not found)
      */
     public static Handymodell readHandymodellByUUID(String handymodellUUID) {
         Handymodell handymodell = null;
@@ -58,15 +62,17 @@ public final class DataHandler {
     }
 
     /**
-     * inserts a new book into the bookList
-     *
-     * @param handymodell the book to be saved
+     * schreibt ein neues Handymodell in der HandymodellListe
+     * @param handymodell das handymodell wird gespeichert
      */
     public static void insertHandymodell(Handymodell handymodell) {
         getHandymodellList().add(handymodell);
         writeHandymodellJSON();
     }
 
+    /**
+     * update der HandymodellListe
+     */
     public static void updateHandymodell(){
         writeHandymodellJSON();
     }
@@ -85,15 +91,19 @@ public final class DataHandler {
     }
 
 
+    /**
+     * liest alle Handymarken
+     * @return Liste von allen Handymodells
+     */
     public static List<Handymarke> readAllHandymarkes() {
         return getHandymarkeList();
     }
 
 
     /**
-     * reads a handymarke by its id
+     * liest eine handymarke über der id
      * @param handymarkeUUID
-     * @return the Handymarke (null=not found)
+     * @return die Handymarke (null=not found)
      */
     public static Handymarke readHandymarkeByUUID(String handymarkeUUID) {
         Handymarke handymarke = null;
@@ -105,18 +115,25 @@ public final class DataHandler {
         return handymarke;
     }
 
+    /**
+     * schreibt eine neue Handymarke in der HandymodellListe
+     * @param handymarke die Handymarke wird gespeichert
+     */
     public static void insertHandymarke(Handymarke handymarke){
         getHandymarkeList().add(handymarke);
         writeHandymarkeJSON();
     }
 
+    /**
+     * update der HandymarkeListe
+     */
     public static void updateHandymarke(){
         writeHandymarkeJSON();
     }
 
     /**
-     * deletes a publisher identified by the publisherUUID
-     * @param handymarkeUUID  the key
+     * löscht alle Handymaken von der HandymarkeUUID
+     * @param handymarkeUUID  der Schlüssel
      * @return  success=true/false
      */
     public static boolean deleteHandymarke(String handymarkeUUID) {
@@ -131,7 +148,7 @@ public final class DataHandler {
     }
 
     /**
-     * reads the handymodells from the JSON-file
+     * liest die Handymodells über der JSON-file
      */
     private static void readHandymodellJSON() {
         try {
@@ -149,6 +166,9 @@ public final class DataHandler {
         }
     }
 
+    /**
+     * schreibt die HandymodellListe zur JSON-file
+     */
     private static void writeHandymodellJSON(){
         ObjectMapper objectMapper = new ObjectMapper();
         ObjectWriter objectWriter = objectMapper.writer(new DefaultPrettyPrinter());
@@ -166,7 +186,7 @@ public final class DataHandler {
     }
 
     /**
-     * reads the handymarke from the JSON-file
+     * liest die Handymarke über der the JSON-file
      */
     private static void readHandymarkeJSON() {
         try {
@@ -185,7 +205,7 @@ public final class DataHandler {
         }
     }
     /**
-     * writes the handymarkeList to the JSON-file
+     * schreibt die HandymarkeList zur JSON-file
      */
     private static void writeHandymarkeJSON() {
         ObjectMapper objectMapper = new ObjectMapper();
@@ -204,9 +224,9 @@ public final class DataHandler {
     }
 
     /**
-     * gets handymodellList
+     * hole die HandymodellListe
      *
-     * @return value of handymodellList
+     * @return Wert der HandymodellListe
      */
     private static List<Handymodell> getHandymodellList() {
         if (handymodellList == null){
@@ -217,18 +237,18 @@ public final class DataHandler {
     }
 
     /**
-     * sets handymodellList
+     * setzte die HandymodellListe
      *
-     * @param handymodellList the value to set
+     * @param handymodellList der Wert zu setzten
      */
     private static void setHandymodellList(List<Handymodell> handymodellList) {
         DataHandler.handymodellList = handymodellList;
     }
 
     /**
-     * gets handymarkeList
+     * hole die HandymarkeListe
      *
-     * @return value of handymarkeList
+     * @return der Wert von der HandymarkeListe
      */
     private static List<Handymarke> getHandymarkeList() {
         if (handymarkeList == null){
@@ -239,9 +259,9 @@ public final class DataHandler {
     }
 
     /**
-     * sets handymarkeList
+     * setzte die HandymarkeListe
      *
-     * @param handymarkeList the value to set
+     * @param handymarkeList der Wert zu setzte
      */
     private static void setHandymarkeList(List<Handymarke> handymarkeList) {
         DataHandler.handymarkeList = handymarkeList;

@@ -17,7 +17,10 @@ import java.nio.file.Paths;
  */
 @Path("test")
 public class TestService {
-
+    /**
+     * bestätigen das die Applikation läuft
+     * @return  Nachricht
+     */
     @GET
     @Path("test")
     @Produces(MediaType.TEXT_PLAIN)
@@ -28,6 +31,10 @@ public class TestService {
                 .entity("Test erfolgreich")
                 .build();
     }
+    /**
+     * wiederherstellen der json-files
+     * @return Nachricht
+     */
     @GET
     @Path("restore")
     @Produces(MediaType.TEXT_PLAIN)
