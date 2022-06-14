@@ -1,24 +1,24 @@
 [
     {
-        "handymarkeID": "1",
+        "handymarkeUUID": "ecd86148-5341-43c6-81ed-f3f4595965dc",
         "handymarkeName": "Apple",
         "herkunftsland": "Kanada",
         "gruendungsDatum": "1999-04-22"
     },
     {
-        "handymarkeID": "2",
+        "handymarkeUUID": "606cc4a5-8bfd-4e24-85c1-ecf6b9814712",
         "handymarkeName": "Nokia",
         "herkunftsland": "Russland",
         "gruendungsDatum": "1800-12-30" 
     },
     {
-        "handymarkeID": "3",
+        "handymarkeUUID": "06fc334d-7b02-434f-9222-6544d30d8832",
         "handymarkeName": "Samsung",
         "herkunftsland": "USA",
         "gruendungsDatum": "2000-06-17"
     },
     {
-        "handymarkeID": "4",
+        "handymarkeUUID": "b2ed3828-ddba-11ec-9d64-0242ac120002",
         "handymarkeName": "Blackbeary",
         "herkunftsland": "Iran",
         "gruendungsDatum": "1979-07-06"
