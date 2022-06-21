@@ -30,6 +30,7 @@ public class Config extends Application {
         providers.add(HandymodellService.class);
         providers.add(HandymarkeService.class);
         providers.add(TestService.class);
+        providers.add(UserService.class);
         return providers;
     }
 

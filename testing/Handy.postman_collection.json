@@ -7,6 +7,19 @@
 	"item": [
 		{
 			"name": "0.1 TestService",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status test\", function (){",
+							"    pm.response.to.have.status(200);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
 			"request": {
 				"method": "GET",
 				"header": [],
@@ -28,7 +41,55 @@
 			"response": []
 		},
 		{
+			"name": "0.2 Restore Files",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status test\", function (){",
+							"    pm.response.to.have.status(200);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/Handy-1.0/resource/test/restore",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"Handy-1.0",
+						"resource",
+						"test",
+						"restore"
+					]
+				}
+			},
+			"response": []
+		},
+		{
 			"name": "1.0 list all Handymodells",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status test\", function (){",
+							"    pm.response.to.have.status(200);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
 			"request": {
 				"method": "GET",
 				"header": [],
@@ -51,11 +112,24 @@
 		},
 		{
 			"name": "1.1 read a Handymodell",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status test\", function (){",
+							"    pm.response.to.have.status(200);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
 			"request": {
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "http://localhost:8080/Handy-1.0/resource/handymodell/read?id=2",
+					"raw": "http://localhost:8080/Handy-1.0/resource/handymodell/read?uuid=3247c340-c712-402e-b400-0a23a9368c97",
 					"protocol": "http",
 					"host": [
 						"localhost"
@@ -69,8 +143,8 @@
 					],
 					"query": [
 						{
-							"key": "id",
-							"value": "2"
+							"key": "uuid",
+							"value": "3247c340-c712-402e-b400-0a23a9368c97"
 						}
 					]
 				}
@@ -79,11 +153,24 @@
 		},
 		{
 			"name": "1.2 read Handymodell not found",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status test\", function (){",
+							"    pm.response.to.have.status(410);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
 			"request": {
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "http://localhost:8080/Handy-1.0/resource/handymodell/read?id=66969",
+					"raw": "http://localhost:8080/Handy-1.0/resource/handymodell/read?uuid=3247c340-c712-402e-b400-0a23a9368c46",
 					"protocol": "http",
 					"host": [
 						"localhost"
@@ -97,8 +184,49 @@
 					],
 					"query": [
 						{
-							"key": "id",
-							"value": "66969"
+							"key": "uuid",
+							"value": "3247c340-c712-402e-b400-0a23a9368c46"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "1.3 sort Handymodell",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status test\", function (){",
+							"    pm.response.to.have.status(200);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/Handy-1.0/resource/handymodell/list?sort=true",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"Handy-1.0",
+						"resource",
+						"handymodell",
+						"list"
+					],
+					"query": [
+						{
+							"key": "sort",
+							"value": "true"
 						}
 					]
 				}
@@ -107,6 +235,19 @@
 		},
 		{
 			"name": "2.0 list all Handymarke",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status test\", function (){",
+							"    pm.response.to.have.status(200);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
 			"request": {
 				"method": "GET",
 				"header": [],
@@ -129,11 +270,24 @@
 		},
 		{
 			"name": "2.1 read a Handymarke",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status test\", function (){",
+							"    pm.response.to.have.status(200);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
 			"request": {
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "http://localhost:8080/Handy-1.0/resource/handymarke/read?id=3",
+					"raw": "http://localhost:8080/Handy-1.0/resource/handymarke/read?uuid=606cc4a5-8bfd-4e24-85c1-ecf6b9814712",
 					"protocol": "http",
 					"host": [
 						"localhost"
@@ -147,8 +301,8 @@
 					],
 					"query": [
 						{
-							"key": "id",
-							"value": "3"
+							"key": "uuid",
+							"value": "606cc4a5-8bfd-4e24-85c1-ecf6b9814712"
 						}
 					]
 				}
@@ -157,11 +311,24 @@
 		},
 		{
 			"name": "2.2 read a Handymarke not found",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status test\", function (){",
+							"    pm.response.to.have.status(410);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
 			"request": {
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "http://localhost:8080/Handy-1.0/resource/handymarke/read?id=6969",
+					"raw": "http://localhost:8080/Handy-1.0/resource/handymarke/read?uuid=606cc4a5-8bfd-4e24-85c1-ecf6b9814700",
 					"protocol": "http",
 					"host": [
 						"localhost"
@@ -175,9 +342,1772 @@
 					],
 					"query": [
 						{
-							"key": "id",
-							"value": "6969"
+							"key": "uuid",
+							"value": "606cc4a5-8bfd-4e24-85c1-ecf6b9814700"
 						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "2.3 sort Handymarke",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status test\", function (){",
+							"    pm.response.to.have.status(200);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/Handy-1.0/resource/handymarke/list?sort=true",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"Handy-1.0",
+						"resource",
+						"handymarke",
+						"list"
+					],
+					"query": [
+						{
+							"key": "sort",
+							"value": "true"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "3.1 delete Handymodell",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status test\", function (){",
+							"    pm.response.to.have.status(200);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/Handy-1.0/resource/handymodell/delete?uuid=3247c340-c712-402e-b400-0a23a9368c97",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"Handy-1.0",
+						"resource",
+						"handymodell",
+						"delete"
+					],
+					"query": [
+						{
+							"key": "uuid",
+							"value": "3247c340-c712-402e-b400-0a23a9368c97"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "3.1.2 delete Handymodell not found",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status test\", function (){",
+							"    pm.response.to.have.status(410);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/Handy-1.0/resource/handymodell/delete?uuid=3347c340-c712-402e-b400-0a23a9368c97",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"Handy-1.0",
+						"resource",
+						"handymodell",
+						"delete"
+					],
+					"query": [
+						{
+							"key": "uuid",
+							"value": "3347c340-c712-402e-b400-0a23a9368c97"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "3.2 update Handymodell",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status test\", function (){",
+							"    pm.response.to.have.status(200);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "handymodellUUID",
+							"value": "89b83719-9acb-412b-a7b5-038c9f4603d3",
+							"type": "text"
+						},
+						{
+							"key": "name",
+							"value": "Sungsung 2",
+							"type": "text"
+						},
+						{
+							"key": "akkulaufzeit",
+							"value": "15",
+							"type": "text"
+						},
+						{
+							"key": "seriennummer",
+							"value": "A0-99627-03604",
+							"type": "text"
+						},
+						{
+							"key": "handymarkeUUID",
+							"value": "b2ed3828-ddba-11ec-9d64-0242ac120002",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost:8080/Handy-1.0/resource/handymodell/update",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"Handy-1.0",
+						"resource",
+						"handymodell",
+						"update"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "3.2.1 update Handymodell not found",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status test\", function (){",
+							"    pm.response.to.have.status(400);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "handymodellUUID",
+							"value": "89b83719-9acb-412b-a7b5-038c9f4603dt",
+							"type": "text"
+						},
+						{
+							"key": "name",
+							"value": "IPhone 43",
+							"type": "text"
+						},
+						{
+							"key": "akkulaufzeit",
+							"value": "22",
+							"type": "text"
+						},
+						{
+							"key": "seriennummer",
+							"value": "A3-99627-03604",
+							"type": "text"
+						},
+						{
+							"key": "handymarkeUUID",
+							"value": "b2ed3828-ddba-11ec-9d64-0242ac120002",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost:8080/Handy-1.0/resource/handymodell/update",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"Handy-1.0",
+						"resource",
+						"handymodell",
+						"update"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "3.3 create Handymodell",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status test\", function (){",
+							"    pm.response.to.have.status(200);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "name",
+							"value": "OnePlus",
+							"type": "text"
+						},
+						{
+							"key": "akkulaufzeit",
+							"value": "9",
+							"type": "text"
+						},
+						{
+							"key": "seriennummer",
+							"value": "A4-99627-03604",
+							"type": "text"
+						},
+						{
+							"key": "handymarkeUUID",
+							"value": "606cc4a5-8bfd-4e24-85c1-ecf6b9814712",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost:8080/Handy-1.0/resource/handymodell/create",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"Handy-1.0",
+						"resource",
+						"handymodell",
+						"create"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "3.4 delete Handymarke",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status test\", function (){",
+							"    pm.response.to.have.status(200);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/Handy-1.0/resource/handymarke/delete?uuid=ecd86148-5341-43c6-81ed-f3f4595965dc",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"Handy-1.0",
+						"resource",
+						"handymarke",
+						"delete"
+					],
+					"query": [
+						{
+							"key": "uuid",
+							"value": "ecd86148-5341-43c6-81ed-f3f4595965dc"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "3.4.1 delete Handymarke not found",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status test\", function (){",
+							"    pm.response.to.have.status(410);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/Handy-1.0/resource/handymarke/delete?uuid=e3d86148-5341-43c6-81ed-f3f4595965dc",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"Handy-1.0",
+						"resource",
+						"handymarke",
+						"delete"
+					],
+					"query": [
+						{
+							"key": "uuid",
+							"value": "e3d86148-5341-43c6-81ed-f3f4595965dc"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "3.5 update Handymarke",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status test\", function (){",
+							"    pm.response.to.have.status(200);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "handymarkeUUID",
+							"value": "b2ed3828-ddba-11ec-9d64-0242ac120002",
+							"type": "text"
+						},
+						{
+							"key": "name",
+							"value": "Scammus",
+							"type": "text"
+						},
+						{
+							"key": "herkunftsland",
+							"value": "Kosovo",
+							"type": "text"
+						},
+						{
+							"key": "gruendungsDatum",
+							"value": "2009-03-31",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost:8080/Handy-1.0/resource/handymarke/update",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"Handy-1.0",
+						"resource",
+						"handymarke",
+						"update"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "3.5.1 update Handymarke not found",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status test\", function (){",
+							"    pm.response.to.have.status(410);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "handymarkeUUID",
+							"value": "b2ef3828-ddba-11ec-9d64-0242ac120002",
+							"type": "text"
+						},
+						{
+							"key": "name",
+							"value": "GigaMinus",
+							"type": "text"
+						},
+						{
+							"key": "herkunftsland",
+							"value": "Albanien",
+							"type": "text"
+						},
+						{
+							"key": "gruendungsDatum",
+							"value": "2009-12-31",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost:8080/Handy-1.0/resource/handymarke/update",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"Handy-1.0",
+						"resource",
+						"handymarke",
+						"update"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "3.6 create Handymarke",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status test\", function (){",
+							"    pm.response.to.have.status(200);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "name",
+							"value": "Sunrise",
+							"type": "text"
+						},
+						{
+							"key": "herkunftsland",
+							"value": "Schweiz",
+							"type": "text"
+						},
+						{
+							"key": "gruendungsDatum",
+							"value": "2020-01-08",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost:8080/Handy-1.0/resource/handymarke/create",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"Handy-1.0",
+						"resource",
+						"handymarke",
+						"create"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "4.1 read missing Handymodell uuid",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status test\", function (){",
+							"    pm.response.to.have.status(400);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/Handy-1.0/resource/handymodell/read?uuid=",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"Handy-1.0",
+						"resource",
+						"handymodell",
+						"read"
+					],
+					"query": [
+						{
+							"key": "uuid",
+							"value": ""
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "4.1.2 read invalid Handymodell uuid",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status test\", function (){",
+							"    pm.response.to.have.status(400);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/Handy-1.0/resource/handymodell/read?uuid=3247c340-c712-402e-b400-0a23a9-368c97",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"Handy-1.0",
+						"resource",
+						"handymodell",
+						"read"
+					],
+					"query": [
+						{
+							"key": "uuid",
+							"value": "3247c340-c712-402e-b400-0a23a9-368c97"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "4.2 delete missing Handymodell uuid",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status test\", function (){",
+							"    pm.response.to.have.status(400);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/Handy-1.0/resource/handymodell/delete?uuid=",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"Handy-1.0",
+						"resource",
+						"handymodell",
+						"delete"
+					],
+					"query": [
+						{
+							"key": "uuid",
+							"value": ""
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "4.2.1 delete invalid Handymodell uuid",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status test\", function (){",
+							"    pm.response.to.have.status(400);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/Handy-1.0/resource/handymodell/delete?uuid=3247c340-c712-402e-b400-0a23a93-68c97",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"Handy-1.0",
+						"resource",
+						"handymodell",
+						"delete"
+					],
+					"query": [
+						{
+							"key": "uuid",
+							"value": "3247c340-c712-402e-b400-0a23a93-68c97"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "4.3 read missing Handymarke uuid",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status test\", function (){",
+							"    pm.response.to.have.status(400);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/Handy-1.0/resource/handymarke/read?uuid=",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"Handy-1.0",
+						"resource",
+						"handymarke",
+						"read"
+					],
+					"query": [
+						{
+							"key": "uuid",
+							"value": ""
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "4.3.1 read invalid handymarke uuid",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status test\", function (){",
+							"    pm.response.to.have.status(400);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/Handy-1.0/resource/handymarke/read?uuid=6-06cc4a5-8bfd-4e24-85c1-ecf6b9814712",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"Handy-1.0",
+						"resource",
+						"handymarke",
+						"read"
+					],
+					"query": [
+						{
+							"key": "uuid",
+							"value": "6-06cc4a5-8bfd-4e24-85c1-ecf6b9814712"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "4.4 delete missing Handymarke uuid",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status test\", function (){",
+							"    pm.response.to.have.status(400);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/Handy-1.0/resource/handymarke/delete?uuid=",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"Handy-1.0",
+						"resource",
+						"handymarke",
+						"delete"
+					],
+					"query": [
+						{
+							"key": "uuid",
+							"value": ""
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "4.4.1 delete invalid Handymarke uuid",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status test\", function (){",
+							"    pm.response.to.have.status(400);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/Handy-1.0/resource/handymarke/delete?handymarkeUUID=ecd-86148-5341-43c6-81ed-f3f4595965dc",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"Handy-1.0",
+						"resource",
+						"handymarke",
+						"delete"
+					],
+					"query": [
+						{
+							"key": "handymarkeUUID",
+							"value": "ecd-86148-5341-43c6-81ed-f3f4595965dc"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "4.5 Handymodell name too short",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status test\", function (){",
+							"    pm.response.to.have.status(400);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "name",
+							"value": "Dj",
+							"type": "text"
+						},
+						{
+							"key": "akkulaufzeit",
+							"value": "9",
+							"type": "text"
+						},
+						{
+							"key": "seriennummer",
+							"value": "A2-99627-03604",
+							"type": "text"
+						},
+						{
+							"key": "handymarkeUUID",
+							"value": "606cc4a5-8bfd-4e24-85c1-ecf6b9814712",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost:8080/Handy-1.0/resource/handymodell/create",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"Handy-1.0",
+						"resource",
+						"handymodell",
+						"create"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "4.5.1 Handymodell name too long",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status test\", function (){",
+							"    pm.response.to.have.status(400);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "name",
+							"value": "what is the point of life if there is nothing after death",
+							"type": "text"
+						},
+						{
+							"key": "akkulaufzeit",
+							"value": "9",
+							"type": "text"
+						},
+						{
+							"key": "seriennummer",
+							"value": "A3-99627-03604",
+							"type": "text"
+						},
+						{
+							"key": "handymarkeUUID",
+							"value": "606cc4a5-8bfd-4e24-85c1-ecf6b9814712",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost:8080/Handy-1.0/resource/handymodell/create",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"Handy-1.0",
+						"resource",
+						"handymodell",
+						"create"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "4.5.2 missing Handymodell name",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status test\", function (){",
+							"    pm.response.to.have.status(400);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "name",
+							"value": "",
+							"type": "text"
+						},
+						{
+							"key": "akkulaufzeit",
+							"value": "9",
+							"type": "text"
+						},
+						{
+							"key": "seriennummer",
+							"value": "A3-99627-03604",
+							"type": "text"
+						},
+						{
+							"key": "handymarkeUUID",
+							"value": "606cc4a5-8bfd-4e24-85c1-ecf6b9814712",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost:8080/Handy-1.0/resource/handymodell/create",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"Handy-1.0",
+						"resource",
+						"handymodell",
+						"create"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "4.5.3 missing Handymodell akkulaufzeit",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status test\", function (){",
+							"    pm.response.to.have.status(400);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "name",
+							"value": "Samsung S12",
+							"type": "text"
+						},
+						{
+							"key": "akkulaufzeit",
+							"value": "",
+							"type": "text"
+						},
+						{
+							"key": "seriennummer",
+							"value": "A3-99627-03604",
+							"type": "text"
+						},
+						{
+							"key": "handymarkeUUID",
+							"value": "606cc4a5-8bfd-4e24-85c1-ecf6b9814712",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost:8080/Handy-1.0/resource/handymodell/create",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"Handy-1.0",
+						"resource",
+						"handymodell",
+						"create"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "4.5.4 Handymodell akkulaufzeit too short",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status test\", function (){",
+							"    pm.response.to.have.status(400);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "name",
+							"value": "Samsung S12",
+							"type": "text"
+						},
+						{
+							"key": "akkulaufzeit",
+							"value": "3.5",
+							"type": "text"
+						},
+						{
+							"key": "seriennummer",
+							"value": "A3-99627-03604",
+							"type": "text"
+						},
+						{
+							"key": "handymarkeUUID",
+							"value": "606cc4a5-8bfd-4e24-85c1-ecf6b9814712",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost:8080/Handy-1.0/resource/handymodell/create",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"Handy-1.0",
+						"resource",
+						"handymodell",
+						"create"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "4.5.5 Handymodell akkulaufzeit too long",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status test\", function (){",
+							"    pm.response.to.have.status(400);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "name",
+							"value": "Samsung S12",
+							"type": "text"
+						},
+						{
+							"key": "akkulaufzeit",
+							"value": "132.54",
+							"type": "text"
+						},
+						{
+							"key": "seriennummer",
+							"value": "A3-99627-03604",
+							"type": "text"
+						},
+						{
+							"key": "handymarkeUUID",
+							"value": "606cc4a5-8bfd-4e24-85c1-ecf6b9814712",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost:8080/Handy-1.0/resource/handymodell/create",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"Handy-1.0",
+						"resource",
+						"handymodell",
+						"create"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "4.5.6 missing Handymodell seriennummer",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status test\", function (){",
+							"    pm.response.to.have.status(400);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "name",
+							"value": "Samsung S12",
+							"type": "text"
+						},
+						{
+							"key": "akkulaufzeit",
+							"value": "22",
+							"type": "text"
+						},
+						{
+							"key": "seriennummer",
+							"value": "",
+							"type": "text"
+						},
+						{
+							"key": "handymarkeUUID",
+							"value": "606cc4a5-8bfd-4e24-85c1-ecf6b9814712",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost:8080/Handy-1.0/resource/handymodell/create",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"Handy-1.0",
+						"resource",
+						"handymodell",
+						"create"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "4.5.7 invalid Handymodell seriennummer",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status test\", function (){",
+							"    pm.response.to.have.status(400);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "name",
+							"value": "Samsung S12",
+							"type": "text"
+						},
+						{
+							"key": "akkulaufzeit",
+							"value": "22",
+							"type": "text"
+						},
+						{
+							"key": "seriennummer",
+							"value": "A399627-036045432",
+							"type": "text"
+						},
+						{
+							"key": "handymarkeUUID",
+							"value": "606cc4a5-8bfd-4e24-85c1-ecf6b9814712",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost:8080/Handy-1.0/resource/handymodell/create",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"Handy-1.0",
+						"resource",
+						"handymodell",
+						"create"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "4.6 Handymarke name too short",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status test\", function (){",
+							"    pm.response.to.have.status(400);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "name",
+							"value": "Uc",
+							"type": "text"
+						},
+						{
+							"key": "herkunftsland",
+							"value": "Schweiz",
+							"type": "text"
+						},
+						{
+							"key": "gruendungsDatum",
+							"value": "2020-01-08",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost:8080/Handy-1.0/resource/handymarke/create",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"Handy-1.0",
+						"resource",
+						"handymarke",
+						"create"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "4.6.1 Handymarke name too long",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status test\", function (){",
+							"    pm.response.to.have.status(400);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "name",
+							"value": "I need a name that is over 20 and i dont know what",
+							"type": "text"
+						},
+						{
+							"key": "herkunftsland",
+							"value": "Schweiz",
+							"type": "text"
+						},
+						{
+							"key": "gruendungsDatum",
+							"value": "2020-01-08",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost:8080/Handy-1.0/resource/handymarke/create",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"Handy-1.0",
+						"resource",
+						"handymarke",
+						"create"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "4.6.2 missing Handymarke name",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status test\", function (){",
+							"    pm.response.to.have.status(400);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "name",
+							"value": "",
+							"type": "text"
+						},
+						{
+							"key": "herkunftsland",
+							"value": "Schweiz",
+							"type": "text"
+						},
+						{
+							"key": "gruendungsDatum",
+							"value": "2020-01-08",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost:8080/Handy-1.0/resource/handymarke/create",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"Handy-1.0",
+						"resource",
+						"handymarke",
+						"create"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "4.6.3 missing Handymarke herkunftsland",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status test\", function (){",
+							"    pm.response.to.have.status(400);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "name",
+							"value": "Apple",
+							"type": "text"
+						},
+						{
+							"key": "herkunftsland",
+							"value": "",
+							"type": "text"
+						},
+						{
+							"key": "gruendungsDatum",
+							"value": "2020-01-08",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost:8080/Handy-1.0/resource/handymarke/create",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"Handy-1.0",
+						"resource",
+						"handymarke",
+						"create"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "4.6.4 Handymarke herkunftsland too long",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status test\", function (){",
+							"    pm.response.to.have.status(400);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "name",
+							"value": "Apple",
+							"type": "text"
+						},
+						{
+							"key": "herkunftsland",
+							"value": "The United Kingdom of Great Britain and Northern Ireland of Chad",
+							"type": "text"
+						},
+						{
+							"key": "gruendungsDatum",
+							"value": "2020-01-08",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost:8080/Handy-1.0/resource/handymarke/create",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"Handy-1.0",
+						"resource",
+						"handymarke",
+						"create"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "4.6.5 missing Handymarke gruendungsdatum",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status test\", function (){",
+							"    pm.response.to.have.status(400);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "name",
+							"value": "Apple",
+							"type": "text"
+						},
+						{
+							"key": "herkunftsland",
+							"value": "Iran",
+							"type": "text"
+						},
+						{
+							"key": "gruendungsDatum",
+							"value": "",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost:8080/Handy-1.0/resource/handymarke/create",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"Handy-1.0",
+						"resource",
+						"handymarke",
+						"create"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "4.6.5 invalid Handymarke gruendungsdatum",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status test\", function (){",
+							"    pm.response.to.have.status(400);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "name",
+							"value": "Apple",
+							"type": "text"
+						},
+						{
+							"key": "herkunftsland",
+							"value": "Iran",
+							"type": "text"
+						},
+						{
+							"key": "gruendungsDatum",
+							"value": "200-12-77",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost:8080/Handy-1.0/resource/handymarke/create",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"Handy-1.0",
+						"resource",
+						"handymarke",
+						"create"
 					]
 				}
 			},
