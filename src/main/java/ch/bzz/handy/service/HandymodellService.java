@@ -27,18 +27,29 @@ public class HandymodellService {
     @GET
     @Path("list")
     @Produces(MediaType.APPLICATION_JSON)
-    public Response listHandymodell(@QueryParam("sort") boolean sort){
+    public Response listHandymodell(
+            @QueryParam("sort") boolean sort,
+            @CookieParam("userRole") String userRole
+    )
+    {
+        int httpStatus;
         List<Handymodell> handymodellList = DataHandler.readAllHandymodells();
-        if (sort) {
-            Collections.sort(handymodellList, new Comparator<Handymodell>() {
-                @Override
-                public int compare(Handymodell handymodell, Handymodell t1) {
-                    return handymodell.getHandymodellName().compareTo(t1.getHandymodellName());
-                }
-            });
+        if (userRole == null || userRole.equals("guest")){
+            httpStatus = 403;
+        }else {
+            if (sort) {
+                Collections.sort(handymodellList, new Comparator<Handymodell>() {
+                    @Override
+                    public int compare(Handymodell handymodell, Handymodell t1) {
+                        return handymodell.getHandymodellName().compareTo(t1.getHandymodellName());
+                    }
+                });
+            }
+            httpStatus = 200;
         }
+
         return Response
-                .status(200)
+                .status(httpStatus)
                 .entity(handymodellList)
                 .build();
     }
@@ -53,9 +64,15 @@ public class HandymodellService {
     public Response readHandymodell(
             @NotEmpty
             @Pattern(regexp = "[0-9a-fA-F]{8}-([0-9a-fA-F]{4}-){3}[0-9a-fA-F]{12}")
-            @QueryParam("uuid") String handymodellUUID
+            @QueryParam("uuid") String handymodellUUID,
+            @CookieParam("userRole") String userRole
     ){
-        int httpStatus = 200;
+        int httpStatus;
+        if (userRole == null || userRole.equals("guest")){
+            httpStatus = 403;
+        }else {
+            httpStatus = 200;
+        }
         Handymodell handymodell = DataHandler.readHandymodellByUUID(handymodellUUID);
         if (handymodell == null){
             httpStatus = 410;
@@ -77,14 +94,21 @@ public class HandymodellService {
             @Valid @BeanParam Handymodell handymodell,
             @NotEmpty
             @Pattern(regexp = "[0-9a-fA-F]{8}-([0-9a-fA-F]{4}-){3}[0-9a-fA-F]{12}")
-            @FormParam("handymarkeUUID") String handymarkeUUID
+            @FormParam("handymarkeUUID") String handymarkeUUID,
+            @CookieParam("userRole") String userRole
     ){
+        int httpStatus;
         handymodell.setHandymodellUUID(UUID.randomUUID().toString());
         handymodell.setHandymarkeUUID(handymarkeUUID);
 
+        if (userRole == null || userRole.equals("guest")){
+            httpStatus = 403;
+        }else {
+            httpStatus = 200;
+        }
         DataHandler.insertHandymodell(handymodell);
         return Response
-                .status(200)
+                .status(httpStatus)
                 .entity("")
                 .build();
     }
@@ -100,23 +124,27 @@ public class HandymodellService {
             @Valid @BeanParam Handymodell handymodell,
             @NotEmpty
             @Pattern(regexp = "[0-9a-fA-F]{8}-([0-9a-fA-F]{4}-){3}[0-9a-fA-F]{12}")
-            @FormParam("handymarkeUUID") String handymarkeUUID
+            @FormParam("handymarkeUUID") String handymarkeUUID,
+            @CookieParam("userRole") String userRole
 
     ){
-        int httpStatus = 200;
+        int httpStatus;
+        if (userRole == null || userRole.equals("guest")){
+            httpStatus = 403;
+        }else {
+            httpStatus = 200;
+        }
         Handymodell oldhandymodell = DataHandler.readHandymodellByUUID(handymodell.getHandymodellUUID());
         if (oldhandymodell != null){
             oldhandymodell.setHandymodellName(handymodell.getHandymodellName());
             oldhandymodell.setAkkulaufzeit(handymodell.getAkkulaufzeit());
             oldhandymodell.setSeriennummer(handymodell.getSeriennummer());
             oldhandymodell.setHandymarkeUUID(handymarkeUUID);
-
-
-
             DataHandler.updateHandymodell();
         } else {
             httpStatus = 410;
-        } return Response
+        }
+        return Response
                 .status(httpStatus)
                 .entity("")
                 .build();
@@ -132,9 +160,15 @@ public class HandymodellService {
     public Response deleteHandymodell(
             @NotEmpty
             @Pattern(regexp = "[0-9a-fA-F]{8}-([0-9a-fA-F]{4}-){3}[0-9a-fA-F]{12}")
-            @QueryParam("uuid") String handymodellUUID
+            @QueryParam("uuid") String handymodellUUID,
+            @CookieParam("userRole") String userRole
     ){
-        int httpStatus = 200;
+        int httpStatus;
+        if (userRole == null || userRole.equals("guest")){
+            httpStatus = 403;
+        }else {
+            httpStatus = 200;
+        }
         if (!DataHandler.deleteHandymodell(handymodellUUID)){
             httpStatus = 410;
         }
