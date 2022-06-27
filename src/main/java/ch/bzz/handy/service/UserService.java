@@ -9,6 +9,8 @@ import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.NewCookie;
 import javax.ws.rs.core.Response;
 
+import static javax.ws.rs.core.Response.status;
+
 @Path("user")
 public class UserService {
 
@@ -37,8 +39,7 @@ public class UserService {
                 false
         );
 
-        Response response = Response
-                .status(httpStatus)
+        Response response = status(httpStatus)
                 .entity("")
                 .cookie(cookie)
                 .build();
@@ -49,22 +50,20 @@ public class UserService {
     @Path("logout")
     @Produces(MediaType.TEXT_PLAIN)
     public Response logout(){
-
        NewCookie cookie = new NewCookie(
                 "userRole",
                 "guest",
                 "/",
                 "",
-                "Login-Cookie",
+                "Logout-Cookie",
                 1,
                 false
         );
-        Response response = Response
+        return Response
                 .status(200)
                 .entity("")
                 .cookie(cookie)
                 .build();
-        return response;
     }
 
 

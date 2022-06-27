@@ -33,10 +33,11 @@ public class HandymodellService {
     )
     {
         int httpStatus;
-        List<Handymodell> handymodellList = DataHandler.readAllHandymodells();
+        List<Handymodell> handymodellList = null;
         if (userRole == null || userRole.equals("guest")){
             httpStatus = 403;
         }else {
+            handymodellList = DataHandler.readAllHandymodells();
             if (sort) {
                 Collections.sort(handymodellList, new Comparator<Handymodell>() {
                     @Override
@@ -68,15 +69,17 @@ public class HandymodellService {
             @CookieParam("userRole") String userRole
     ){
         int httpStatus;
+        Handymodell handymodell = null;
         if (userRole == null || userRole.equals("guest")){
             httpStatus = 403;
         }else {
             httpStatus = 200;
+            handymodell = DataHandler.readHandymodellByUUID(handymodellUUID);
+            if (handymodell == null){
+                httpStatus = 410;
+            }
         }
-        Handymodell handymodell = DataHandler.readHandymodellByUUID(handymodellUUID);
-        if (handymodell == null){
-            httpStatus = 410;
-        }
+
         return Response
                 .status(httpStatus)
                 .entity(handymodell)
@@ -98,15 +101,15 @@ public class HandymodellService {
             @CookieParam("userRole") String userRole
     ){
         int httpStatus;
-        handymodell.setHandymodellUUID(UUID.randomUUID().toString());
-        handymodell.setHandymarkeUUID(handymarkeUUID);
 
         if (userRole == null || userRole.equals("guest")){
             httpStatus = 403;
         }else {
             httpStatus = 200;
+            handymodell.setHandymodellUUID(UUID.randomUUID().toString());
+            handymodell.setHandymarkeUUID(handymarkeUUID);
+            DataHandler.insertHandymodell(handymodell);
         }
-        DataHandler.insertHandymodell(handymodell);
         return Response
                 .status(httpStatus)
                 .entity("")
@@ -129,21 +132,23 @@ public class HandymodellService {
 
     ){
         int httpStatus;
+        Handymodell oldhandymodell = null;
         if (userRole == null || userRole.equals("guest")){
             httpStatus = 403;
         }else {
             httpStatus = 200;
+            oldhandymodell = DataHandler.readHandymodellByUUID(handymodell.getHandymodellUUID());
+            if (oldhandymodell != null){
+                oldhandymodell.setHandymodellName(handymodell.getHandymodellName());
+                oldhandymodell.setAkkulaufzeit(handymodell.getAkkulaufzeit());
+                oldhandymodell.setSeriennummer(handymodell.getSeriennummer());
+                oldhandymodell.setHandymarkeUUID(handymarkeUUID);
+                DataHandler.updateHandymodell();
+            } else {
+                httpStatus = 410;
+            }
         }
-        Handymodell oldhandymodell = DataHandler.readHandymodellByUUID(handymodell.getHandymodellUUID());
-        if (oldhandymodell != null){
-            oldhandymodell.setHandymodellName(handymodell.getHandymodellName());
-            oldhandymodell.setAkkulaufzeit(handymodell.getAkkulaufzeit());
-            oldhandymodell.setSeriennummer(handymodell.getSeriennummer());
-            oldhandymodell.setHandymarkeUUID(handymarkeUUID);
-            DataHandler.updateHandymodell();
-        } else {
-            httpStatus = 410;
-        }
+
         return Response
                 .status(httpStatus)
                 .entity("")
@@ -168,10 +173,11 @@ public class HandymodellService {
             httpStatus = 403;
         }else {
             httpStatus = 200;
+            if (!DataHandler.deleteHandymodell(handymodellUUID)){
+                httpStatus = 410;
+            }
         }
-        if (!DataHandler.deleteHandymodell(handymodellUUID)){
-            httpStatus = 410;
-        }
+
         return Response
                 .status(httpStatus)
                 .entity("")
