@@ -1,21 +1,21 @@
 {
-	"id": "8e121f33-f3da-456a-9557-14e70deed3a5",
+	"id": "b7578ade-2763-4740-9229-dfa682d91569",
 	"name": "Handy",
-	"timestamp": "2022-06-14T16:01:13.756Z",
+	"timestamp": "2022-06-27T16:27:28.313Z",
 	"collection_id": "25220e2f-c992-41bf-bd7c-67a8a980e6a5",
 	"folder_id": 0,
 	"environment_id": "0",
-	"totalPass": 43,
+	"totalPass": 86,
 	"totalFail": 0,
 	"results": [
 		{
-			"id": "67904ffa-d37c-41fa-bba7-34b8373f745f",
-			"name": "0.1 TestService",
-			"url": "http://localhost:8080/Handy-1.0/resource/test/test",
-			"time": 527,
+			"id": "07707f4f-0775-43a7-a47c-cf1da0bcef11",
+			"name": "4.1 read missing Handymodell uuid",
+			"url": "http://localhost:8080/Handy-1.0/resource/handymodell/read?uuid=",
+			"time": 23,
 			"responseCode": {
-				"code": 200,
-				"name": "OK"
+				"code": 400,
+				"name": "Bad Request"
 			},
 			"tests": {
 				"Status test": true
@@ -27,7 +27,7 @@
 				}
 			},
 			"times": [
-				527
+				23
 			],
 			"allTests": [
 				{
@@ -36,13 +36,13 @@
 			]
 		},
 		{
-			"id": "3e163d60-209a-45cd-b41b-3bd78b61f3c2",
-			"name": "0.2 Restore Files",
-			"url": "http://localhost:8080/Handy-1.0/resource/test/restore",
-			"time": 909,
+			"id": "dc8e189c-0a74-4225-b8dd-d3c8de14a75a",
+			"name": "4.1.2 read invalid Handymodell uuid",
+			"url": "http://localhost:8080/Handy-1.0/resource/handymodell/read?uuid=3247c340-c712-402e-b400-0a23a9-368c97",
+			"time": 7,
 			"responseCode": {
-				"code": 200,
-				"name": "OK"
+				"code": 400,
+				"name": "Bad Request"
 			},
 			"tests": {
 				"Status test": true
@@ -54,7 +54,7 @@
 				}
 			},
 			"times": [
-				909
+				7
 			],
 			"allTests": [
 				{
@@ -63,13 +63,13 @@
 			]
 		},
 		{
-			"id": "27469848-695e-4b59-90e6-2805ab873ceb",
-			"name": "1.0 list all Handymodells",
-			"url": "http://localhost:8080/Handy-1.0/resource/handymodell/list",
-			"time": 572,
+			"id": "2d901d4c-8500-432e-8a0a-10955beefd42",
+			"name": "4.2 delete missing Handymodell uuid",
+			"url": "http://localhost:8080/Handy-1.0/resource/handymodell/delete?uuid=",
+			"time": 14,
 			"responseCode": {
-				"code": 200,
-				"name": "OK"
+				"code": 400,
+				"name": "Bad Request"
 			},
 			"tests": {
 				"Status test": true
@@ -81,7 +81,7 @@
 				}
 			},
 			"times": [
-				572
+				14
 			],
 			"allTests": [
 				{
@@ -90,94 +90,13 @@
 			]
 		},
 		{
-			"id": "02324cde-366d-419a-b8dd-0c6446e38302",
-			"name": "1.1 read a Handymodell",
-			"url": "http://localhost:8080/Handy-1.0/resource/handymodell/read?uuid=3247c340-c712-402e-b400-0a23a9368c97",
-			"time": 53,
-			"responseCode": {
-				"code": 200,
-				"name": "OK"
-			},
-			"tests": {
-				"Status test": true
-			},
-			"testPassFailCounts": {
-				"Status test": {
-					"pass": 1,
-					"fail": 0
-				}
-			},
-			"times": [
-				53
-			],
-			"allTests": [
-				{
-					"Status test": true
-				}
-			]
-		},
-		{
-			"id": "cdf140e7-df96-4405-9e60-10ebdd7d6e99",
-			"name": "1.2 read Handymodell not found",
-			"url": "http://localhost:8080/Handy-1.0/resource/handymodell/read?uuid=3247c340-c712-402e-b400-0a23a9368c46",
-			"time": 75,
-			"responseCode": {
-				"code": 410,
-				"name": "Gone"
-			},
-			"tests": {
-				"Status test": true
-			},
-			"testPassFailCounts": {
-				"Status test": {
-					"pass": 1,
-					"fail": 0
-				}
-			},
-			"times": [
-				75
-			],
-			"allTests": [
-				{
-					"Status test": true
-				}
-			]
-		},
-		{
-			"id": "2b8bd653-3304-4a07-9f6c-66b765c93a72",
-			"name": "1.3 sort Handymodell",
-			"url": "http://localhost:8080/Handy-1.0/resource/handymodell/list?sort=true",
-			"time": 18,
-			"responseCode": {
-				"code": 200,
-				"name": "OK"
-			},
-			"tests": {
-				"Status test": true
-			},
-			"testPassFailCounts": {
-				"Status test": {
-					"pass": 1,
-					"fail": 0
-				}
-			},
-			"times": [
-				18
-			],
-			"allTests": [
-				{
-					"Status test": true
-				}
-			]
-		},
-		{
-			"id": "9e5755ec-a052-4749-b212-daa5e6e2b0fd",
-			"name": "2.0 list all Handymarke",
-			"url": "http://localhost:8080/Handy-1.0/resource/handymarke/list",
+			"id": "e65fc94a-4924-4d91-a926-542f3223688a",
+			"name": "4.2.1 delete invalid Handymodell uuid",
+			"url": "http://localhost:8080/Handy-1.0/resource/handymodell/delete?uuid=3247c340-c712-402e-b400-0a23a93-68c97",
 			"time": 19,
 			"responseCode": {
-				"code": 200,
-				"name": "OK"
+				"code": 400,
+				"name": "Bad Request"
 			},
 			"tests": {
 				"Status test": true
@@ -198,13 +117,13 @@
 			]
 		},
 		{
-			"id": "8435c584-1e87-4500-b5fa-5ecc2a3b096d",
-			"name": "2.1 read a Handymarke",
-			"url": "http://localhost:8080/Handy-1.0/resource/handymarke/read?uuid=606cc4a5-8bfd-4e24-85c1-ecf6b9814712",
-			"time": 49,
+			"id": "388f3b1f-acfc-444e-a5a5-87babcf79796",
+			"name": "4.3 read missing Handymarke uuid",
+			"url": "http://localhost:8080/Handy-1.0/resource/handymarke/read?uuid=",
+			"time": 13,
 			"responseCode": {
-				"code": 200,
-				"name": "OK"
+				"code": 400,
+				"name": "Bad Request"
 			},
 			"tests": {
 				"Status test": true
@@ -216,7 +135,7 @@
 				}
 			},
 			"times": [
-				49
+				13
 			],
 			"allTests": [
 				{
@@ -225,13 +144,202 @@
 			]
 		},
 		{
-			"id": "8c2cf877-94ae-4585-b024-770f60d26acc",
-			"name": "2.2 read a Handymarke not found",
-			"url": "http://localhost:8080/Handy-1.0/resource/handymarke/read?uuid=606cc4a5-8bfd-4e24-85c1-ecf6b9814700",
+			"id": "76f6a95c-249b-459c-9494-a53ebf25b682",
+			"name": "4.3.1 read invalid handymarke uuid",
+			"url": "http://localhost:8080/Handy-1.0/resource/handymarke/read?uuid=6-06cc4a5-8bfd-4e24-85c1-ecf6b9814712",
+			"time": 9,
+			"responseCode": {
+				"code": 400,
+				"name": "Bad Request"
+			},
+			"tests": {
+				"Status test": true
+			},
+			"testPassFailCounts": {
+				"Status test": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				9
+			],
+			"allTests": [
+				{
+					"Status test": true
+				}
+			]
+		},
+		{
+			"id": "498af973-8cd9-419b-b572-b7f71a41693f",
+			"name": "4.4 delete missing Handymarke uuid",
+			"url": "http://localhost:8080/Handy-1.0/resource/handymarke/delete?uuid=",
+			"time": 25,
+			"responseCode": {
+				"code": 400,
+				"name": "Bad Request"
+			},
+			"tests": {
+				"Status test": true
+			},
+			"testPassFailCounts": {
+				"Status test": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				25
+			],
+			"allTests": [
+				{
+					"Status test": true
+				}
+			]
+		},
+		{
+			"id": "fe1083bf-1337-4d64-9e25-f70803ba35ad",
+			"name": "4.4.1 delete invalid Handymarke uuid",
+			"url": "http://localhost:8080/Handy-1.0/resource/handymarke/delete?handymarkeUUID=ecd-86148-5341-43c6-81ed-f3f4595965dc",
+			"time": 10,
+			"responseCode": {
+				"code": 400,
+				"name": "Bad Request"
+			},
+			"tests": {
+				"Status test": true
+			},
+			"testPassFailCounts": {
+				"Status test": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				10
+			],
+			"allTests": [
+				{
+					"Status test": true
+				}
+			]
+		},
+		{
+			"id": "6270e51a-22a8-4f5a-b5e4-797549738004",
+			"name": "4.5 Handymodell name too short",
+			"url": "http://localhost:8080/Handy-1.0/resource/handymodell/create",
+			"time": 50,
+			"responseCode": {
+				"code": 400,
+				"name": "Bad Request"
+			},
+			"tests": {
+				"Status test": true
+			},
+			"testPassFailCounts": {
+				"Status test": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				50
+			],
+			"allTests": [
+				{
+					"Status test": true
+				}
+			]
+		},
+		{
+			"id": "be9b6d73-03fb-4015-81f4-cb1e9304079a",
+			"name": "4.5.1 Handymodell name too long",
+			"url": "http://localhost:8080/Handy-1.0/resource/handymodell/create",
+			"time": 10,
+			"responseCode": {
+				"code": 400,
+				"name": "Bad Request"
+			},
+			"tests": {
+				"Status test": true
+			},
+			"testPassFailCounts": {
+				"Status test": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				10
+			],
+			"allTests": [
+				{
+					"Status test": true
+				}
+			]
+		},
+		{
+			"id": "7356f132-cbe6-4c2d-8ca3-0ed68701822b",
+			"name": "4.5.2 missing Handymodell name",
+			"url": "http://localhost:8080/Handy-1.0/resource/handymodell/create",
+			"time": 9,
+			"responseCode": {
+				"code": 400,
+				"name": "Bad Request"
+			},
+			"tests": {
+				"Status test": true
+			},
+			"testPassFailCounts": {
+				"Status test": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				9
+			],
+			"allTests": [
+				{
+					"Status test": true
+				}
+			]
+		},
+		{
+			"id": "1173ddaa-0a0a-4786-a739-b90ac6f74136",
+			"name": "4.5.3 missing Handymodell akkulaufzeit",
+			"url": "http://localhost:8080/Handy-1.0/resource/handymodell/create",
+			"time": 8,
+			"responseCode": {
+				"code": 400,
+				"name": "Bad Request"
+			},
+			"tests": {
+				"Status test": true
+			},
+			"testPassFailCounts": {
+				"Status test": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				8
+			],
+			"allTests": [
+				{
+					"Status test": true
+				}
+			]
+		},
+		{
+			"id": "485fa01f-d409-4890-8b99-4e96b249284b",
+			"name": "4.5.4 Handymodell akkulaufzeit too short",
+			"url": "http://localhost:8080/Handy-1.0/resource/handymodell/create",
 			"time": 16,
 			"responseCode": {
-				"code": 410,
-				"name": "Gone"
+				"code": 400,
+				"name": "Bad Request"
 			},
 			"tests": {
 				"Status test": true
@@ -252,333 +360,9 @@
 			]
 		},
 		{
-			"id": "b7894788-e486-4875-873d-398c068dfe4d",
-			"name": "2.3 sort Handymarke",
-			"url": "http://localhost:8080/Handy-1.0/resource/handymarke/list?sort=true",
-			"time": 19,
-			"responseCode": {
-				"code": 200,
-				"name": "OK"
-			},
-			"tests": {
-				"Status test": true
-			},
-			"testPassFailCounts": {
-				"Status test": {
-					"pass": 1,
-					"fail": 0
-				}
-			},
-			"times": [
-				19
-			],
-			"allTests": [
-				{
-					"Status test": true
-				}
-			]
-		},
-		{
-			"id": "bbddd3c2-df59-42cd-a20e-3d49ab3ee333",
-			"name": "3.1 delete Handymodell",
-			"url": "http://localhost:8080/Handy-1.0/resource/handymodell/delete?uuid=3247c340-c712-402e-b400-0a23a9368c97",
-			"time": 89,
-			"responseCode": {
-				"code": 200,
-				"name": "OK"
-			},
-			"tests": {
-				"Status test": true
-			},
-			"testPassFailCounts": {
-				"Status test": {
-					"pass": 1,
-					"fail": 0
-				}
-			},
-			"times": [
-				89
-			],
-			"allTests": [
-				{
-					"Status test": true
-				}
-			]
-		},
-		{
-			"id": "68c8fee0-29f9-423d-ad37-93b13f005b92",
-			"name": "3.1.2 delete Handymodell not found",
-			"url": "http://localhost:8080/Handy-1.0/resource/handymodell/delete?uuid=3347c340-c712-402e-b400-0a23a9368c97",
-			"time": 26,
-			"responseCode": {
-				"code": 410,
-				"name": "Gone"
-			},
-			"tests": {
-				"Status test": true
-			},
-			"testPassFailCounts": {
-				"Status test": {
-					"pass": 1,
-					"fail": 0
-				}
-			},
-			"times": [
-				26
-			],
-			"allTests": [
-				{
-					"Status test": true
-				}
-			]
-		},
-		{
-			"id": "f6608283-751d-4cab-887d-88dd9c0022ee",
-			"name": "3.2 update Handymodell",
-			"url": "http://localhost:8080/Handy-1.0/resource/handymodell/update",
-			"time": 134,
-			"responseCode": {
-				"code": 200,
-				"name": "OK"
-			},
-			"tests": {
-				"Status test": true
-			},
-			"testPassFailCounts": {
-				"Status test": {
-					"pass": 1,
-					"fail": 0
-				}
-			},
-			"times": [
-				134
-			],
-			"allTests": [
-				{
-					"Status test": true
-				}
-			]
-		},
-		{
-			"id": "a59fd69b-3f19-4d6d-be83-0687a2dcbde5",
-			"name": "3.2.1 update Handymodell not found",
-			"url": "http://localhost:8080/Handy-1.0/resource/handymodell/update",
-			"time": 1072,
-			"responseCode": {
-				"code": 400,
-				"name": "Bad Request"
-			},
-			"tests": {
-				"Status test": true
-			},
-			"testPassFailCounts": {
-				"Status test": {
-					"pass": 1,
-					"fail": 0
-				}
-			},
-			"times": [
-				1072
-			],
-			"allTests": [
-				{
-					"Status test": true
-				}
-			]
-		},
-		{
-			"id": "e9073f85-cef9-4e4f-b4c6-f97a810eeade",
-			"name": "3.3 create Handymodell",
+			"id": "fd8539f9-476a-43e3-a807-7b9162a76c38",
+			"name": "4.5.5 Handymodell akkulaufzeit too long",
 			"url": "http://localhost:8080/Handy-1.0/resource/handymodell/create",
-			"time": 833,
-			"responseCode": {
-				"code": 200,
-				"name": "OK"
-			},
-			"tests": {
-				"Status test": true
-			},
-			"testPassFailCounts": {
-				"Status test": {
-					"pass": 1,
-					"fail": 0
-				}
-			},
-			"times": [
-				833
-			],
-			"allTests": [
-				{
-					"Status test": true
-				}
-			]
-		},
-		{
-			"id": "7a3eb82e-40aa-42cc-bbab-907d629ee9c1",
-			"name": "3.4 delete Handymarke",
-			"url": "http://localhost:8080/Handy-1.0/resource/handymarke/delete?uuid=ecd86148-5341-43c6-81ed-f3f4595965dc",
-			"time": 112,
-			"responseCode": {
-				"code": 200,
-				"name": "OK"
-			},
-			"tests": {
-				"Status test": true
-			},
-			"testPassFailCounts": {
-				"Status test": {
-					"pass": 1,
-					"fail": 0
-				}
-			},
-			"times": [
-				112
-			],
-			"allTests": [
-				{
-					"Status test": true
-				}
-			]
-		},
-		{
-			"id": "56718745-df79-4ebf-88ca-ec24cbaad11a",
-			"name": "3.4.1 delete Handymarke not found",
-			"url": "http://localhost:8080/Handy-1.0/resource/handymarke/delete?uuid=e3d86148-5341-43c6-81ed-f3f4595965dc",
-			"time": 15,
-			"responseCode": {
-				"code": 410,
-				"name": "Gone"
-			},
-			"tests": {
-				"Status test": true
-			},
-			"testPassFailCounts": {
-				"Status test": {
-					"pass": 1,
-					"fail": 0
-				}
-			},
-			"times": [
-				15
-			],
-			"allTests": [
-				{
-					"Status test": true
-				}
-			]
-		},
-		{
-			"id": "631e65bf-e964-4100-9378-bfb2645f2e36",
-			"name": "3.5 update Handymarke",
-			"url": "http://localhost:8080/Handy-1.0/resource/handymarke/update",
-			"time": 44,
-			"responseCode": {
-				"code": 200,
-				"name": "OK"
-			},
-			"tests": {
-				"Status test": true
-			},
-			"testPassFailCounts": {
-				"Status test": {
-					"pass": 1,
-					"fail": 0
-				}
-			},
-			"times": [
-				44
-			],
-			"allTests": [
-				{
-					"Status test": true
-				}
-			]
-		},
-		{
-			"id": "93fd5b3f-451d-416d-a14f-a938c945a2f9",
-			"name": "3.5.1 update Handymarke not found",
-			"url": "http://localhost:8080/Handy-1.0/resource/handymarke/update",
-			"time": 27,
-			"responseCode": {
-				"code": 410,
-				"name": "Gone"
-			},
-			"tests": {
-				"Status test": true
-			},
-			"testPassFailCounts": {
-				"Status test": {
-					"pass": 1,
-					"fail": 0
-				}
-			},
-			"times": [
-				27
-			],
-			"allTests": [
-				{
-					"Status test": true
-				}
-			]
-		},
-		{
-			"id": "4f3a44be-9412-45d4-ae97-83b25ebe7fac",
-			"name": "3.6 create Handymarke",
-			"url": "http://localhost:8080/Handy-1.0/resource/handymarke/create",
-			"time": 144,
-			"responseCode": {
-				"code": 200,
-				"name": "OK"
-			},
-			"tests": {
-				"Status test": true
-			},
-			"testPassFailCounts": {
-				"Status test": {
-					"pass": 1,
-					"fail": 0
-				}
-			},
-			"times": [
-				144
-			],
-			"allTests": [
-				{
-					"Status test": true
-				}
-			]
-		},
-		{
-			"id": "07707f4f-0775-43a7-a47c-cf1da0bcef11",
-			"name": "4.1 read missing Handymodell uuid",
-			"url": "http://localhost:8080/Handy-1.0/resource/handymodell/read?uuid=",
-			"time": 174,
-			"responseCode": {
-				"code": 400,
-				"name": "Bad Request"
-			},
-			"tests": {
-				"Status test": true
-			},
-			"testPassFailCounts": {
-				"Status test": {
-					"pass": 1,
-					"fail": 0
-				}
-			},
-			"times": [
-				174
-			],
-			"allTests": [
-				{
-					"Status test": true
-				}
-			]
-		},
-		{
-			"id": "dc8e189c-0a74-4225-b8dd-d3c8de14a75a",
-			"name": "4.1.2 read invalid Handymodell uuid",
-			"url": "http://localhost:8080/Handy-1.0/resource/handymodell/read?uuid=3247c340-c712-402e-b400-0a23a9-368c97",
 			"time": 45,
 			"responseCode": {
 				"code": 400,
@@ -603,334 +387,10 @@
 			]
 		},
 		{
-			"id": "2d901d4c-8500-432e-8a0a-10955beefd42",
-			"name": "4.2 delete missing Handymodell uuid",
-			"url": "http://localhost:8080/Handy-1.0/resource/handymodell/delete?uuid=",
-			"time": 28,
-			"responseCode": {
-				"code": 400,
-				"name": "Bad Request"
-			},
-			"tests": {
-				"Status test": true
-			},
-			"testPassFailCounts": {
-				"Status test": {
-					"pass": 1,
-					"fail": 0
-				}
-			},
-			"times": [
-				28
-			],
-			"allTests": [
-				{
-					"Status test": true
-				}
-			]
-		},
-		{
-			"id": "e65fc94a-4924-4d91-a926-542f3223688a",
-			"name": "4.2.1 delete invalid Handymodell uuid",
-			"url": "http://localhost:8080/Handy-1.0/resource/handymodell/delete?uuid=3247c340-c712-402e-b400-0a23a93-68c97",
-			"time": 31,
-			"responseCode": {
-				"code": 400,
-				"name": "Bad Request"
-			},
-			"tests": {
-				"Status test": true
-			},
-			"testPassFailCounts": {
-				"Status test": {
-					"pass": 1,
-					"fail": 0
-				}
-			},
-			"times": [
-				31
-			],
-			"allTests": [
-				{
-					"Status test": true
-				}
-			]
-		},
-		{
-			"id": "388f3b1f-acfc-444e-a5a5-87babcf79796",
-			"name": "4.3 read missing Handymarke uuid",
-			"url": "http://localhost:8080/Handy-1.0/resource/handymarke/read?uuid=",
-			"time": 22,
-			"responseCode": {
-				"code": 400,
-				"name": "Bad Request"
-			},
-			"tests": {
-				"Status test": true
-			},
-			"testPassFailCounts": {
-				"Status test": {
-					"pass": 1,
-					"fail": 0
-				}
-			},
-			"times": [
-				22
-			],
-			"allTests": [
-				{
-					"Status test": true
-				}
-			]
-		},
-		{
-			"id": "76f6a95c-249b-459c-9494-a53ebf25b682",
-			"name": "4.3.1 read invalid handymarke uuid",
-			"url": "http://localhost:8080/Handy-1.0/resource/handymarke/read?uuid=6-06cc4a5-8bfd-4e24-85c1-ecf6b9814712",
-			"time": 29,
-			"responseCode": {
-				"code": 400,
-				"name": "Bad Request"
-			},
-			"tests": {
-				"Status test": true
-			},
-			"testPassFailCounts": {
-				"Status test": {
-					"pass": 1,
-					"fail": 0
-				}
-			},
-			"times": [
-				29
-			],
-			"allTests": [
-				{
-					"Status test": true
-				}
-			]
-		},
-		{
-			"id": "498af973-8cd9-419b-b572-b7f71a41693f",
-			"name": "4.4 delete missing Handymarke uuid",
-			"url": "http://localhost:8080/Handy-1.0/resource/handymarke/delete?uuid=",
-			"time": 35,
-			"responseCode": {
-				"code": 400,
-				"name": "Bad Request"
-			},
-			"tests": {
-				"Status test": true
-			},
-			"testPassFailCounts": {
-				"Status test": {
-					"pass": 1,
-					"fail": 0
-				}
-			},
-			"times": [
-				35
-			],
-			"allTests": [
-				{
-					"Status test": true
-				}
-			]
-		},
-		{
-			"id": "fe1083bf-1337-4d64-9e25-f70803ba35ad",
-			"name": "4.4.1 delete invalid Handymarke uuid",
-			"url": "http://localhost:8080/Handy-1.0/resource/handymarke/delete?handymarkeUUID=ecd-86148-5341-43c6-81ed-f3f4595965dc",
-			"time": 100,
-			"responseCode": {
-				"code": 400,
-				"name": "Bad Request"
-			},
-			"tests": {
-				"Status test": true
-			},
-			"testPassFailCounts": {
-				"Status test": {
-					"pass": 1,
-					"fail": 0
-				}
-			},
-			"times": [
-				100
-			],
-			"allTests": [
-				{
-					"Status test": true
-				}
-			]
-		},
-		{
-			"id": "6270e51a-22a8-4f5a-b5e4-797549738004",
-			"name": "4.5 Handymodell name too short",
-			"url": "http://localhost:8080/Handy-1.0/resource/handymodell/create",
-			"time": 26,
-			"responseCode": {
-				"code": 400,
-				"name": "Bad Request"
-			},
-			"tests": {
-				"Status test": true
-			},
-			"testPassFailCounts": {
-				"Status test": {
-					"pass": 1,
-					"fail": 0
-				}
-			},
-			"times": [
-				26
-			],
-			"allTests": [
-				{
-					"Status test": true
-				}
-			]
-		},
-		{
-			"id": "be9b6d73-03fb-4015-81f4-cb1e9304079a",
-			"name": "4.5.1 Handymodell name too long",
-			"url": "http://localhost:8080/Handy-1.0/resource/handymodell/create",
-			"time": 46,
-			"responseCode": {
-				"code": 400,
-				"name": "Bad Request"
-			},
-			"tests": {
-				"Status test": true
-			},
-			"testPassFailCounts": {
-				"Status test": {
-					"pass": 1,
-					"fail": 0
-				}
-			},
-			"times": [
-				46
-			],
-			"allTests": [
-				{
-					"Status test": true
-				}
-			]
-		},
-		{
-			"id": "7356f132-cbe6-4c2d-8ca3-0ed68701822b",
-			"name": "4.5.2 missing Handymodell name",
-			"url": "http://localhost:8080/Handy-1.0/resource/handymodell/create",
-			"time": 28,
-			"responseCode": {
-				"code": 400,
-				"name": "Bad Request"
-			},
-			"tests": {
-				"Status test": true
-			},
-			"testPassFailCounts": {
-				"Status test": {
-					"pass": 1,
-					"fail": 0
-				}
-			},
-			"times": [
-				28
-			],
-			"allTests": [
-				{
-					"Status test": true
-				}
-			]
-		},
-		{
-			"id": "1173ddaa-0a0a-4786-a739-b90ac6f74136",
-			"name": "4.5.3 missing Handymodell akkulaufzeit",
-			"url": "http://localhost:8080/Handy-1.0/resource/handymodell/create",
-			"time": 44,
-			"responseCode": {
-				"code": 400,
-				"name": "Bad Request"
-			},
-			"tests": {
-				"Status test": true
-			},
-			"testPassFailCounts": {
-				"Status test": {
-					"pass": 1,
-					"fail": 0
-				}
-			},
-			"times": [
-				44
-			],
-			"allTests": [
-				{
-					"Status test": true
-				}
-			]
-		},
-		{
-			"id": "485fa01f-d409-4890-8b99-4e96b249284b",
-			"name": "4.5.4 Handymodell akkulaufzeit too short",
-			"url": "http://localhost:8080/Handy-1.0/resource/handymodell/create",
-			"time": 39,
-			"responseCode": {
-				"code": 400,
-				"name": "Bad Request"
-			},
-			"tests": {
-				"Status test": true
-			},
-			"testPassFailCounts": {
-				"Status test": {
-					"pass": 1,
-					"fail": 0
-				}
-			},
-			"times": [
-				39
-			],
-			"allTests": [
-				{
-					"Status test": true
-				}
-			]
-		},
-		{
-			"id": "fd8539f9-476a-43e3-a807-7b9162a76c38",
-			"name": "4.5.5 Handymodell akkulaufzeit too long",
-			"url": "http://localhost:8080/Handy-1.0/resource/handymodell/create",
-			"time": 36,
-			"responseCode": {
-				"code": 400,
-				"name": "Bad Request"
-			},
-			"tests": {
-				"Status test": true
-			},
-			"testPassFailCounts": {
-				"Status test": {
-					"pass": 1,
-					"fail": 0
-				}
-			},
-			"times": [
-				36
-			],
-			"allTests": [
-				{
-					"Status test": true
-				}
-			]
-		},
-		{
 			"id": "0e2608f7-7f93-4e59-a7e0-9aa093161079",
 			"name": "4.5.6 missing Handymodell seriennummer",
 			"url": "http://localhost:8080/Handy-1.0/resource/handymodell/create",
-			"time": 40,
+			"time": 42,
 			"responseCode": {
 				"code": 400,
 				"name": "Bad Request"
@@ -945,7 +405,7 @@
 				}
 			},
 			"times": [
-				40
+				42
 			],
 			"allTests": [
 				{
@@ -957,7 +417,7 @@
 			"id": "eb2124f3-7269-4e85-884b-b361d40aa33f",
 			"name": "4.5.7 invalid Handymodell seriennummer",
 			"url": "http://localhost:8080/Handy-1.0/resource/handymodell/create",
-			"time": 18,
+			"time": 52,
 			"responseCode": {
 				"code": 400,
 				"name": "Bad Request"
@@ -972,7 +432,7 @@
 				}
 			},
 			"times": [
-				18
+				52
 			],
 			"allTests": [
 				{
@@ -984,7 +444,7 @@
 			"id": "0497bd0c-6b54-4fd8-9465-406e60c026ba",
 			"name": "4.6 Handymarke name too short",
 			"url": "http://localhost:8080/Handy-1.0/resource/handymarke/create",
-			"time": 24,
+			"time": 12,
 			"responseCode": {
 				"code": 400,
 				"name": "Bad Request"
@@ -999,7 +459,7 @@
 				}
 			},
 			"times": [
-				24
+				12
 			],
 			"allTests": [
 				{
@@ -1011,7 +471,7 @@
 			"id": "1ab3875f-a226-4152-8a7b-ccee1708ca0e",
 			"name": "4.6.1 Handymarke name too long",
 			"url": "http://localhost:8080/Handy-1.0/resource/handymarke/create",
-			"time": 36,
+			"time": 21,
 			"responseCode": {
 				"code": 400,
 				"name": "Bad Request"
@@ -1026,7 +486,7 @@
 				}
 			},
 			"times": [
-				36
+				21
 			],
 			"allTests": [
 				{
@@ -1038,7 +498,7 @@
 			"id": "e216be0b-6413-4dd8-945d-05bdf80d516a",
 			"name": "4.6.2 missing Handymarke name",
 			"url": "http://localhost:8080/Handy-1.0/resource/handymarke/create",
-			"time": 33,
+			"time": 69,
 			"responseCode": {
 				"code": 400,
 				"name": "Bad Request"
@@ -1053,7 +513,7 @@
 				}
 			},
 			"times": [
-				33
+				69
 			],
 			"allTests": [
 				{
@@ -1065,7 +525,7 @@
 			"id": "bd79d7d5-7c58-40a5-835d-c586ac9a4b93",
 			"name": "4.6.3 missing Handymarke herkunftsland",
 			"url": "http://localhost:8080/Handy-1.0/resource/handymarke/create",
-			"time": 17,
+			"time": 21,
 			"responseCode": {
 				"code": 400,
 				"name": "Bad Request"
@@ -1080,7 +540,7 @@
 				}
 			},
 			"times": [
-				17
+				21
 			],
 			"allTests": [
 				{
@@ -1092,7 +552,7 @@
 			"id": "9f0dc307-25d1-4977-a382-5b36615c806f",
 			"name": "4.6.4 Handymarke herkunftsland too long",
 			"url": "http://localhost:8080/Handy-1.0/resource/handymarke/create",
-			"time": 35,
+			"time": 8,
 			"responseCode": {
 				"code": 400,
 				"name": "Bad Request"
@@ -1107,7 +567,7 @@
 				}
 			},
 			"times": [
-				35
+				8
 			],
 			"allTests": [
 				{
@@ -1119,10 +579,199 @@
 			"id": "450ec101-ca7c-44d1-babb-9ae695eb49b5",
 			"name": "4.6.5 missing Handymarke gruendungsdatum",
 			"url": "http://localhost:8080/Handy-1.0/resource/handymarke/create",
-			"time": 16,
+			"time": 27,
 			"responseCode": {
 				"code": 400,
 				"name": "Bad Request"
+			},
+			"tests": {
+				"Status test": true
+			},
+			"testPassFailCounts": {
+				"Status test": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				27
+			],
+			"allTests": [
+				{
+					"Status test": true
+				}
+			]
+		},
+		{
+			"id": "add98817-4aac-4631-8072-11719e9b227b",
+			"name": "4.6.5 invalid Handymarke gruendungsdatum",
+			"url": "http://localhost:8080/Handy-1.0/resource/handymarke/create",
+			"time": 10,
+			"responseCode": {
+				"code": 400,
+				"name": "Bad Request"
+			},
+			"tests": {
+				"Status test": true
+			},
+			"testPassFailCounts": {
+				"Status test": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				10
+			],
+			"allTests": [
+				{
+					"Status test": true
+				}
+			]
+		},
+		{
+			"id": "67904ffa-d37c-41fa-bba7-34b8373f745f",
+			"name": "0.1 TestService",
+			"url": "http://localhost:8080/Handy-1.0/resource/test/test",
+			"time": 9,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Status test": true
+			},
+			"testPassFailCounts": {
+				"Status test": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				9
+			],
+			"allTests": [
+				{
+					"Status test": true
+				}
+			]
+		},
+		{
+			"id": "3e163d60-209a-45cd-b41b-3bd78b61f3c2",
+			"name": "0.2 Restore Files",
+			"url": "http://localhost:8080/Handy-1.0/resource/test/restore",
+			"time": 43,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Status test": true
+			},
+			"testPassFailCounts": {
+				"Status test": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				43
+			],
+			"allTests": [
+				{
+					"Status test": true
+				}
+			]
+		},
+		{
+			"id": "6bbd233c-0cac-4ea5-84c6-d63801f9fe23",
+			"name": "5.1 invalid login",
+			"url": "http://localhost:8080/Handy-1.0/resource/user/login",
+			"time": 28,
+			"responseCode": {
+				"code": 404,
+				"name": "Not Found"
+			},
+			"tests": {
+				"Status test": true
+			},
+			"testPassFailCounts": {
+				"Status test": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				28
+			],
+			"allTests": [
+				{
+					"Status test": true
+				}
+			]
+		},
+		{
+			"id": "f0cac8c8-05d2-489a-84f4-377ce51dd40d",
+			"name": "5.0 login admin",
+			"url": "http://localhost:8080/Handy-1.0/resource/user/login",
+			"time": 8,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Status test": true
+			},
+			"testPassFailCounts": {
+				"Status test": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				8
+			],
+			"allTests": [
+				{
+					"Status test": true
+				}
+			]
+		},
+		{
+			"id": "27469848-695e-4b59-90e6-2805ab873ceb",
+			"name": "1.0 list all Handymodells",
+			"url": "http://localhost:8080/Handy-1.0/resource/handymodell/list",
+			"time": 7,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Status test": true
+			},
+			"testPassFailCounts": {
+				"Status test": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				7
+			],
+			"allTests": [
+				{
+					"Status test": true
+				}
+			]
+		},
+		{
+			"id": "02324cde-366d-419a-b8dd-0c6446e38302",
+			"name": "1.1 read a Handymodell",
+			"url": "http://localhost:8080/Handy-1.0/resource/handymodell/read?uuid=89b83719-9acb-412b-a7b5-038c9f4603d3",
+			"time": 16,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
 			},
 			"tests": {
 				"Status test": true
@@ -1143,9 +792,819 @@
 			]
 		},
 		{
-			"id": "add98817-4aac-4631-8072-11719e9b227b",
-			"name": "4.6.5 invalid Handymarke gruendungsdatum",
+			"id": "cdf140e7-df96-4405-9e60-10ebdd7d6e99",
+			"name": "1.2 read Handymodell not found",
+			"url": "http://localhost:8080/Handy-1.0/resource/handymodell/read?uuid=3247c340-c712-402e-b400-0a23a9368c46",
+			"time": 8,
+			"responseCode": {
+				"code": 410,
+				"name": "Gone"
+			},
+			"tests": {
+				"Status test": true
+			},
+			"testPassFailCounts": {
+				"Status test": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				8
+			],
+			"allTests": [
+				{
+					"Status test": true
+				}
+			]
+		},
+		{
+			"id": "2b8bd653-3304-4a07-9f6c-66b765c93a72",
+			"name": "1.3 sort Handymodell",
+			"url": "http://localhost:8080/Handy-1.0/resource/handymodell/list?sort=true",
+			"time": 5,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Status test": true
+			},
+			"testPassFailCounts": {
+				"Status test": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				5
+			],
+			"allTests": [
+				{
+					"Status test": true
+				}
+			]
+		},
+		{
+			"id": "9e5755ec-a052-4749-b212-daa5e6e2b0fd",
+			"name": "2.0 list all Handymarke",
+			"url": "http://localhost:8080/Handy-1.0/resource/handymarke/list",
+			"time": 32,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Status test": true
+			},
+			"testPassFailCounts": {
+				"Status test": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				32
+			],
+			"allTests": [
+				{
+					"Status test": true
+				}
+			]
+		},
+		{
+			"id": "8435c584-1e87-4500-b5fa-5ecc2a3b096d",
+			"name": "2.1 read a Handymarke",
+			"url": "http://localhost:8080/Handy-1.0/resource/handymarke/read?uuid=606cc4a5-8bfd-4e24-85c1-ecf6b9814712",
+			"time": 54,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Status test": true
+			},
+			"testPassFailCounts": {
+				"Status test": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				54
+			],
+			"allTests": [
+				{
+					"Status test": true
+				}
+			]
+		},
+		{
+			"id": "8c2cf877-94ae-4585-b024-770f60d26acc",
+			"name": "2.2 read a Handymarke not found",
+			"url": "http://localhost:8080/Handy-1.0/resource/handymarke/read?uuid=606cc4a5-8bfd-4e24-85c1-ecf6b9814700",
+			"time": 8,
+			"responseCode": {
+				"code": 410,
+				"name": "Gone"
+			},
+			"tests": {
+				"Status test": true
+			},
+			"testPassFailCounts": {
+				"Status test": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				8
+			],
+			"allTests": [
+				{
+					"Status test": true
+				}
+			]
+		},
+		{
+			"id": "b7894788-e486-4875-873d-398c068dfe4d",
+			"name": "2.3 sort Handymarke",
+			"url": "http://localhost:8080/Handy-1.0/resource/handymarke/list?sort=true",
+			"time": 12,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Status test": true
+			},
+			"testPassFailCounts": {
+				"Status test": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				12
+			],
+			"allTests": [
+				{
+					"Status test": true
+				}
+			]
+		},
+		{
+			"id": "bbddd3c2-df59-42cd-a20e-3d49ab3ee333",
+			"name": "3.1 delete Handymodell",
+			"url": "http://localhost:8080/Handy-1.0/resource/handymodell/delete?uuid=89b83719-9acb-412b-a7b5-038c9f4603d3",
+			"time": 53,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Status test": true
+			},
+			"testPassFailCounts": {
+				"Status test": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				53
+			],
+			"allTests": [
+				{
+					"Status test": true
+				}
+			]
+		},
+		{
+			"id": "68c8fee0-29f9-423d-ad37-93b13f005b92",
+			"name": "3.1.2 delete Handymodell not found",
+			"url": "http://localhost:8080/Handy-1.0/resource/handymodell/delete?uuid=3347c340-c712-402e-b400-0a23a9368c97",
+			"time": 4,
+			"responseCode": {
+				"code": 410,
+				"name": "Gone"
+			},
+			"tests": {
+				"Status test": true
+			},
+			"testPassFailCounts": {
+				"Status test": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				4
+			],
+			"allTests": [
+				{
+					"Status test": true
+				}
+			]
+		},
+		{
+			"id": "f6608283-751d-4cab-887d-88dd9c0022ee",
+			"name": "3.2 update Handymodell",
+			"url": "http://localhost:8080/Handy-1.0/resource/handymodell/update",
+			"time": 15,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Status test": true
+			},
+			"testPassFailCounts": {
+				"Status test": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				15
+			],
+			"allTests": [
+				{
+					"Status test": true
+				}
+			]
+		},
+		{
+			"id": "a59fd69b-3f19-4d6d-be83-0687a2dcbde5",
+			"name": "3.2.1 update Handymodell not found",
+			"url": "http://localhost:8080/Handy-1.0/resource/handymodell/update",
+			"time": 8,
+			"responseCode": {
+				"code": 400,
+				"name": "Bad Request"
+			},
+			"tests": {
+				"Status test": true
+			},
+			"testPassFailCounts": {
+				"Status test": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				8
+			],
+			"allTests": [
+				{
+					"Status test": true
+				}
+			]
+		},
+		{
+			"id": "e9073f85-cef9-4e4f-b4c6-f97a810eeade",
+			"name": "3.3 create Handymodell",
+			"url": "http://localhost:8080/Handy-1.0/resource/handymodell/create",
+			"time": 115,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Status test": true
+			},
+			"testPassFailCounts": {
+				"Status test": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				115
+			],
+			"allTests": [
+				{
+					"Status test": true
+				}
+			]
+		},
+		{
+			"id": "7a3eb82e-40aa-42cc-bbab-907d629ee9c1",
+			"name": "3.4 delete Handymarke",
+			"url": "http://localhost:8080/Handy-1.0/resource/handymarke/delete?uuid=ecd86148-5341-43c6-81ed-f3f4595965dc",
+			"time": 18,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Status test": true
+			},
+			"testPassFailCounts": {
+				"Status test": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				18
+			],
+			"allTests": [
+				{
+					"Status test": true
+				}
+			]
+		},
+		{
+			"id": "56718745-df79-4ebf-88ca-ec24cbaad11a",
+			"name": "3.4.1 delete Handymarke not found",
+			"url": "http://localhost:8080/Handy-1.0/resource/handymarke/delete?uuid=e3d86148-5341-43c6-81ed-f3f4595965dc",
+			"time": 10,
+			"responseCode": {
+				"code": 410,
+				"name": "Gone"
+			},
+			"tests": {
+				"Status test": true
+			},
+			"testPassFailCounts": {
+				"Status test": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				10
+			],
+			"allTests": [
+				{
+					"Status test": true
+				}
+			]
+		},
+		{
+			"id": "631e65bf-e964-4100-9378-bfb2645f2e36",
+			"name": "3.5 update Handymarke",
+			"url": "http://localhost:8080/Handy-1.0/resource/handymarke/update",
+			"time": 15,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Status test": true
+			},
+			"testPassFailCounts": {
+				"Status test": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				15
+			],
+			"allTests": [
+				{
+					"Status test": true
+				}
+			]
+		},
+		{
+			"id": "93fd5b3f-451d-416d-a14f-a938c945a2f9",
+			"name": "3.5.1 update Handymarke not found",
+			"url": "http://localhost:8080/Handy-1.0/resource/handymarke/update",
+			"time": 6,
+			"responseCode": {
+				"code": 410,
+				"name": "Gone"
+			},
+			"tests": {
+				"Status test": true
+			},
+			"testPassFailCounts": {
+				"Status test": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				6
+			],
+			"allTests": [
+				{
+					"Status test": true
+				}
+			]
+		},
+		{
+			"id": "4f3a44be-9412-45d4-ae97-83b25ebe7fac",
+			"name": "3.6 create Handymarke",
 			"url": "http://localhost:8080/Handy-1.0/resource/handymarke/create",
+			"time": 34,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Status test": true
+			},
+			"testPassFailCounts": {
+				"Status test": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				34
+			],
+			"allTests": [
+				{
+					"Status test": true
+				}
+			]
+		},
+		{
+			"id": "2e5db616-bea7-4087-8ff5-8907722f151e",
+			"name": "5.2 logout",
+			"url": "http://localhost:8080/Handy-1.0/resource/user/logout",
+			"time": 16,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Status test": true
+			},
+			"testPassFailCounts": {
+				"Status test": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				16
+			],
+			"allTests": [
+				{
+					"Status test": true
+				}
+			]
+		},
+		{
+			"id": "66491227-8a68-4ef1-a0cc-1644b7214bf1",
+			"name": "0.2 Restore Files Copy 2",
+			"url": "http://localhost:8080/Handy-1.0/resource/test/restore",
+			"time": 5,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Status test": true
+			},
+			"testPassFailCounts": {
+				"Status test": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				5
+			],
+			"allTests": [
+				{
+					"Status test": true
+				}
+			]
+		},
+		{
+			"id": "a05e1c59-58c8-4401-9eea-b02205e3608d",
+			"name": "5.0 login user",
+			"url": "http://localhost:8080/Handy-1.0/resource/user/login",
+			"time": 9,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Status test": true
+			},
+			"testPassFailCounts": {
+				"Status test": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				9
+			],
+			"allTests": [
+				{
+					"Status test": true
+				}
+			]
+		},
+		{
+			"id": "5da5f128-a6d4-47b2-a439-0fb34e77daf7",
+			"name": "1.0 list all Handymodells as user",
+			"url": "http://localhost:8080/Handy-1.0/resource/handymodell/list",
+			"time": 8,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Status test": true
+			},
+			"testPassFailCounts": {
+				"Status test": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				8
+			],
+			"allTests": [
+				{
+					"Status test": true
+				}
+			]
+		},
+		{
+			"id": "6dbe465a-70e5-4f7e-a4dc-1a9a367ac22e",
+			"name": "1.1 read a Handymodell as user",
+			"url": "http://localhost:8080/Handy-1.0/resource/handymodell/read?uuid=89b83719-9acb-412b-a7b5-038c9f4603d3",
+			"time": 4,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Status test": true
+			},
+			"testPassFailCounts": {
+				"Status test": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				4
+			],
+			"allTests": [
+				{
+					"Status test": true
+				}
+			]
+		},
+		{
+			"id": "29dcbb9d-3dc7-4fe4-ad49-8ab5f3b503c2",
+			"name": "1.2 read Handymodell not found as user",
+			"url": "http://localhost:8080/Handy-1.0/resource/handymodell/read?uuid=3247c340-c712-402e-b400-0a23a9368c46",
+			"time": 20,
+			"responseCode": {
+				"code": 410,
+				"name": "Gone"
+			},
+			"tests": {
+				"Status test": true
+			},
+			"testPassFailCounts": {
+				"Status test": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				20
+			],
+			"allTests": [
+				{
+					"Status test": true
+				}
+			]
+		},
+		{
+			"id": "35dc44e3-143d-45c6-865e-74a8d18f8e15",
+			"name": "1.3 sort Handymodell as user",
+			"url": "http://localhost:8080/Handy-1.0/resource/handymodell/list?sort=true",
+			"time": 5,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Status test": true
+			},
+			"testPassFailCounts": {
+				"Status test": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				5
+			],
+			"allTests": [
+				{
+					"Status test": true
+				}
+			]
+		},
+		{
+			"id": "9bcff054-995c-48f0-a4e9-c6c949d0dffb",
+			"name": "2.0 list all Handymarke as user",
+			"url": "http://localhost:8080/Handy-1.0/resource/handymarke/list",
+			"time": 6,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Status test": true
+			},
+			"testPassFailCounts": {
+				"Status test": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				6
+			],
+			"allTests": [
+				{
+					"Status test": true
+				}
+			]
+		},
+		{
+			"id": "8dee0909-deae-451d-afa3-3c444bc78021",
+			"name": "2.1 read a Handymarke as user",
+			"url": "http://localhost:8080/Handy-1.0/resource/handymarke/read?uuid=606cc4a5-8bfd-4e24-85c1-ecf6b9814712",
+			"time": 4,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Status test": true
+			},
+			"testPassFailCounts": {
+				"Status test": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				4
+			],
+			"allTests": [
+				{
+					"Status test": true
+				}
+			]
+		},
+		{
+			"id": "ad1dd15f-a13d-4b3d-8818-ab33b3f498ae",
+			"name": "2.2 read a Handymarke not found as user",
+			"url": "http://localhost:8080/Handy-1.0/resource/handymarke/read?uuid=606cc4a5-8bfd-4e24-85c1-ecf6b9814700",
+			"time": 7,
+			"responseCode": {
+				"code": 410,
+				"name": "Gone"
+			},
+			"tests": {
+				"Status test": true
+			},
+			"testPassFailCounts": {
+				"Status test": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				7
+			],
+			"allTests": [
+				{
+					"Status test": true
+				}
+			]
+		},
+		{
+			"id": "8d950a20-e421-4dfa-802a-b33045e8307a",
+			"name": "2.3 sort Handymarke as user",
+			"url": "http://localhost:8080/Handy-1.0/resource/handymarke/list?sort=true",
+			"time": 16,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Status test": true
+			},
+			"testPassFailCounts": {
+				"Status test": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				16
+			],
+			"allTests": [
+				{
+					"Status test": true
+				}
+			]
+		},
+		{
+			"id": "54f120d3-8ad6-477f-a472-62127e6c23dd",
+			"name": "3.1 delete Handymodell as user",
+			"url": "http://localhost:8080/Handy-1.0/resource/handymodell/delete?uuid=89b83719-9acb-412b-a7b5-038c9f4603d3",
+			"time": 13,
+			"responseCode": {
+				"code": 403,
+				"name": "Forbidden"
+			},
+			"tests": {
+				"Status test": true
+			},
+			"testPassFailCounts": {
+				"Status test": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				13
+			],
+			"allTests": [
+				{
+					"Status test": true
+				}
+			]
+		},
+		{
+			"id": "8bf09d6e-0a80-45c8-a149-726c53140ccb",
+			"name": "3.1.2 delete Handymodell not found as user",
+			"url": "http://localhost:8080/Handy-1.0/resource/handymodell/delete?uuid=3347c340-c712-402e-b400-0a23a9368c97",
+			"time": 6,
+			"responseCode": {
+				"code": 403,
+				"name": "Forbidden"
+			},
+			"tests": {
+				"Status test": true
+			},
+			"testPassFailCounts": {
+				"Status test": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				6
+			],
+			"allTests": [
+				{
+					"Status test": true
+				}
+			]
+		},
+		{
+			"id": "645c022a-f5af-421f-84c9-76eba57561b4",
+			"name": "3.2 update Handymodell as user",
+			"url": "http://localhost:8080/Handy-1.0/resource/handymodell/update",
+			"time": 21,
+			"responseCode": {
+				"code": 403,
+				"name": "Forbidden"
+			},
+			"tests": {
+				"Status test": true
+			},
+			"testPassFailCounts": {
+				"Status test": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				21
+			],
+			"allTests": [
+				{
+					"Status test": true
+				}
+			]
+		},
+		{
+			"id": "36d1bbf6-8c39-45f0-bfcd-291d536a7359",
+			"name": "3.2.1 update Handymodell not found as user",
+			"url": "http://localhost:8080/Handy-1.0/resource/handymodell/update",
 			"time": 31,
 			"responseCode": {
 				"code": 400,
@@ -1168,92 +1627,714 @@
 					"Status test": true
 				}
 			]
+		},
+		{
+			"id": "1ea31c0e-c442-4b9b-b27b-72ff21d58fa3",
+			"name": "3.3 create Handymodell as user",
+			"url": "http://localhost:8080/Handy-1.0/resource/handymodell/create",
+			"time": 31,
+			"responseCode": {
+				"code": 403,
+				"name": "Forbidden"
+			},
+			"tests": {
+				"Status test": true
+			},
+			"testPassFailCounts": {
+				"Status test": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				31
+			],
+			"allTests": [
+				{
+					"Status test": true
+				}
+			]
+		},
+		{
+			"id": "4543c873-edce-4976-ad72-ee97a72f4619",
+			"name": "3.4 delete Handymarke as user",
+			"url": "http://localhost:8080/Handy-1.0/resource/handymarke/delete?uuid=ecd86148-5341-43c6-81ed-f3f4595965dc",
+			"time": 14,
+			"responseCode": {
+				"code": 403,
+				"name": "Forbidden"
+			},
+			"tests": {
+				"Status test": true
+			},
+			"testPassFailCounts": {
+				"Status test": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				14
+			],
+			"allTests": [
+				{
+					"Status test": true
+				}
+			]
+		},
+		{
+			"id": "59ad34cc-ed89-4d3a-a95c-5840bca6da1c",
+			"name": "3.4.1 delete Handymarke not found as user",
+			"url": "http://localhost:8080/Handy-1.0/resource/handymarke/delete?uuid=e3d86148-5341-43c6-81ed-f3f4595965dc",
+			"time": 12,
+			"responseCode": {
+				"code": 403,
+				"name": "Forbidden"
+			},
+			"tests": {
+				"Status test": true
+			},
+			"testPassFailCounts": {
+				"Status test": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				12
+			],
+			"allTests": [
+				{
+					"Status test": true
+				}
+			]
+		},
+		{
+			"id": "0bb269c5-d001-492f-b6b8-5f93b078a452",
+			"name": "3.5 update Handymarke as user",
+			"url": "http://localhost:8080/Handy-1.0/resource/handymarke/update",
+			"time": 17,
+			"responseCode": {
+				"code": 403,
+				"name": "Forbidden"
+			},
+			"tests": {
+				"Status test": true
+			},
+			"testPassFailCounts": {
+				"Status test": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				17
+			],
+			"allTests": [
+				{
+					"Status test": true
+				}
+			]
+		},
+		{
+			"id": "f9c568b8-5dff-4243-a2f3-9de3ac575116",
+			"name": "3.5.1 update Handymarke not found as user",
+			"url": "http://localhost:8080/Handy-1.0/resource/handymarke/update",
+			"time": 49,
+			"responseCode": {
+				"code": 403,
+				"name": "Forbidden"
+			},
+			"tests": {
+				"Status test": true
+			},
+			"testPassFailCounts": {
+				"Status test": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				49
+			],
+			"allTests": [
+				{
+					"Status test": true
+				}
+			]
+		},
+		{
+			"id": "cc84e3dc-3827-4877-8b5c-a173d6afa93b",
+			"name": "3.6 create Handymarke as user",
+			"url": "http://localhost:8080/Handy-1.0/resource/handymarke/create",
+			"time": 10,
+			"responseCode": {
+				"code": 403,
+				"name": "Forbidden"
+			},
+			"tests": {
+				"Status test": true
+			},
+			"testPassFailCounts": {
+				"Status test": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				10
+			],
+			"allTests": [
+				{
+					"Status test": true
+				}
+			]
+		},
+		{
+			"id": "df753139-ac68-4e3a-a733-ede086fa0f8a",
+			"name": "5.2 logout user",
+			"url": "http://localhost:8080/Handy-1.0/resource/user/logout",
+			"time": 11,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Status test": true
+			},
+			"testPassFailCounts": {
+				"Status test": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				11
+			],
+			"allTests": [
+				{
+					"Status test": true
+				}
+			]
+		},
+		{
+			"id": "fce2fb62-e746-43fa-b08d-af1194126dac",
+			"name": "0.2 Restore Files Copy",
+			"url": "http://localhost:8080/Handy-1.0/resource/test/restore",
+			"time": 59,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Status test": true
+			},
+			"testPassFailCounts": {
+				"Status test": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				59
+			],
+			"allTests": [
+				{
+					"Status test": true
+				}
+			]
+		},
+		{
+			"id": "4f53bbdd-5d62-4609-b23e-bed2f8d2a024",
+			"name": "1.0 list all Handymodells as guest",
+			"url": "http://localhost:8080/Handy-1.0/resource/handymodell/list",
+			"time": 8,
+			"responseCode": {
+				"code": 403,
+				"name": "Forbidden"
+			},
+			"tests": {
+				"Status test": true
+			},
+			"testPassFailCounts": {
+				"Status test": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				8
+			],
+			"allTests": [
+				{
+					"Status test": true
+				}
+			]
+		},
+		{
+			"id": "7b3cda68-952d-472d-96b5-ec620b46e732",
+			"name": "1.1 read a Handymodell as guest",
+			"url": "http://localhost:8080/Handy-1.0/resource/handymodell/read?uuid=89b83719-9acb-412b-a7b5-038c9f4603d3",
+			"time": 6,
+			"responseCode": {
+				"code": 403,
+				"name": "Forbidden"
+			},
+			"tests": {
+				"Status test": true
+			},
+			"testPassFailCounts": {
+				"Status test": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				6
+			],
+			"allTests": [
+				{
+					"Status test": true
+				}
+			]
+		},
+		{
+			"id": "ea067f76-3f69-4030-b47d-f8acc90c22ad",
+			"name": "1.2 read Handymodell not found as guest",
+			"url": "http://localhost:8080/Handy-1.0/resource/handymodell/read?uuid=3247c340-c712-402e-b400-0a23a9368c46",
+			"time": 4,
+			"responseCode": {
+				"code": 403,
+				"name": "Forbidden"
+			},
+			"tests": {
+				"Status test": true
+			},
+			"testPassFailCounts": {
+				"Status test": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				4
+			],
+			"allTests": [
+				{
+					"Status test": true
+				}
+			]
+		},
+		{
+			"id": "514e0fa0-f8a6-4070-bfab-1e7c03252df1",
+			"name": "1.3 sort Handymodell as guest",
+			"url": "http://localhost:8080/Handy-1.0/resource/handymodell/list?sort=true",
+			"time": 7,
+			"responseCode": {
+				"code": 403,
+				"name": "Forbidden"
+			},
+			"tests": {
+				"Status test": true
+			},
+			"testPassFailCounts": {
+				"Status test": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				7
+			],
+			"allTests": [
+				{
+					"Status test": true
+				}
+			]
+		},
+		{
+			"id": "3bdaf0d4-e651-4841-b39c-45b205912435",
+			"name": "2.0 list all Handymarke as guest",
+			"url": "http://localhost:8080/Handy-1.0/resource/handymarke/list",
+			"time": 18,
+			"responseCode": {
+				"code": 403,
+				"name": "Forbidden"
+			},
+			"tests": {
+				"Status test": true
+			},
+			"testPassFailCounts": {
+				"Status test": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				18
+			],
+			"allTests": [
+				{
+					"Status test": true
+				}
+			]
+		},
+		{
+			"id": "8a4e4ac7-c137-4862-9edb-37ee663294a8",
+			"name": "2.1 read a Handymarke as guest",
+			"url": "http://localhost:8080/Handy-1.0/resource/handymarke/read?uuid=606cc4a5-8bfd-4e24-85c1-ecf6b9814712",
+			"time": 14,
+			"responseCode": {
+				"code": 403,
+				"name": "Forbidden"
+			},
+			"tests": {
+				"Status test": true
+			},
+			"testPassFailCounts": {
+				"Status test": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				14
+			],
+			"allTests": [
+				{
+					"Status test": true
+				}
+			]
+		},
+		{
+			"id": "6a7e89bf-df18-482f-a02e-1e7206f3a3cb",
+			"name": "2.2 read a Handymarke not found as guest",
+			"url": "http://localhost:8080/Handy-1.0/resource/handymarke/read?uuid=606cc4a5-8bfd-4e24-85c1-ecf6b9814700",
+			"time": 6,
+			"responseCode": {
+				"code": 403,
+				"name": "Forbidden"
+			},
+			"tests": {
+				"Status test": true
+			},
+			"testPassFailCounts": {
+				"Status test": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				6
+			],
+			"allTests": [
+				{
+					"Status test": true
+				}
+			]
+		},
+		{
+			"id": "42aaa39f-01b4-40bd-aca8-932bd22d3f81",
+			"name": "2.3 sort Handymarke as guest",
+			"url": "http://localhost:8080/Handy-1.0/resource/handymarke/list?sort=true",
+			"time": 5,
+			"responseCode": {
+				"code": 403,
+				"name": "Forbidden"
+			},
+			"tests": {
+				"Status test": true
+			},
+			"testPassFailCounts": {
+				"Status test": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				5
+			],
+			"allTests": [
+				{
+					"Status test": true
+				}
+			]
+		},
+		{
+			"id": "81280b4f-5da0-449b-8481-313ccbd9ca7a",
+			"name": "3.1 delete Handymodell as guest",
+			"url": "http://localhost:8080/Handy-1.0/resource/handymodell/delete?uuid=89b83719-9acb-412b-a7b5-038c9f4603d3",
+			"time": 3,
+			"responseCode": {
+				"code": 403,
+				"name": "Forbidden"
+			},
+			"tests": {
+				"Status test": true
+			},
+			"testPassFailCounts": {
+				"Status test": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				3
+			],
+			"allTests": [
+				{
+					"Status test": true
+				}
+			]
+		},
+		{
+			"id": "0aee787f-6067-45f9-a8ec-006002b488ba",
+			"name": "3.1.2 delete Handymodell not found as guest",
+			"url": "http://localhost:8080/Handy-1.0/resource/handymodell/delete?uuid=3347c340-c712-402e-b400-0a23a9368c97",
+			"time": 17,
+			"responseCode": {
+				"code": 403,
+				"name": "Forbidden"
+			},
+			"tests": {
+				"Status test": true
+			},
+			"testPassFailCounts": {
+				"Status test": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				17
+			],
+			"allTests": [
+				{
+					"Status test": true
+				}
+			]
+		},
+		{
+			"id": "75a6f164-59c8-40ef-82e9-0f04daceb616",
+			"name": "3.2 update Handymodell as guest",
+			"url": "http://localhost:8080/Handy-1.0/resource/handymodell/update",
+			"time": 5,
+			"responseCode": {
+				"code": 403,
+				"name": "Forbidden"
+			},
+			"tests": {
+				"Status test": true
+			},
+			"testPassFailCounts": {
+				"Status test": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				5
+			],
+			"allTests": [
+				{
+					"Status test": true
+				}
+			]
+		},
+		{
+			"id": "6352ebbe-3d34-4124-bbb5-ccb260096b8b",
+			"name": "3.2.1 update Handymodell not found as guest",
+			"url": "http://localhost:8080/Handy-1.0/resource/handymodell/update",
+			"time": 7,
+			"responseCode": {
+				"code": 400,
+				"name": "Bad Request"
+			},
+			"tests": {
+				"Status test": true
+			},
+			"testPassFailCounts": {
+				"Status test": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				7
+			],
+			"allTests": [
+				{
+					"Status test": true
+				}
+			]
+		},
+		{
+			"id": "972e373d-3ccc-4aa7-8634-1bdf7f16e8d5",
+			"name": "3.3 create Handymodell as guest",
+			"url": "http://localhost:8080/Handy-1.0/resource/handymodell/create",
+			"time": 21,
+			"responseCode": {
+				"code": 403,
+				"name": "Forbidden"
+			},
+			"tests": {
+				"Status test": true
+			},
+			"testPassFailCounts": {
+				"Status test": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				21
+			],
+			"allTests": [
+				{
+					"Status test": true
+				}
+			]
+		},
+		{
+			"id": "4c8d0370-b40a-4c9a-bf62-fd7353f7b172",
+			"name": "3.4 delete Handymarke as guest",
+			"url": "http://localhost:8080/Handy-1.0/resource/handymarke/delete?uuid=ecd86148-5341-43c6-81ed-f3f4595965dc",
+			"time": 9,
+			"responseCode": {
+				"code": 403,
+				"name": "Forbidden"
+			},
+			"tests": {
+				"Status test": true
+			},
+			"testPassFailCounts": {
+				"Status test": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				9
+			],
+			"allTests": [
+				{
+					"Status test": true
+				}
+			]
+		},
+		{
+			"id": "23face3c-6d92-4075-b552-3d743dbf7915",
+			"name": "3.4.1 delete Handymarke not found as guest",
+			"url": "http://localhost:8080/Handy-1.0/resource/handymarke/delete?uuid=e3d86148-5341-43c6-81ed-f3f4595965dc",
+			"time": 8,
+			"responseCode": {
+				"code": 403,
+				"name": "Forbidden"
+			},
+			"tests": {
+				"Status test": true
+			},
+			"testPassFailCounts": {
+				"Status test": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				8
+			],
+			"allTests": [
+				{
+					"Status test": true
+				}
+			]
+		},
+		{
+			"id": "f74c5945-f1ee-4411-848f-a002a1bc2339",
+			"name": "3.5 update Handymarke as guest",
+			"url": "http://localhost:8080/Handy-1.0/resource/handymarke/update",
+			"time": 49,
+			"responseCode": {
+				"code": 403,
+				"name": "Forbidden"
+			},
+			"tests": {
+				"Status test": true
+			},
+			"testPassFailCounts": {
+				"Status test": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				49
+			],
+			"allTests": [
+				{
+					"Status test": true
+				}
+			]
+		},
+		{
+			"id": "168be4e1-a066-4e9a-8128-1073e8ee6061",
+			"name": "3.5.1 update Handymarke not found as guest",
+			"url": "http://localhost:8080/Handy-1.0/resource/handymarke/update",
+			"time": 77,
+			"responseCode": {
+				"code": 403,
+				"name": "Forbidden"
+			},
+			"tests": {
+				"Status test": true
+			},
+			"testPassFailCounts": {
+				"Status test": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				77
+			],
+			"allTests": [
+				{
+					"Status test": true
+				}
+			]
+		},
+		{
+			"id": "5df63889-f502-4f7e-852b-5b882475c9a4",
+			"name": "3.6 create Handymarke as guest",
+			"url": "http://localhost:8080/Handy-1.0/resource/handymarke/create",
+			"time": 11,
+			"responseCode": {
+				"code": 403,
+				"name": "Forbidden"
+			},
+			"tests": {
+				"Status test": true
+			},
+			"testPassFailCounts": {
+				"Status test": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				11
+			],
+			"allTests": [
+				{
+					"Status test": true
+				}
+			]
 		}
 	],
 	"count": 1,
-	"totalTime": 5686,
+	"totalTime": 1677,
 	"collection": {
 		"requests": [
-			{
-				"id": "67904ffa-d37c-41fa-bba7-34b8373f745f",
-				"method": "GET"
-			},
-			{
-				"id": "3e163d60-209a-45cd-b41b-3bd78b61f3c2",
-				"method": "GET"
-			},
-			{
-				"id": "27469848-695e-4b59-90e6-2805ab873ceb",
-				"method": "GET"
-			},
-			{
-				"id": "02324cde-366d-419a-b8dd-0c6446e38302",
-				"method": "GET"
-			},
-			{
-				"id": "cdf140e7-df96-4405-9e60-10ebdd7d6e99",
-				"method": "GET"
-			},
-			{
-				"id": "2b8bd653-3304-4a07-9f6c-66b765c93a72",
-				"method": "GET"
-			},
-			{
-				"id": "9e5755ec-a052-4749-b212-daa5e6e2b0fd",
-				"method": "GET"
-			},
-			{
-				"id": "8435c584-1e87-4500-b5fa-5ecc2a3b096d",
-				"method": "GET"
-			},
-			{
-				"id": "8c2cf877-94ae-4585-b024-770f60d26acc",
-				"method": "GET"
-			},
-			{
-				"id": "b7894788-e486-4875-873d-398c068dfe4d",
-				"method": "GET"
-			},
-			{
-				"id": "bbddd3c2-df59-42cd-a20e-3d49ab3ee333",
-				"method": "DELETE"
-			},
-			{
-				"id": "68c8fee0-29f9-423d-ad37-93b13f005b92",
-				"method": "DELETE"
-			},
-			{
-				"id": "f6608283-751d-4cab-887d-88dd9c0022ee",
-				"method": "PUT"
-			},
-			{
-				"id": "a59fd69b-3f19-4d6d-be83-0687a2dcbde5",
-				"method": "PUT"
-			},
-			{
-				"id": "e9073f85-cef9-4e4f-b4c6-f97a810eeade",
-				"method": "POST"
-			},
-			{
-				"id": "7a3eb82e-40aa-42cc-bbab-907d629ee9c1",
-				"method": "DELETE"
-			},
-			{
-				"id": "56718745-df79-4ebf-88ca-ec24cbaad11a",
-				"method": "DELETE"
-			},
-			{
-				"id": "631e65bf-e964-4100-9378-bfb2645f2e36",
-				"method": "PUT"
-			},
-			{
-				"id": "93fd5b3f-451d-416d-a14f-a938c945a2f9",
-				"method": "PUT"
-			},
-			{
-				"id": "4f3a44be-9412-45d4-ae97-83b25ebe7fac",
-				"method": "POST"
-			},
 			{
 				"id": "07707f4f-0775-43a7-a47c-cf1da0bcef11",
 				"method": "GET"
@@ -1344,6 +2425,258 @@
 			},
 			{
 				"id": "add98817-4aac-4631-8072-11719e9b227b",
+				"method": "POST"
+			},
+			{
+				"id": "67904ffa-d37c-41fa-bba7-34b8373f745f",
+				"method": "GET"
+			},
+			{
+				"id": "3e163d60-209a-45cd-b41b-3bd78b61f3c2",
+				"method": "GET"
+			},
+			{
+				"id": "6bbd233c-0cac-4ea5-84c6-d63801f9fe23",
+				"method": "POST"
+			},
+			{
+				"id": "f0cac8c8-05d2-489a-84f4-377ce51dd40d",
+				"method": "POST"
+			},
+			{
+				"id": "27469848-695e-4b59-90e6-2805ab873ceb",
+				"method": "GET"
+			},
+			{
+				"id": "02324cde-366d-419a-b8dd-0c6446e38302",
+				"method": "GET"
+			},
+			{
+				"id": "cdf140e7-df96-4405-9e60-10ebdd7d6e99",
+				"method": "GET"
+			},
+			{
+				"id": "2b8bd653-3304-4a07-9f6c-66b765c93a72",
+				"method": "GET"
+			},
+			{
+				"id": "9e5755ec-a052-4749-b212-daa5e6e2b0fd",
+				"method": "GET"
+			},
+			{
+				"id": "8435c584-1e87-4500-b5fa-5ecc2a3b096d",
+				"method": "GET"
+			},
+			{
+				"id": "8c2cf877-94ae-4585-b024-770f60d26acc",
+				"method": "GET"
+			},
+			{
+				"id": "b7894788-e486-4875-873d-398c068dfe4d",
+				"method": "GET"
+			},
+			{
+				"id": "bbddd3c2-df59-42cd-a20e-3d49ab3ee333",
+				"method": "DELETE"
+			},
+			{
+				"id": "68c8fee0-29f9-423d-ad37-93b13f005b92",
+				"method": "DELETE"
+			},
+			{
+				"id": "f6608283-751d-4cab-887d-88dd9c0022ee",
+				"method": "PUT"
+			},
+			{
+				"id": "a59fd69b-3f19-4d6d-be83-0687a2dcbde5",
+				"method": "PUT"
+			},
+			{
+				"id": "e9073f85-cef9-4e4f-b4c6-f97a810eeade",
+				"method": "POST"
+			},
+			{
+				"id": "7a3eb82e-40aa-42cc-bbab-907d629ee9c1",
+				"method": "DELETE"
+			},
+			{
+				"id": "56718745-df79-4ebf-88ca-ec24cbaad11a",
+				"method": "DELETE"
+			},
+			{
+				"id": "631e65bf-e964-4100-9378-bfb2645f2e36",
+				"method": "PUT"
+			},
+			{
+				"id": "93fd5b3f-451d-416d-a14f-a938c945a2f9",
+				"method": "PUT"
+			},
+			{
+				"id": "4f3a44be-9412-45d4-ae97-83b25ebe7fac",
+				"method": "POST"
+			},
+			{
+				"id": "2e5db616-bea7-4087-8ff5-8907722f151e",
+				"method": "DELETE"
+			},
+			{
+				"id": "66491227-8a68-4ef1-a0cc-1644b7214bf1",
+				"method": "GET"
+			},
+			{
+				"id": "a05e1c59-58c8-4401-9eea-b02205e3608d",
+				"method": "POST"
+			},
+			{
+				"id": "5da5f128-a6d4-47b2-a439-0fb34e77daf7",
+				"method": "GET"
+			},
+			{
+				"id": "6dbe465a-70e5-4f7e-a4dc-1a9a367ac22e",
+				"method": "GET"
+			},
+			{
+				"id": "29dcbb9d-3dc7-4fe4-ad49-8ab5f3b503c2",
+				"method": "GET"
+			},
+			{
+				"id": "35dc44e3-143d-45c6-865e-74a8d18f8e15",
+				"method": "GET"
+			},
+			{
+				"id": "9bcff054-995c-48f0-a4e9-c6c949d0dffb",
+				"method": "GET"
+			},
+			{
+				"id": "8dee0909-deae-451d-afa3-3c444bc78021",
+				"method": "GET"
+			},
+			{
+				"id": "ad1dd15f-a13d-4b3d-8818-ab33b3f498ae",
+				"method": "GET"
+			},
+			{
+				"id": "8d950a20-e421-4dfa-802a-b33045e8307a",
+				"method": "GET"
+			},
+			{
+				"id": "54f120d3-8ad6-477f-a472-62127e6c23dd",
+				"method": "DELETE"
+			},
+			{
+				"id": "8bf09d6e-0a80-45c8-a149-726c53140ccb",
+				"method": "DELETE"
+			},
+			{
+				"id": "645c022a-f5af-421f-84c9-76eba57561b4",
+				"method": "PUT"
+			},
+			{
+				"id": "36d1bbf6-8c39-45f0-bfcd-291d536a7359",
+				"method": "PUT"
+			},
+			{
+				"id": "1ea31c0e-c442-4b9b-b27b-72ff21d58fa3",
+				"method": "POST"
+			},
+			{
+				"id": "4543c873-edce-4976-ad72-ee97a72f4619",
+				"method": "DELETE"
+			},
+			{
+				"id": "59ad34cc-ed89-4d3a-a95c-5840bca6da1c",
+				"method": "DELETE"
+			},
+			{
+				"id": "0bb269c5-d001-492f-b6b8-5f93b078a452",
+				"method": "PUT"
+			},
+			{
+				"id": "f9c568b8-5dff-4243-a2f3-9de3ac575116",
+				"method": "PUT"
+			},
+			{
+				"id": "cc84e3dc-3827-4877-8b5c-a173d6afa93b",
+				"method": "POST"
+			},
+			{
+				"id": "df753139-ac68-4e3a-a733-ede086fa0f8a",
+				"method": "DELETE"
+			},
+			{
+				"id": "fce2fb62-e746-43fa-b08d-af1194126dac",
+				"method": "GET"
+			},
+			{
+				"id": "4f53bbdd-5d62-4609-b23e-bed2f8d2a024",
+				"method": "GET"
+			},
+			{
+				"id": "7b3cda68-952d-472d-96b5-ec620b46e732",
+				"method": "GET"
+			},
+			{
+				"id": "ea067f76-3f69-4030-b47d-f8acc90c22ad",
+				"method": "GET"
+			},
+			{
+				"id": "514e0fa0-f8a6-4070-bfab-1e7c03252df1",
+				"method": "GET"
+			},
+			{
+				"id": "3bdaf0d4-e651-4841-b39c-45b205912435",
+				"method": "GET"
+			},
+			{
+				"id": "8a4e4ac7-c137-4862-9edb-37ee663294a8",
+				"method": "GET"
+			},
+			{
+				"id": "6a7e89bf-df18-482f-a02e-1e7206f3a3cb",
+				"method": "GET"
+			},
+			{
+				"id": "42aaa39f-01b4-40bd-aca8-932bd22d3f81",
+				"method": "GET"
+			},
+			{
+				"id": "81280b4f-5da0-449b-8481-313ccbd9ca7a",
+				"method": "DELETE"
+			},
+			{
+				"id": "0aee787f-6067-45f9-a8ec-006002b488ba",
+				"method": "DELETE"
+			},
+			{
+				"id": "75a6f164-59c8-40ef-82e9-0f04daceb616",
+				"method": "PUT"
+			},
+			{
+				"id": "6352ebbe-3d34-4124-bbb5-ccb260096b8b",
+				"method": "PUT"
+			},
+			{
+				"id": "972e373d-3ccc-4aa7-8634-1bdf7f16e8d5",
+				"method": "POST"
+			},
+			{
+				"id": "4c8d0370-b40a-4c9a-bf62-fd7353f7b172",
+				"method": "DELETE"
+			},
+			{
+				"id": "23face3c-6d92-4075-b552-3d743dbf7915",
+				"method": "DELETE"
+			},
+			{
+				"id": "f74c5945-f1ee-4411-848f-a002a1bc2339",
+				"method": "PUT"
+			},
+			{
+				"id": "168be4e1-a066-4e9a-8128-1073e8ee6061",
+				"method": "PUT"
+			},
+			{
+				"id": "5df63889-f502-4f7e-852b-5b882475c9a4",
 				"method": "POST"
 			}
 		]
