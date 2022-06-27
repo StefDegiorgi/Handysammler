@@ -30,10 +30,11 @@ public class HandymarkeService {
             @CookieParam("userRole") String userRole
     ){
         int httpStatus;
-        List<Handymarke> handymarkeList = DataHandler.readAllHandymarkes();
+        List<Handymarke> handymarkeList = null;
         if (userRole == null || userRole.equals("guest")){
             httpStatus = 403;
         }else {
+            handymarkeList = DataHandler.readAllHandymarkes();
             if (sort){
                 Collections.sort(handymarkeList, new Comparator<Handymarke>() {
                     @Override
@@ -64,15 +65,17 @@ public class HandymarkeService {
             @CookieParam("userRole") String userRole
     ){
         int httpStatus;
+        Handymarke handymarke = null;
         if (userRole == null || userRole.equals("guest")){
             httpStatus = 403;
         }else {
             httpStatus = 200;
+            handymarke = DataHandler.readHandymarkeByUUID(handymarkeUUID);
+            if (handymarke == null){
+                httpStatus = 410;
+            }
         }
-        Handymarke handymarke = DataHandler.readHandymarkeByUUID(handymarkeUUID);
-        if (handymarke == null){
-            httpStatus = 410;
-        }
+
         return Response
                 .status(httpStatus)
                 .entity(handymarke)
@@ -96,13 +99,14 @@ public class HandymarkeService {
 
     ){
         int httpStatus;
-        handymarke.setHandymarkeUUID(UUID.randomUUID().toString());
-        handymarke.setGruendungsDatum(gruendungsDatum);
-        DataHandler.insertHandymarke(handymarke);
-        if (userRole == null || userRole.equals("guest")){
+        if (userRole == null || userRole.equals("guest") || userRole.equals("user")){
             httpStatus = 403;
         }else {
             httpStatus = 200;
+
+            handymarke.setHandymarkeUUID(UUID.randomUUID().toString());
+            handymarke.setGruendungsDatum(gruendungsDatum);
+            DataHandler.insertHandymarke(handymarke);
         }
         return Response
                 .status(httpStatus)
@@ -126,22 +130,22 @@ public class HandymarkeService {
 
     ){
         int httpStatus;
-        if (userRole == null || userRole.equals("guest")){
+        Handymarke oldhandymarke = null;
+        if (userRole == null || userRole.equals("guest") ||userRole.equals("user")){
             httpStatus = 403;
         }else {
             httpStatus = 200;
+            oldhandymarke = DataHandler.readHandymarkeByUUID(handymarke.getHandymarkeUUID());
+            if (oldhandymarke != null){
+                oldhandymarke.setHandymarkeName(handymarke.getHandymarkeName());
+                oldhandymarke.setHerkunftsland(handymarke.getHerkunftsland());
+                oldhandymarke.setGruendungsDatum(gruendungsDatum);
+                DataHandler.updateHandymarke();
+            } else {
+                httpStatus = 410;
+            }
         }
-        Handymarke oldhandymarke = DataHandler.readHandymarkeByUUID(handymarke.getHandymarkeUUID());
-        if (oldhandymarke != null){
-            oldhandymarke.setHandymarkeName(handymarke.getHandymarkeName());
-            oldhandymarke.setHerkunftsland(handymarke.getHerkunftsland());
-            oldhandymarke.setGruendungsDatum(gruendungsDatum);
-
-
-            DataHandler.updateHandymarke();
-        } else {
-            httpStatus = 410;
-        } return Response
+ return Response
                 .status(httpStatus)
                 .entity("")
                 .build();
@@ -161,14 +165,15 @@ public class HandymarkeService {
             @CookieParam("userRole")String userRole
     ){
         int httpStatus;
-        if (userRole == null || userRole.equals("guest")){
+        if (userRole == null || userRole.equals("guest")||userRole.equals("user")){
             httpStatus = 403;
         }else {
             httpStatus = 200;
+            if (!DataHandler.deleteHandymarke(handymarkeUUID)){
+                httpStatus = 410;
+            }
         }
-        if (!DataHandler.deleteHandymarke(handymarkeUUID)){
-            httpStatus = 410;
-        }
+
         return Response
                 .status(httpStatus)
                 .entity("")

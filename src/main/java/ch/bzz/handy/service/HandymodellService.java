@@ -102,13 +102,14 @@ public class HandymodellService {
     ){
         int httpStatus;
 
-        if (userRole == null || userRole.equals("guest")){
+        if (userRole == null || userRole.equals("guest")||userRole.equals("user")){
             httpStatus = 403;
         }else {
-            httpStatus = 200;
             handymodell.setHandymodellUUID(UUID.randomUUID().toString());
             handymodell.setHandymarkeUUID(handymarkeUUID);
             DataHandler.insertHandymodell(handymodell);
+            httpStatus = 200;
+
         }
         return Response
                 .status(httpStatus)
@@ -133,7 +134,7 @@ public class HandymodellService {
     ){
         int httpStatus;
         Handymodell oldhandymodell = null;
-        if (userRole == null || userRole.equals("guest")){
+        if (userRole == null || userRole.equals("guest")||userRole.equals("user")){
             httpStatus = 403;
         }else {
             httpStatus = 200;
@@ -169,7 +170,7 @@ public class HandymodellService {
             @CookieParam("userRole") String userRole
     ){
         int httpStatus;
-        if (userRole == null || userRole.equals("guest")){
+        if (userRole == null || userRole.equals("guest")||userRole.equals("user")){
             httpStatus = 403;
         }else {
             httpStatus = 200;
