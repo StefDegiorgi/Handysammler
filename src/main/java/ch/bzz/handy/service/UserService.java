@@ -4,12 +4,12 @@ package ch.bzz.handy.service;
 import ch.bzz.handy.data.UserData;
 import ch.bzz.handy.model.User;
 
-import javax.ws.rs.FormParam;
-import javax.ws.rs.POST;
-import javax.ws.rs.Path;
-import javax.ws.rs.Produces;
+import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
+import javax.ws.rs.core.NewCookie;
 import javax.ws.rs.core.Response;
+
+import static javax.ws.rs.core.Response.status;
 
 @Path("user")
 public class UserService {
@@ -29,12 +29,41 @@ public class UserService {
         } else {
             httpStatus = 200;
         }
+        NewCookie cookie = new NewCookie(
+                "userRole",
+                user.getRole(),
+                "/",
+                "",
+                "Login-Cookie",
+                600,
+                false
+        );
 
-        Response response = Response
-                .status(httpStatus)
+        Response response = status(httpStatus)
                 .entity("")
+                .cookie(cookie)
                 .build();
         return response;
+    }
+
+    @DELETE
+    @Path("logout")
+    @Produces(MediaType.TEXT_PLAIN)
+    public Response logout(){
+       NewCookie cookie = new NewCookie(
+                "userRole",
+                "guest",
+                "/",
+                "",
+                "Logout-Cookie",
+                1,
+                false
+        );
+        return Response
+                .status(200)
+                .entity("")
+                .cookie(cookie)
+                .build();
     }
 
 

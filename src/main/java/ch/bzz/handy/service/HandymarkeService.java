@@ -25,18 +25,28 @@ public class HandymarkeService {
     @GET
     @Path("list")
     @Produces(MediaType.APPLICATION_JSON)
-    public Response listHandymarke(@QueryParam("sort")boolean sort){
-        List<Handymarke> handymarkeList = DataHandler.readAllHandymarkes();
-        if (sort){
-            Collections.sort(handymarkeList, new Comparator<Handymarke>() {
-                @Override
-                public int compare(Handymarke handymarke, Handymarke t1) {
-                    return handymarke.getHandymarkeName().compareTo(t1.getHandymarkeName());
-                }
-            });
+    public Response listHandymarke(
+            @QueryParam("sort")boolean sort,
+            @CookieParam("userRole") String userRole
+    ){
+        int httpStatus;
+        List<Handymarke> handymarkeList = null;
+        if (userRole == null || userRole.equals("guest")){
+            httpStatus = 403;
+        }else {
+            handymarkeList = DataHandler.readAllHandymarkes();
+            if (sort){
+                Collections.sort(handymarkeList, new Comparator<Handymarke>() {
+                    @Override
+                    public int compare(Handymarke handymarke, Handymarke t1) {
+                        return handymarke.getHandymarkeName().compareTo(t1.getHandymarkeName());
+                    }
+                });
+            }
+            httpStatus = 200;
         }
         return Response
-                .status(200)
+                .status(httpStatus)
                 .entity(handymarkeList)
                 .build();
     }
@@ -51,13 +61,21 @@ public class HandymarkeService {
     public Response readHandymarke(
             @Pattern(regexp = "[0-9a-fA-F]{8}-([0-9a-fA-F]{4}-){3}[0-9a-fA-F]{12}")
             @NotEmpty
-            @QueryParam("uuid") String handymarkeUUID
+            @QueryParam("uuid") String handymarkeUUID,
+            @CookieParam("userRole") String userRole
     ){
-        int httpStatus = 200;
-        Handymarke handymarke = DataHandler.readHandymarkeByUUID(handymarkeUUID);
-        if (handymarke == null){
-            httpStatus = 410;
+        int httpStatus;
+        Handymarke handymarke = null;
+        if (userRole == null || userRole.equals("guest")){
+            httpStatus = 403;
+        }else {
+            httpStatus = 200;
+            handymarke = DataHandler.readHandymarkeByUUID(handymarkeUUID);
+            if (handymarke == null){
+                httpStatus = 410;
+            }
         }
+
         return Response
                 .status(httpStatus)
                 .entity(handymarke)
@@ -75,16 +93,23 @@ public class HandymarkeService {
     public Response insertHandymarke(
             @Valid @BeanParam Handymarke handymarke,
             @FormParam("gruendungsDatum")@NotEmpty @Pattern(regexp = "^((19|2[0-9])[0-9]{2})-(0[1-9]|1[012])-(0[1-9]|[12][0-9]|3[01])$")
-                    String gruendungsDatum
+                    String gruendungsDatum,
+            @CookieParam("userRole") String userRole
 
 
     ){
-        handymarke.setHandymarkeUUID(UUID.randomUUID().toString());
-        handymarke.setGruendungsDatum(gruendungsDatum);
+        int httpStatus;
+        if (userRole == null || userRole.equals("guest") || userRole.equals("user")){
+            httpStatus = 403;
+        }else {
+            httpStatus = 200;
 
-        DataHandler.insertHandymarke(handymarke);
+            handymarke.setHandymarkeUUID(UUID.randomUUID().toString());
+            handymarke.setGruendungsDatum(gruendungsDatum);
+            DataHandler.insertHandymarke(handymarke);
+        }
         return Response
-                .status(200)
+                .status(httpStatus)
                 .entity("")
                 .build();
     }
@@ -100,21 +125,27 @@ public class HandymarkeService {
     public Response updateHandymarke(
             @Valid @BeanParam Handymarke handymarke,
             @FormParam("gruendungsDatum")@NotEmpty @Pattern(regexp = "^((19|2[0-9])[0-9]{2})-(0[1-9]|1[012])-(0[1-9]|[12][0-9]|3[01])$")
-                    String gruendungsDatum
+                    String gruendungsDatum,
+            @CookieParam("userRole")String userRole
 
     ){
-        int httpStatus = 200;
-        Handymarke oldhandymarke = DataHandler.readHandymarkeByUUID(handymarke.getHandymarkeUUID());
-        if (oldhandymarke != null){
-            oldhandymarke.setHandymarkeName(handymarke.getHandymarkeName());
-            oldhandymarke.setHerkunftsland(handymarke.getHerkunftsland());
-            oldhandymarke.setGruendungsDatum(gruendungsDatum);
-
-
-            DataHandler.updateHandymarke();
-        } else {
-            httpStatus = 410;
-        } return Response
+        int httpStatus;
+        Handymarke oldhandymarke = null;
+        if (userRole == null || userRole.equals("guest") ||userRole.equals("user")){
+            httpStatus = 403;
+        }else {
+            httpStatus = 200;
+            oldhandymarke = DataHandler.readHandymarkeByUUID(handymarke.getHandymarkeUUID());
+            if (oldhandymarke != null){
+                oldhandymarke.setHandymarkeName(handymarke.getHandymarkeName());
+                oldhandymarke.setHerkunftsland(handymarke.getHerkunftsland());
+                oldhandymarke.setGruendungsDatum(gruendungsDatum);
+                DataHandler.updateHandymarke();
+            } else {
+                httpStatus = 410;
+            }
+        }
+ return Response
                 .status(httpStatus)
                 .entity("")
                 .build();
@@ -130,12 +161,19 @@ public class HandymarkeService {
     public Response deleteHandymarke(
             @NotEmpty
             @Pattern(regexp = "[0-9a-fA-F]{8}-([0-9a-fA-F]{4}-){3}[0-9a-fA-F]{12}")
-            @QueryParam("uuid") String handymarkeUUID
+            @QueryParam("uuid") String handymarkeUUID,
+            @CookieParam("userRole")String userRole
     ){
-        int httpStatus = 200;
-        if (!DataHandler.deleteHandymarke(handymarkeUUID)){
-            httpStatus = 410;
+        int httpStatus;
+        if (userRole == null || userRole.equals("guest")||userRole.equals("user")){
+            httpStatus = 403;
+        }else {
+            httpStatus = 200;
+            if (!DataHandler.deleteHandymarke(handymarkeUUID)){
+                httpStatus = 410;
+            }
         }
+
         return Response
                 .status(httpStatus)
                 .entity("")
