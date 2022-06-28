@@ -1,0 +1,120 @@
+@startuml
+class ch.bzz.handy.model.Handymodell {
+- Handymarke handymarke
+- String handymodellUUID
+- String handymodellName
+- double akkulaufzeit
+- String seriennummer
++ String getHandymarkeUUID()
++ void setHandymarkeUUID(String)
++ Handymarke getHandymarke()
++ void setHandymarke(Handymarke)
++ String getHandymodellUUID()
++ void setHandymodellUUID(String)
++ String getHandymodellName()
++ void setHandymodellName(String)
++ double getAkkulaufzeit()
++ void setAkkulaufzeit(double)
++ String getSeriennummer()
++ void setSeriennummer(String)
+}
+class ch.bzz.handy.service.HandymodellService {
++ Response listHandymodell(boolean,String)
++ Response readHandymodell(String,String)
++ Response insertHandymodell(Handymodell,String,String)
++ Response updateHandymodell(Handymodell,String,String)
++ Response deleteHandymodell(String,String)
+}
+class ch.bzz.handy.data.UserData {
+- {static} UserData instance
++ {static} User findUser(String,String)
+- {static} List<User> readJson()
+}
+class ch.bzz.handy.model.User {
+- String userUUID
+- String username
+- String password
+- String role
++ String getUserUUID()
++ void setUserUUID(String)
++ String getUsername()
++ void setUsername(String)
++ String getPassword()
++ void setPassword(String)
++ String getRole()
++ void setRole(String)
+}
+class ch.bzz.handy.service.HandymarkeService {
++ Response listHandymarke(boolean,String)
++ Response readHandymarke(String,String)
++ Response insertHandymarke(Handymarke,String,String)
++ Response updateHandymarke(Handymarke,String,String)
++ Response deleteHandymarke(String,String)
+}
+class ch.bzz.handy.data.DataHandler {
+- {static} DataHandler instance
+- {static} List<Handymodell> handymodellList
+- {static} List<Handymarke> handymarkeList
++ {static} void initLists()
++ {static} List<Handymodell> readAllHandymodells()
++ {static} Handymodell readHandymodellByUUID(String)
++ {static} void insertHandymodell(Handymodell)
++ {static} void updateHandymodell()
++ {static} boolean deleteHandymodell(String)
++ {static} List<Handymarke> readAllHandymarkes()
++ {static} Handymarke readHandymarkeByUUID(String)
++ {static} void insertHandymarke(Handymarke)
++ {static} void updateHandymarke()
++ {static} boolean deleteHandymarke(String)
+- {static} void readHandymodellJSON()
+- {static} void writeHandymodellJSON()
+- {static} void readHandymarkeJSON()
+- {static} void writeHandymarkeJSON()
+- {static} List<Handymodell> getHandymodellList()
+- {static} void setHandymodellList(List<Handymodell>)
+- {static} List<Handymarke> getHandymarkeList()
+- {static} void setHandymarkeList(List<Handymarke>)
+}
+class ch.bzz.handy.util.LocalDateDeserializer {
++ LocalDate deserialize(JsonParser,DeserializationContext)
+}
+class ch.bzz.handy.service.Config {
+- {static} String PROPERTIES_PATH
+- {static} Properties properties
++ Set<Class<?>> getClasses()
++ {static} String getProperty(String)
+- {static} void readProperties()
+- {static} void setProperties(Properties)
+}
+class ch.bzz.handy.model.Handymarke {
+- String handymarkeUUID
+- String handymarkeName
+- String herkunftsland
+- LocalDate gruendungsDatum
++ String getHandymarkeUUID()
++ void setHandymarkeUUID(String)
++ String getHandymarkeName()
++ void setHandymarkeName(String)
++ String getHerkunftsland()
++ void setHerkunftsland(String)
++ LocalDate getGruendungsDatum()
++ void setGruendungsDatum(LocalDate)
++ void setGruendungsDatum(String)
+}
+class ch.bzz.handy.util.LocalDateSerializer {
++ void serialize(LocalDate,JsonGenerator,SerializerProvider)
+}
+class ch.bzz.handy.service.UserService {
++ Response login(String,String)
++ Response logout()
+}
+class ch.bzz.handy.service.TestService {
++ Response test()
++ Response restore()
+}
+
+
+com.fasterxml.jackson.databind.deser.std.StdDeserializer <|-- ch.bzz.handy.util.LocalDateDeserializer
+javax.ws.rs.core.Application <|-- ch.bzz.handy.service.Config
+com.fasterxml.jackson.databind.ser.std.StdSerializer <|-- ch.bzz.handy.util.LocalDateSerializer
+@enduml
